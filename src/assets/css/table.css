@@ -1,0 +1,36 @@
+.breadcrum{
+  margin-bottom: 30px;
+}
+.table-container{
+  margin-top: 20px;
+}
+.table-toolbar{
+  margin-bottom: 20px;
+  height: 30px;
+}
+.table-page{
+  margin-top: 20px;
+  display: flex;
+  justify-content: flex-end;
+}
+.pull-right{
+  float: right;
+}
+.mleft{
+  margin-left: 20px;
+}
+.label{
+  display: inline-block;
+  width: 60px;
+  text-align: right;
+}
+.status-success{
+  color: #22c36a;
+}
+.status-error{
+  color: red;
+}
+
+.cost-color{
+  color: red;
+}
