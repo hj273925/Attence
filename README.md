@@ -17,7 +17,9 @@ npm run build
 # build for production and view the bundle analyzer report
 npm run build --report
 ```
-项目结构
+# 项目布局
+
+```
 .
 ├── build                                      // webpack配置文件
 ├── config                                     // 项目打包路径
