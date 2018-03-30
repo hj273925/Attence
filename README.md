@@ -2,7 +2,7 @@
 
 > A Vue.js project
 
-## Build Setup
+## 项目运行
 
 ``` bash
 # install dependencies
@@ -17,7 +17,7 @@ npm run build
 # build for production and view the bundle analyzer report
 npm run build --report
 ```
-# 项目布局
+# 项目结构
 
 ```
 .
