@@ -15,8 +15,8 @@
         </Header>
         <Layout>
           <Sider hide-trigger :style="{background: '#fff'}">
-            <Menu active-name="组织管理" theme="light" width="auto" :open-names="['0']">
-              <Submenu :name="index" v-for="(submenu,index) in menu">
+            <Menu active-name="组织管理" theme="light" width="auto" :open-names="[0]">
+              <Submenu :name = index v-for="(submenu,index) in menu">
                 <template slot="title">
                   <Icon type="ios-navigate"></Icon>
                   {{submenu.title}}
@@ -42,13 +42,25 @@ export default {
   name: 'app',
   data() {
     return {
-      menu:[
+      menu: [
         {
-          title:'基础信息',
+          title: '基础信息',
           subMenu: [
-            { name: '组织管理', path: 'Manage0rganization'},
-            { name: '用户管理', path: 'ManageUser'},
-            { name: '数据字典', path: 'DataDictionary'}
+            {name: '组织管理', path: 'Manage0rganization'},
+            {name: '用户管理', path: 'ManageUser'},
+            {name: '数据字典', path: 'DataDictionary'}
+          ]
+        }, {
+          title: '问卷管理',
+          subMenu: [
+            {name: '问卷设计', path: 'Manage0rganization'}
+          ]
+        }, {
+          title: '调研管理',
+          subMenu: [
+            {name: 's1调研设置', path: 'Manage0rganization'},
+            {name: 's2人员数据上传', path: 'ManageUser'},
+            {name: 's3样本筛选', path: 'DataDictionary'}
           ]
         }
       ]
