@@ -14,7 +14,7 @@
           </i-input>
         </div>
         <div>
-          <Table @on-selection-change="selectChange" border ref="selection" :columns="columns" :data="data"></Table>
+          <Table :loading="tableLoading" @on-selection-change="selectChange" border ref="selection" :columns="columns" :data="data"></Table>
         </div>
         <div class="table-page">
           <Page v-show="data.length" :total="data.length"  @on-change="changePage" show-elevator></Page>
@@ -33,13 +33,13 @@
           <Input type="text" v-model="formCustom.name"></Input>
         </FormItem>
         <FormItem label="单位" prop="orgId">
-          <Input type="text" v-model="formCustom.employer"></Input>
+          <Input type="text" v-model="formCustom.orgId"></Input>
         </FormItem>
         <FormItem label="职务" prop="title">
-          <Input type="text" v-model="formCustom.post"></Input>
+          <Input type="text" v-model="formCustom.title"></Input>
         </FormItem>
         <FormItem label="手机" prop="mobile">
-          <Input type="text" v-model="formCustom.telephone" number></Input>
+          <Input type="text" v-model="formCustom.mobile" number></Input>
         </FormItem>
         <FormItem label="邮箱" prop="email">
           <Input type="email" v-model="formCustom.email"></Input>

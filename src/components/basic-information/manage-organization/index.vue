@@ -15,6 +15,7 @@
         </div>
         <div>
           <Table
+          :loading="tableLoading"
           @on-selection-change="selectChange"
           border ref="selection"
           :columns="columns"

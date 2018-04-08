@@ -44,34 +44,32 @@ export default {
       ],
       formCustom: {
         name: '',
-        employer: '',
-        post: '',
-        telephone: '',
+        orgId: '',
+        title: '',
+        mobile: '',
         email: ''
       },
       ruleCustom: {
         name: [
           { required: true, message: '请输入用户名', trigger: 'blur' }
         ],
-        employer: [
+        orgId: [
           { required: true, message: '请输入用户单位', trigger: 'blur' }
         ],
-        post: [
+        title: [
           { required: true, message: '请输入用户职务', trigger: 'blur' }
         ],
-        telephone: [
+        mobile: [
           { required: true, message: '请输入用户手机号', trigger: 'blur' }
         ],
         email: [
           { required: true, message: '请输入用户邮箱', trigger: 'blur' }
         ]
       },
-      data: [
-        {name: 'dasas'},
-        {name: 'asdasas'}
-      ],
+      data: [],
       selected: [],
       loading: true,
+      tableLoading: false,
       modal: false,
       record: {}
     }
@@ -81,12 +79,16 @@ export default {
   },
   methods: {
     loadUserlist() {
+      this.tableLoading = true
       ManageUserService.getUsers()
         .then((res) => {
           this.data = res.items
         })
         .catch(() => {
           this.$Message.error('获取用户列表失败！')
+        })
+        .finally(() => {
+          this.tableLoading = false
         })
     },
     selectChange(selection) {
@@ -111,7 +113,7 @@ export default {
       })
     },
     deleteUsers() {
-      ManageUserService.deteleUser(this.selected)
+      ManageUserService.deleteUser(this.selected)
         .then(() => {
           this.$Message.success('用户已删除！')
         })

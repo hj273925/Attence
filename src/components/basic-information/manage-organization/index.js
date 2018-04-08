@@ -83,10 +83,12 @@ export default {
         }
       ],
       selected: [],
+      tableLoading: false,
       loading: true
     }
   },
   created() {
+    this.loadOrglist()
   },
   methods: {
     currentLine(info) {
@@ -97,12 +99,15 @@ export default {
       this.selected = selection
     },
     loadOrglist() {
+      this.tableLoading = true
       OrganizationService.getOrganizations()
         .then((res) => {
-          this.data = res
+          this.data = res.items
+          this.tableLoading = false
         })
         .catch(() => {
-          this.$Message.error('获取用户列表失败！')
+          this.tableLoading = false
+          this.$Message.error('获取组织列表失败！')
         })
     },
     deleteOrgs() {

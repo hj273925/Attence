@@ -14,11 +14,11 @@ class ManageUserService {
   }
 
   addUser(params) {
-    return this.api.post('/provider/query', params)
+    return this.api.post('/user/create', params)
   }
 
-  deteleUser(params) {
-    return this.api.delete('/account/query', params)
+  deleteUser(params) {
+    return this.api.delete('/user/delete', params)
   }
 }
 
