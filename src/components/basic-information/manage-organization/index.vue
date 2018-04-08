@@ -29,7 +29,7 @@
     </Content>
     <Modal
       v-model="currentLineInfo"
-      title="新建组织"
+      title="编辑组织"
       :loading="loading"
       width="600"
       @on-ok="handleConfirmLine('formOrganizeLine')"

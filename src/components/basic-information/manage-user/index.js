@@ -19,15 +19,15 @@ export default {
         },
         {
           title: '单位',
-          key: 'age'
+          key: 'orgId'
         },
         {
           title: '职务',
-          key: 'address'
+          key: 'title'
         },
         {
           title: '手机',
-          key: 'telephone'
+          key: 'mobile'
         },
         {
           title: '邮箱',

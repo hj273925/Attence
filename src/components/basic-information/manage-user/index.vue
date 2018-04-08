@@ -23,7 +23,7 @@
     </Content>
     <Modal
       v-model="modal"
-      title="新建用户"
+      title="编辑用户"
       :loading="loading"
       width="600"
       @on-ok="handleConfirm('formCustom')"
@@ -32,13 +32,13 @@
         <FormItem label="用户名" prop="name">
           <Input type="text" v-model="formCustom.name"></Input>
         </FormItem>
-        <FormItem label="单位" prop="employer">
+        <FormItem label="单位" prop="orgId">
           <Input type="text" v-model="formCustom.employer"></Input>
         </FormItem>
-        <FormItem label="职务" prop="post">
+        <FormItem label="职务" prop="title">
           <Input type="text" v-model="formCustom.post"></Input>
         </FormItem>
-        <FormItem label="手机" prop="telephone">
+        <FormItem label="手机" prop="mobile">
           <Input type="text" v-model="formCustom.telephone" number></Input>
         </FormItem>
         <FormItem label="邮箱" prop="email">
