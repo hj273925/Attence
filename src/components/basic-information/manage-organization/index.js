@@ -52,7 +52,7 @@ export default {
         },
         {
           title: '简称',
-          key: 'abbreviation'
+          key: 'shortName'
         },
         {
           title: '规模',
