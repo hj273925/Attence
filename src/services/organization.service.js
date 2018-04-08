@@ -9,16 +9,16 @@ class OrganizationService {
     return this.api.get('/org/query')
   }
 
-  providerList(params) {
-    return this.api.get('/provider/query', params)
+  addOrganization(params) {
+    return this.api.post('/org/create', params)
   }
 
-  accountList(params) {
-    return this.api.get('/account/query', params)
+  editOrganization(params) {
+    return this.api.post('/org/update', params)
   }
 
-  productList(params) {
-    return this.api.get('/instance/allProduct', params)
+  deleteOrganization(params) {
+    return this.api.post('/org/deleteAll', params)
   }
 }
 

@@ -17,8 +17,12 @@ class ManageUserService {
     return this.api.post('/user/create', params)
   }
 
+  editUser(params) {
+    return this.api.post('/user/update', params)
+  }
+
   deleteUser(params) {
-    return this.api.delete('/user/delete', params)
+    return this.api.post('/user/deleteAll', params)
   }
 }
 

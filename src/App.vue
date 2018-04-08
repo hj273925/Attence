@@ -58,9 +58,8 @@ export default {
         }, {
           title: '调研管理',
           subMenu: [
-            {name: 's1调研设置', path: 'Manage0rganization'},
-            {name: 's2人员数据上传', path: 'ManageUser'},
-            {name: 's3样本筛选', path: 'DataDictionary'}
+            {name: '调研管理', path: 'SurveyManagement'},
+            {name: '调研设置', path: 'SurveyIntercalate'}
           ]
         }
       ]

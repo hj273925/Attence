@@ -111,7 +111,7 @@ export default {
         })
     },
     deleteOrgs() {
-      OrganizationService.deteleUser(this.selected)
+      OrganizationService.deleteOrganization(this.selected)
         .then(() => {
           this.$Message.success('用户已删除！')
         })

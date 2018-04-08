@@ -19,14 +19,26 @@ export default new Router({
     }, {
       path: '/manage-user',
       name: 'ManageUser',
-      component: function( resolve ) {
+      component: function (resolve) {
         require(['@/components/basic-information/manage-user/index.vue'], resolve)
       }
     }, {
       path: '/data-dictionary',
       name: 'DataDictionary',
-      component: function( resolve ) {
+      component: function (resolve) {
         require(['@/components/basic-information/data-dictionary/index.vue'], resolve)
+      }
+    }, {
+      path: '/survey-management',
+      name: 'SurveyManagement',
+      component: function (resolve) {
+        require(['@/components/survey-management/research-management/index.vue'], resolve)
+      }
+    }, {
+      path: '/survey-intercalate',
+      name: 'SurveyIntercalate',
+      component: function (resolve) {
+        require(['@/components/survey-management/research-intercalate/index.vue'], resolve)
       }
     }]
 })

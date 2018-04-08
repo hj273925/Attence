@@ -7,14 +7,14 @@
     <Content :style="{padding: '24px', minHeight: '280px', background: '#fff'}">
       <div class="table-container">
         <div class="table-toolbar">
-          <Button  type="primary" @click="modal = true">新建</Button>
+          <Button  type="primary" @click="showModal">新建</Button>
           <Button  type="primary" :disabled = !Boolean(selected.length) @click="deleteUsers">删除</Button>
           <Button  type="primary" @click="loadUserlist">刷新</Button>
           <i-input placeholder="搜索用户"  icon="ios-search" class="search_input pull-right" style="width: 200px">
           </i-input>
         </div>
         <div>
-          <Table :loading="tableLoading" @on-selection-change="selectChange" border ref="selection" :columns="columns" :data="data"></Table>
+          <Table :loading="tableLoading" @on-row-click="clickRow" @on-selection-change="selectChange" border ref="selection" :columns="columns" :data="data"></Table>
         </div>
         <div class="table-page">
           <Page v-show="data.length" :total="data.length"  @on-change="changePage" show-elevator></Page>
@@ -23,11 +23,9 @@
     </Content>
     <Modal
       v-model="modal"
-      title="编辑用户"
+      :title="modal_title"
       :loading="loading"
-      width="600"
-      @on-ok="handleConfirm('formCustom')"
-      @on-cancel="handleCancel('formCustom')">
+      width="600">
       <Form ref="formCustom" :model="formCustom" :rules="ruleCustom" :label-width="80">
         <FormItem label="用户名" prop="name">
           <Input type="text" v-model="formCustom.name"></Input>
@@ -45,6 +43,10 @@
           <Input type="email" v-model="formCustom.email"></Input>
         </FormItem>
       </Form>
+      <div slot="footer">
+        <Button type="ghost" @click="handleCancel('formCustom')">取消</Button>
+        <Button type="primary" :loading="modal_loading" @click="handleConfirm('formCustom')">确定</Button>
+      </div>
     </Modal>
   </div>
 </template>
