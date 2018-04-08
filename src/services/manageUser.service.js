@@ -9,7 +9,7 @@ class ManageUserService {
   }
 
   getUsers() {
-    return this.api.get('/instance/query')
+    return this.api.get('/user/query')
   }
 
   addUser(params) {

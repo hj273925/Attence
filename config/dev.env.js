@@ -3,6 +3,6 @@ var prodEnv = require('./prod.env')
 
 module.exports = merge(prodEnv, {
   NODE_ENV: '"development"',
-  BASE_URL: '"http://10.135.80.77:30005/sp-bc"',
+  BASE_URL: '"http://10.100.50.102:8080"',
   CONSOLE: JSON.stringify(process.env.TEST)
 })

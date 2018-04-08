@@ -1,12 +1,12 @@
 import api from './api.service'
 
-class ChargeService {
+class OrganizationService {
   constructor() {
     this.api = api
   }
 
-  instanceList(params) {
-    return this.api.get('/instance/query', params)
+  getOrganizations() {
+    return this.api.get('/org/query')
   }
 
   providerList(params) {
@@ -22,4 +22,4 @@ class ChargeService {
   }
 }
 
-export default new ChargeService()
+export default new OrganizationService()

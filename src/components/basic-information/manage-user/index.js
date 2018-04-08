@@ -83,7 +83,7 @@ export default {
     loadUserlist() {
       ManageUserService.getUsers()
         .then((res) => {
-          this.data = res
+          this.data = res.items
         })
         .catch(() => {
           this.$Message.error('获取用户列表失败！')

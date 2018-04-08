@@ -1,7 +1,7 @@
 /**
  * Created by hj on 2018/3/30.
  */
-import ManageUserService from '@/services/manageUser.service'
+import OrganizationService from '@/services/organization.service'
 
 export default {
   name: 'app',
@@ -97,7 +97,7 @@ export default {
       this.selected = selection
     },
     loadOrglist() {
-      ManageUserService.getUsers()
+      OrganizationService.getOrganizations()
         .then((res) => {
           this.data = res
         })
@@ -106,7 +106,7 @@ export default {
         })
     },
     deleteOrgs() {
-      ManageUserService.deteleUser(this.selected)
+      OrganizationService.deteleUser(this.selected)
         .then(() => {
           this.$Message.success('用户已删除！')
         })
@@ -127,7 +127,7 @@ export default {
       const self = this
       this.$refs[name].validate((valid) => {
         if (valid) {
-          ManageUserService.addUser(self.formOrganize)
+          OrganizationService.addUser(self.formOrganize)
             .then(() => {
               self.loading = false
             })
