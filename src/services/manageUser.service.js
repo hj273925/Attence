@@ -18,7 +18,7 @@ class ManageUserService {
   }
 
   deleteUser(params) {
-    return this.api.delete('/user/delete', params)
+    return this.api.delete('/user/deleteAll', params)
   }
 }
 
