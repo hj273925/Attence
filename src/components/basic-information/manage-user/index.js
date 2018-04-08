@@ -19,15 +19,15 @@ export default {
         },
         {
           title: '单位',
-          key: 'age'
+          key: 'orgId'
         },
         {
           title: '职务',
-          key: 'address'
+          key: 'title'
         },
         {
           title: '手机',
-          key: 'telephone'
+          key: 'mobile'
         },
         {
           title: '邮箱',
@@ -83,7 +83,8 @@ export default {
     loadUserlist() {
       ManageUserService.getUsers()
         .then((res) => {
-          this.data = res
+          this.data = res.items
+          console.log(res)
         })
         .catch(() => {
           this.$Message.error('获取用户列表失败！')
