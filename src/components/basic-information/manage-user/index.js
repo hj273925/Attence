@@ -41,7 +41,7 @@ export default {
         },
         {
           title: '创建时间',
-          key: 'createTime'
+          key: 'createdBy'
         }
       ],
       formCustom: {
@@ -193,9 +193,14 @@ export default {
     },
     // 删除用户
     deleteUsers() {
-      ManageUserService.deleteUser(this.selected)
+      let selections = []
+      this.selected.forEach((value) => {
+        selections.push({id: value.id})
+      })
+      ManageUserService.deleteUser(selections)
         .then(() => {
           this.$Message.success('用户已删除！')
+          this.selected = []
           this.loadUserlist()
         })
         .catch(() => {
