@@ -4,6 +4,7 @@
 import ManageUserService from '@/services/manageUser.service'
 
 export default {
+  name: 'ManageUser',
   data() {
     return {
       columns: [
@@ -36,39 +37,38 @@ export default {
           key: 'createTime'
         }
       ],
-      groupNameList: [
+      cityList: [
         {
-          value: '集团',
+          value: 'New York',
           label: 'New York'
         },
         {
-          value: '上汽大众',
+          value: 'London',
           label: 'London'
         },
         {
-          value: '上汽大通',
+          value: 'Sydney',
           label: 'Sydney'
-        }
-      ],
-      researchNameList: [
-        {
-          value: '2015调研',
-          label: 'New York'
         },
         {
-          value: '2016调研',
-          label: 'London'
+          value: 'Ottawa',
+          label: 'Ottawa'
         },
         {
-          value: '2017调研',
-          label: 'Sydney'
+          value: 'Paris',
+          label: 'Paris'
+        },
+        {
+          value: 'Canberra',
+          label: 'Canberra'
         }
       ],
       formInline: {
         researchName: '',
-        groupName: ''
+        groupName: '',
+        title: ''
       },
-      tagList: ['2016问卷', '2017问卷'],
+      tagList: ['集团-2017调研-W3', '集团-2016调研-W3', '集团-2015调研-W3'],
       data: [],
       tableLoading: false
     }
@@ -95,10 +95,6 @@ export default {
     deleteTag(name) {
       const index = this.tagList.indexOf(name)
       this.tagList.splice(index, 1)
-    },
-    // 点击页脚触发
-    changePage(index) {
-      console.log(index)
     }
   }
 }

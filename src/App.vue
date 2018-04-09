@@ -4,7 +4,9 @@
       <Layout>
         <Header>
           <Menu mode="horizontal" theme="dark" active-name="1">
-            <div class="layout-logo"></div>
+            <div class="layout-logo">
+              <span>SAIC SURVEY CONSOLE</span>
+            </div>
             <div class="layout-nav">
               <MenuItem name="1">
                 <Avatar icon="person" />
@@ -53,7 +55,7 @@ export default {
         }, {
           title: '问卷管理',
           subMenu: [
-            {name: '问卷设计', path: 'Manage0rganization'}
+            {name: '问卷设计', path: 'QuestionnaireDesign'}
           ]
         }, {
           title: '调研管理',
@@ -65,11 +67,11 @@ export default {
           title: '数据分析',
           subMenu: [
             {name: '样本成分分析', path: 'SampleComposition'},
-            {name: '满意度对比', path: 'SurveyIntercalate'},
-            {name: '满意度分布', path: 'SurveyIntercalate'},
-            {name: '7维21指标对比', path: 'SurveyIntercalate'},
+            {name: '满意度对比', path: 'SatisfactionComparison'},
+            {name: '满意度分布', path: 'SatisfactionDistribution'},
+            {name: '7维21指标对比', path: 'IndexComparison'},
             {name: '7维21指标分布', path: 'SurveyIntercalate'},
-            {name: '问题选项分布', path: 'SurveyIntercalate'}
+            {name: '问题选项分布', path: 'ProblemDistribution'}
           ]
         }
       ]
@@ -97,21 +99,20 @@ export default {
   height:100%;
 }
 .layout-logo{
-  width: 100px;
-  height: 30px;
-  background: #5b6270;
-  border-radius: 3px;
   float: left;
   position: relative;
-  top: 15px;
-  left: 20px;
+  left: -25px;
+}
+.layout-logo span{
+  color: white;
+  font-size: 20px;
 }
 .layout-nav{
   width: 120px;
   margin: 0 auto;
   margin-right: 20px;
 }
-a{
-  color: grey;
+.ivu-layout-content{
+  height: calc(100vh - 180px);
 }
 </style>

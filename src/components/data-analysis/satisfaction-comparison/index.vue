@@ -2,7 +2,7 @@
   <div>
     <Breadcrumb :style="{margin: '24px 0'}">
       <BreadcrumbItem>数据分析</BreadcrumbItem>
-      <BreadcrumbItem>样本成分分析</BreadcrumbItem>
+      <BreadcrumbItem>满意度对比</BreadcrumbItem>
     </Breadcrumb>
     <Content :style="{padding: '24px', minHeight: '280px', background: '#fff'}">
       <div class="table-container">
@@ -10,12 +10,15 @@
           <Form ref="formInline" :model="formInline"  inline>
             <FormItem prop="groupName">
               <Select v-model="formInline.groupName" style="width:200px" placeholder="选择组织名">
-                <Option v-for="item in groupNameList" :value="item.value" :key="item.label">{{ item.value }}</Option>
+                <Option v-for="item in groupNameList" :value="item.value" :key="item.value">{{ item.value }}</Option>
               </Select>
             </FormItem>
-            <FormItem prop="researchName">
+            <FormItem>
+              <Button type="primary">添加</Button>
+            </FormItem>
+            <FormItem prop="name">
               <Select v-model="formInline.researchName" style="width:200px" placeholder="选择调研名">
-                <Option v-for="item in researchNameList" :value="item.value" :key="item.label">{{ item.value }}</Option>
+                <Option v-for="item in researchNameList" :value="item.value" :key="item.value">{{ item.value }}</Option>
               </Select>
             </FormItem>
             <FormItem>
@@ -24,10 +27,15 @@
           </Form>
         </div>
         <div class="tag-list">
-          <Tag v-for="item in tagList" :key="item" :name="item" closable color="blue" @on-close="deleteTag">{{ item }}</Tag>
+          <div>
+            <span>行：</span><Tag v-for="item in groupList" :key="item" :name="item" closable color="blue" @on-close="deleteGroupName">{{ item }}</Tag>
+          </div>
+          <div>
+            <span>列：</span><Tag v-for="item in researchList" :key="item" :name="item" closable color="blue" @on-close="deleteResearchName">{{ item }}</Tag>
+          </div>
         </div>
         <div>
-          <Table :loading="tableLoading" border :columns="columns" :data="data"></Table>
+          <Table :loading="tableLoading"  border :columns="columns" :data="data"></Table>
         </div>
         <div class="table-page">
           <Button type="primary">导出</Button>

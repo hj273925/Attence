@@ -4,6 +4,7 @@
 import ManageUserService from '@/services/manageUser.service'
 
 export default {
+  name: 'ManageUser',
   data() {
     return {
       columns: [
@@ -68,8 +69,10 @@ export default {
         researchName: '',
         groupName: ''
       },
-      tagList: ['2016问卷', '2017问卷'],
+      groupList: ['上汽大通', '上汽大众'],
+      researchList: ['2016调研', '2017调研'],
       data: [],
+      selected: [],
       tableLoading: false
     }
   },
@@ -92,9 +95,13 @@ export default {
         })
     },
     // 删除标签
-    deleteTag(name) {
-      const index = this.tagList.indexOf(name)
-      this.tagList.splice(index, 1)
+    deleteGroupName(name) {
+      const index = this.groupNameList.indexOf(name)
+      this.groupNameList.splice(index, 1)
+    },
+    deleteResearchName(name) {
+      const index = this.researchNameList.indexOf(name)
+      this.researchNameList.splice(index, 1)
     },
     // 点击页脚触发
     changePage(index) {

@@ -4,6 +4,7 @@
 import ManageUserService from '@/services/manageUser.service'
 
 export default {
+  name: 'ManageUser',
   data() {
     return {
       columns: [
@@ -64,11 +65,26 @@ export default {
           label: 'Sydney'
         }
       ],
+      titleList: [
+        {
+          value: 'W1',
+          label: 'New York'
+        },
+        {
+          value: 'W2',
+          label: 'London'
+        },
+        {
+          value: 'W3',
+          label: 'Sydney'
+        }
+      ],
       formInline: {
         researchName: '',
-        groupName: ''
+        groupName: '',
+        title: ''
       },
-      tagList: ['2016问卷', '2017问卷'],
+      tagList: ['集团-2017调研-W3', '集团-2016调研-W3', '集团-2015调研-W3'],
       data: [],
       tableLoading: false
     }
@@ -95,10 +111,6 @@ export default {
     deleteTag(name) {
       const index = this.tagList.indexOf(name)
       this.tagList.splice(index, 1)
-    },
-    // 点击页脚触发
-    changePage(index) {
-      console.log(index)
     }
   }
 }
