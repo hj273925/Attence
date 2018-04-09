@@ -4,38 +4,9 @@
 import OrganizationService from '@/services/organization.service'
 
 export default {
-  name: 'app',
+  name: 'ManageOrg',
   data() {
     return {
-      modal: false,
-      currentLineInfo: false,
-      ruleOrg: {
-        code: [{ required: true, message: '请输入代码', trigger: 'blur' }],
-        fullName: [{ required: true, message: '请输入全称', trigger: 'blur' }],
-        abbreviation: [{ required: true, message: '请输入简称', trigger: 'blur' }],
-        scale: [{ required: true, message: '请输入规模', trigger: 'blur' }],
-        sample: [{ required: true, message: '请输入抽样率', trigger: 'blur' }],
-        redundancy: [{ required: true, message: '请输入冗余率', trigger: 'blur' }],
-        state: [{ required: true, message: '请输入状态', trigger: 'blur' }]
-      },
-      formOrganize: {
-        code: '',
-        fullName: '',
-        abbreviation: '',
-        scale: '',
-        sample: '',
-        redundancy: '',
-        state: ''
-      },
-      formOrganizeLine: {
-        code: '',
-        fullName: '',
-        abbreviation: '',
-        scale: '',
-        sample: '',
-        redundancy: '',
-        state: ''
-      },
       columns: [
         {
           type: 'selection',
@@ -60,91 +31,161 @@ export default {
         },
         {
           title: '抽样率',
-          key: 'sample'
+          key: 'sampleRate'
         },
         {
           title: '冗余率',
-          key: 'redundancy'
+          key: 'extraRate'
         },
         {
           title: '状态',
-          key: 'state'
+          key: 'status'
         }
       ],
-      data: [
-        {
-          code: '0',
-          fullName: 'nnn'
-        },
-        {
-          code: '0',
-          fullName: 'nnn',
-          state: 'kai'
-        }
-      ],
+      formCustom: {
+        code: '',
+        fullName: '',
+        shortName: '',
+        scale: '',
+        sampleRate: '',
+        extraRate: '',
+        status: ''
+      },
+      ruleCustom: {
+        code: [
+          { required: true, message: '请输入组织代码', trigger: 'blur' }
+        ],
+        fullName: [
+          { required: true, message: '请输入组织全称', trigger: 'blur' }
+        ],
+        shortName: [
+          { required: true, message: '请输入组织简称', trigger: 'blur' }
+        ],
+        scale: [
+          { required: true, message: '请输入组织规模', trigger: 'blur' }
+        ],
+        sampleRate: [
+          { required: true, message: '请输入组织抽样率', trigger: 'blur' }
+        ],
+        extraRate: [
+          { required: true, message: '请输入组织冗余率', trigger: 'blur' }
+        ],
+        status: [
+          { required: true, message: '请选择组织状态', trigger: 'blur' }
+        ]
+      },
+      data: [],
       selected: [],
+      loading: true,
       tableLoading: false,
-      loading: true
+      modal_loading: false,
+      modal: false,
+      modal_title: '增加组织',
+      record: {}
     }
   },
   created() {
     this.loadOrglist()
   },
   methods: {
-    currentLine(info) {
-      this.currentLineInfo = true
-      this.formOrganizeLine = info
-    },
-    selectChange(selection) {
-      this.selected = selection
-    },
+    // 加载数据
     loadOrglist() {
       this.tableLoading = true
       OrganizationService.getOrganizations()
         .then((res) => {
           this.data = res.items
-          this.tableLoading = false
         })
         .catch(() => {
-          this.tableLoading = false
           this.$Message.error('获取组织列表失败！')
         })
+        .finally(() => {
+          this.tableLoading = false
+        })
     },
-    deleteOrgs() {
-      OrganizationService.deleteOrganization(this.selected)
+    // 多选触发事件
+    selectChange(selection) {
+      this.selected = selection
+    },
+    showModal() {
+      this.modal_title = '增加组织'
+      this.formCustom = {}
+      this.modal = true
+    },
+    // 单击表格
+    clickRow(data) {
+      this.modal_title = '编辑组织'
+      this.formCustom = data
+      this.modal = true
+    },
+    // 增加组织
+    addOrganization() {
+      OrganizationService.addOrganization(this.formCustom)
         .then(() => {
-          this.$Message.success('用户已删除！')
+          this.modal = false
+          this.loadOrglist()
         })
-        .catch(() => {
-          this.$Message.error('删除用户失败！')
+        .catch((error) => {
+          if (error.response.status === 409) {
+            this.$Message.error('组织已存在！')
+          } else {
+            this.$Message.error('增加组织失败！')
+          }
+        })
+        .finally(() => {
+          this.modal_loading = false
         })
     },
-    handleCancel(name) {
-      this.$refs[name].resetFields()
+    // 编辑组织信息
+    editOrganization() {
+      OrganizationService.editOrganization(this.formCustom)
+        .then(() => {
+          this.modal = false
+          this.loadOrglist()
+        })
+        .catch((error) => {
+          if (error.response.status === 409) {
+            this.$Message.error('组织已存在！')
+          } else {
+            this.$Message.error('组织编辑失败！')
+          }
+        })
+        .finally(() => {
+          this.modal_loading = false
+        })
     },
-    handleCancelLine(name) {
-      this.$refs[name].resetFields()
-    },
-    handleConfirmLine(info) {
-      console.log(0)
-    },
+    //  单击确定触发
     handleConfirm(name) {
       const self = this
       this.$refs[name].validate((valid) => {
         if (valid) {
-          OrganizationService.addUser(self.formOrganize)
-            .then(() => {
-              self.loading = false
-            })
-            .catch((error) => {
-              if (error.response.status === 409) {
-                self.$Message.error('用户已存在！')
-              } else {
-                self.$Message.error('增加用户失败！')
-              }
-            })
+          self.modal_loading = true
+          if (self.modal_title === '增加组织') {
+            self.addOrganization()
+          } else {
+            self.editOrganization()
+          }
         }
       })
+    },
+    // 单击取消触发
+    handleCancel(name) {
+      this.modal = false
+      this.$refs[name].resetFields()
+    },
+    // 删除用户
+    deleteOrgs() {
+      OrganizationService.deleteOrganization(this.selected)
+        .then(() => {
+          this.$Message.success('组织已删除！')
+          this.loadOrglist()
+        })
+        .catch(() => {
+          this.$Message.error('删除组织失败！')
+        })
+    },
+    // 点击页脚触发
+    changePage(index) {
+      console.log(index)
     }
   }
 }

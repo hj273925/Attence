@@ -31,10 +31,12 @@ export default {
         },
         {
           title: '邮箱',
+          width: 180,
           key: 'email'
         },
         {
           title: '状态',
+          width: 70,
           key: 'status'
         },
         {
@@ -44,14 +46,24 @@ export default {
       ],
       formCustom: {
         name: '',
+        password: '',
+        gender: '',
         orgId: '',
         title: '',
         mobile: '',
-        email: ''
+        email: '',
+        note: '',
+        status: ''
       },
       ruleCustom: {
         name: [
           { required: true, message: '请输入用户名', trigger: 'blur' }
+        ],
+        password: [
+          { required: true, message: '请输入用户密码', trigger: 'blur' }
+        ],
+        gender: [
+          { required: true, message: '请选择用户性别', trigger: 'blur' }
         ],
         orgId: [
           { required: true, message: '请输入用户单位', trigger: 'blur' }
@@ -63,8 +75,14 @@ export default {
           { required: true, message: '请输入用户手机号', trigger: 'blur' }
         ],
         email: [
-          { required: true, message: '请输入用户邮箱', trigger: 'blur'},
-          { type: 'email', message: '邮箱格式错误', trigger: 'blur'}
+          { required: true, message: '请输入用户邮箱', trigger: 'blur' },
+          { type: 'email', message: '邮箱格式错误', trigger: 'blur' }
+        ],
+        note: [
+          { required: true, message: '请输入用户备注', trigger: 'blur' }
+        ],
+        status: [
+          { required: true, message: '请选择用户状态', trigger: 'blur' }
         ]
       },
       data: [],
@@ -95,6 +113,14 @@ export default {
           this.tableLoading = false
         })
     },
+    // 多选触发事件获取id
+    // selectChange(selection) {
+    //   let selections = []
+    //   selection.forEach((value) => {
+    //     selections.push({id: value.id})
+    //   })
+    //   this.selected = selections
+    // },
     // 多选触发事件
     selectChange(selection) {
       this.selected = selection
@@ -170,6 +196,7 @@ export default {
       ManageUserService.deleteUser(this.selected)
         .then(() => {
           this.$Message.success('用户已删除！')
+          this.loadUserlist()
         })
         .catch(() => {
           this.$Message.error('删除用户失败！')
