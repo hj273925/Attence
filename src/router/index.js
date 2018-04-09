@@ -40,6 +40,12 @@ export default new Router({
       component: function (resolve) {
         require(['@/components/survey-management/research-intercalate/index.vue'], resolve)
       }
+    }, {
+      path: '/sample-composition',
+      name: 'SampleComposition',
+      component: function (resolve) {
+        require(['@/components/data-analysis/sample-composition/index.vue'], resolve)
+      }
     }]
 })
 

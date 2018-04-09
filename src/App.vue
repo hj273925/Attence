@@ -61,6 +61,16 @@ export default {
             {name: '调研管理', path: 'SurveyManagement'},
             {name: '调研设置', path: 'SurveyIntercalate'}
           ]
+        }, {
+          title: '数据分析',
+          subMenu: [
+            {name: '样本成分分析', path: 'SampleComposition'},
+            {name: '满意度对比', path: 'SurveyIntercalate'},
+            {name: '满意度分布', path: 'SurveyIntercalate'},
+            {name: '7维21指标对比', path: 'SurveyIntercalate'},
+            {name: '7维21指标分布', path: 'SurveyIntercalate'},
+            {name: '问题选项分布', path: 'SurveyIntercalate'}
+          ]
         }
       ]
     }

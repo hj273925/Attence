@@ -34,3 +34,12 @@
 .cost-color{
   color: red;
 }
+
+.label-name{
+ margin-right: 20px;
+}
+
+.footer{
+  text-align: center;
+  padding-top: 30px;
+}

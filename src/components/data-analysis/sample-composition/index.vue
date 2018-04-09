@@ -1,20 +1,34 @@
 <template>
   <div>
     <Breadcrumb :style="{margin: '24px 0'}">
-      <BreadcrumbItem>基础信息</BreadcrumbItem>
-      <BreadcrumbItem>用户管理</BreadcrumbItem>
+      <BreadcrumbItem>数据分析</BreadcrumbItem>
+      <BreadcrumbItem>样本成分分析</BreadcrumbItem>
     </Breadcrumb>
     <Content :style="{padding: '24px', minHeight: '280px', background: '#fff'}">
       <div class="table-container">
         <div class="table-toolbar">
-          <Button  type="primary" @click="showModal">新建</Button>
-          <Button  type="primary" :disabled = !Boolean(selected.length) @click="deleteUsers">删除</Button>
-          <Button  type="primary" @click="loadUserlist">刷新</Button>
-          <i-input placeholder="搜索用户"  icon="ios-search" class="search_input pull-right" style="width: 200px">
-          </i-input>
+          <Form ref="formInline" :model="formInline"  inline>
+            <FormItem label="调研名">
+              <Select v-model="formInline.name" style="width:200px">
+                <Option v-for="item in cityList" :value="item.value" :key="item.value">{{ item.label }}</Option>
+              </Select>
+            </FormItem>
+            <FormItem label="组织名">
+              <Select v-model="formInline.groupName" style="width:200px">
+                <Option v-for="item in cityList" :value="item.value" :key="item.value">{{ item.label }}</Option>
+              </Select>
+            </FormItem>
+            <FormItem>
+              <Button type="primary">添加</Button>
+            </FormItem>
+          </Form>
+        </div>
+        <div class="tag-list">
+          <Tag type="border" closable color="blue">2016集团</Tag>
+          <Tag type="border" closable color="blue">2017集团</Tag>
         </div>
         <div>
-          <Table :loading="tableLoading" @on-row-click="clickRow" @on-selection-change="selectChange" border stripe ref="selection" :columns="columns" :data="data"></Table>
+          <Table :loading="tableLoading" @on-row-click="clickRow" @on-selection-change="selectChange" border ref="selection" :columns="columns" :data="data"></Table>
         </div>
         <div class="table-page">
           <Page v-show="data.length" :total="data.length"  @on-change="changePage" show-elevator></Page>
@@ -30,15 +44,6 @@
         <FormItem label="用户名" prop="name">
           <Input type="text" v-model="formCustom.name"></Input>
         </FormItem>
-        <FormItem label="密码" prop="password">
-          <Input type="text" v-model="formCustom.password"></Input>
-        </FormItem>
-        <FormItem label="性别" prop="gender">
-          <RadioGroup v-model="formCustom.gender">
-              <Radio label="男"></Radio>
-              <Radio label="女"></Radio>
-          </RadioGroup>
-        </FormItem>
         <FormItem label="单位" prop="orgId">
           <Input type="text" v-model="formCustom.orgId"></Input>
         </FormItem>
@@ -50,15 +55,6 @@
         </FormItem>
         <FormItem label="邮箱" prop="email">
           <Input type="email" v-model="formCustom.email"></Input>
-        </FormItem>
-        <FormItem label="备注" prop="note">
-          <Input type="email" v-model="formCustom.note"></Input>
-        </FormItem>
-        <FormItem label="状态" prop="status">
-          <RadioGroup v-model="formCustom.status">
-              <Radio label="启用"></Radio>
-              <Radio label="禁用"></Radio>
-          </RadioGroup>
         </FormItem>
       </Form>
       <div slot="footer">

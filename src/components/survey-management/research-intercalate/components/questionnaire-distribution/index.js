@@ -6,6 +6,7 @@ import ResearchIntercalate from '@/services/researchIntercalate.service'
 export default {
   data() {
     return {
+      data: [],
       columns: [
         {
           title: '单位',
@@ -20,41 +21,45 @@ export default {
           key: 'title'
         },
         {
-          title: '荣誉率',
+          title: '冗余率',
           key: 'mobile'
+        },
+        {
+          title: '员工数量',
+          key: 'count'
+        },
+        {
+          title: '抽样数量',
+          key: 'amount'
+        },
+        {
+          title: '抽样比例',
+          key: 'percent'
+        },
+        {
+          title: '发放进度',
+          key: 'progess'
+        },
+        {
+          title: '状态',
+          key: 'status',
+          render: (h, params) => {
+            return h('div', [
+              h('Button', {
+                props: {
+                  type: 'primary',
+                  size: 'small'
+                },
+                on: {
+                  click: () => {
+                    console.log(params)
+                  }
+                }
+              }, '发送')
+            ])
+          }
         }
-      ],
-      nameList: [
-        {
-          value: 'New York',
-          label: 'New York'
-        },
-        {
-          value: 'London',
-          label: 'London'
-        },
-        {
-          value: 'Sydney',
-          label: 'Sydney'
-        },
-        {
-          value: 'Ottawa',
-          label: 'Ottawa'
-        },
-        {
-          value: 'Paris',
-          label: 'Paris'
-        },
-        {
-          value: 'Canberra',
-          label: 'Canberra'
-        }
-      ],
-      data: [],
-      formCustom: {
-        name: '',
-        parameter: ''
-      }
+      ]
     }
   },
   created() {
@@ -76,8 +81,8 @@ export default {
         })
     },
     // 点击页脚触发
-    changePage(index) {
-      console.log(index)
+    next() {
+      this.$emit('changePage')
     }
   }
 }
