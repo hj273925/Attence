@@ -35,8 +35,8 @@
         </FormItem>
         <FormItem label="性别" prop="gender">
           <RadioGroup v-model="formCustom.gender">
-              <Radio label="男"></Radio>
-              <Radio label="女"></Radio>
+              <Radio label="MALE"></Radio>
+              <Radio label="FEMALE"></Radio>
           </RadioGroup>
         </FormItem>
         <FormItem label="单位" prop="orgId">
@@ -46,7 +46,7 @@
           <Input type="text" v-model="formCustom.title"></Input>
         </FormItem>
         <FormItem label="手机" prop="mobile">
-          <Input type="text" v-model="formCustom.mobile" number></Input>
+          <Input type="number" v-model="formCustom.mobile"></Input>
         </FormItem>
         <FormItem label="邮箱" prop="email">
           <Input type="email" v-model="formCustom.email"></Input>
@@ -56,8 +56,8 @@
         </FormItem>
         <FormItem label="状态" prop="status">
           <RadioGroup v-model="formCustom.status">
-              <Radio label="启用"></Radio>
-              <Radio label="禁用"></Radio>
+              <Radio label="ON"></Radio>
+              <Radio label="OFF"></Radio>
           </RadioGroup>
         </FormItem>
       </Form>

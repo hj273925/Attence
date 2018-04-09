@@ -9,7 +9,6 @@ class ManageUserService {
   }
 
   getUsers() {
-    // return this.api.get(process.env.BASE_URL+'/user/query')
     return this.api.get('/user/query')
   }
 

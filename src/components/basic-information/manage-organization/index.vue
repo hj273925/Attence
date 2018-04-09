@@ -37,18 +37,18 @@
             <Input type="text" v-model="formCustom.shortName"></Input>
           </FormItem>
           <FormItem label="规模" prop="scale">
-            <Input type="text" v-model="formCustom.scale" number></Input>
+            <Input type="number" v-model="formCustom.scale"></Input>
           </FormItem>
           <FormItem label="抽样率" prop="sampleRate">
-            <Input type="text" v-model="formCustom.sampleRate"></Input>
+            <Input type="number" v-model="formCustom.sampleRate"></Input>
           </FormItem>
           <FormItem label="冗余率" prop="extraRate">
-            <Input type="text" v-model="formCustom.extraRate"></Input>
+            <Input type="number" v-model="formCustom.extraRate"></Input>
           </FormItem>
           <FormItem label="状态" prop="status">
             <RadioGroup v-model="formCustom.status">
-                <Radio label="启用"></Radio>
-                <Radio label="禁用"></Radio>
+                <Radio label="ON"></Radio>
+                <Radio label="OFF"></Radio>
             </RadioGroup>
           </FormItem>
       </Form>
