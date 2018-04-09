@@ -76,6 +76,12 @@ export default new Router({
       component: function (resolve) {
         require(['@/components/data-analysis/problem-distribution/index.vue'], resolve)
       }
+    }, {
+      path: '/questionnaire-design',
+      name: 'QuestionnaireDesign',
+      component: function (resolve) {
+        require(['@/components/questionnaire-management/questionnaire-design/index.vue'], resolve)
+      }
     }]
 })
 

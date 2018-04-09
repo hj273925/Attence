@@ -51,7 +51,7 @@ export default {
           label: 'Sydney'
         }
       ],
-      researchName: [
+      researchNameList: [
         {
           value: '2015调研',
           label: 'New York'

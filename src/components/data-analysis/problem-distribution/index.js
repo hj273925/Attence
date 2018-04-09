@@ -37,30 +37,46 @@ export default {
           key: 'createTime'
         }
       ],
-      cityList: [
+      groupNameList: [
         {
-          value: 'New York',
+          value: '集团',
           label: 'New York'
         },
         {
-          value: 'London',
+          value: '上汽大众',
           label: 'London'
         },
         {
-          value: 'Sydney',
+          value: '上汽大通',
           label: 'Sydney'
+        }
+      ],
+      researchNameList: [
+        {
+          value: '2015调研',
+          label: 'New York'
         },
         {
-          value: 'Ottawa',
-          label: 'Ottawa'
+          value: '2016调研',
+          label: 'London'
         },
         {
-          value: 'Paris',
-          label: 'Paris'
+          value: '2017调研',
+          label: 'Sydney'
+        }
+      ],
+      titleList: [
+        {
+          value: 'W1',
+          label: 'New York'
         },
         {
-          value: 'Canberra',
-          label: 'Canberra'
+          value: 'W2',
+          label: 'London'
+        },
+        {
+          value: 'W3',
+          label: 'Sydney'
         }
       ],
       formInline: {

@@ -15,7 +15,19 @@ export default {
         },
         {
           title: '用户名',
-          key: 'name'
+          key: 'name',
+          render: (h, params) => {
+            return h('a', {
+              style: {
+                color: 'blue'
+              },
+              on: {
+                click: () => {
+                  this.clickRow(params.row)
+                }
+              }
+            }, params.row.name)
+          }
         },
         {
           title: '单位',
@@ -36,8 +48,17 @@ export default {
         },
         {
           title: '状态',
-          width: 70,
-          key: 'status'
+          width: 100,
+          key: 'status',
+          render(h, params) {
+            let cor = params.row.status === 'ON' ? 'blue' : 'red'
+            let status = params.row.status === 'ON' ? '开启' : '关闭'
+            return h('Tag', {
+              props: {
+                color: cor
+              }
+            }, status)
+          }
         },
         {
           title: '创建时间',
@@ -113,14 +134,6 @@ export default {
           this.tableLoading = false
         })
     },
-    // 多选触发事件获取id
-    // selectChange(selection) {
-    //   let selections = []
-    //   selection.forEach((value) => {
-    //     selections.push({id: value.id})
-    //   })
-    //   this.selected = selections
-    // },
     // 多选触发事件
     selectChange(selection) {
       this.selected = selection

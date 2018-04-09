@@ -10,7 +10,7 @@
           <Form ref="formInline" :model="formInline"  inline>
             <FormItem prop="groupName">
               <Select v-model="formInline.groupName" style="width:200px" placeholder="选择组织名">
-                <Option v-for="item in cityList" :value="item.value" :key="item.value">{{ item.label }}</Option>
+                <Option v-for="item in groupNameList" :value="item.value" :key="item.value">{{ item.value }}</Option>
               </Select>
             </FormItem>
             <FormItem>
@@ -18,7 +18,7 @@
             </FormItem>
             <FormItem prop="name">
               <Select v-model="formInline.researchName" style="width:200px" placeholder="选择调研名">
-                <Option v-for="item in cityList" :value="item.value" :key="item.value">{{ item.label }}</Option>
+                <Option v-for="item in researchNameList" :value="item.value" :key="item.value">{{ item.value }}</Option>
               </Select>
             </FormItem>
             <FormItem>
@@ -28,10 +28,10 @@
         </div>
         <div class="tag-list">
           <div>
-            <span>行：</span><Tag v-for="item in groupNameList" :key="item" :name="item" closable color="blue" @on-close="deleteGroupName">{{ item }}</Tag>
+            <span>行：</span><Tag v-for="item in groupList" :key="item" :name="item" closable color="blue" @on-close="deleteGroupName">{{ item }}</Tag>
           </div>
           <div>
-            <span>列：</span><Tag v-for="item in researchNameList" :key="item" :name="item" closable color="blue" @on-close="deleteResearchName">{{ item }}</Tag>
+            <span>列：</span><Tag v-for="item in researchList" :key="item" :name="item" closable color="blue" @on-close="deleteResearchName">{{ item }}</Tag>
           </div>
         </div>
         <div>

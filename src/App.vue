@@ -55,7 +55,7 @@ export default {
         }, {
           title: '问卷管理',
           subMenu: [
-            {name: '问卷设计', path: 'Manage0rganization'}
+            {name: '问卷设计', path: 'QuestionnaireDesign'}
           ]
         }, {
           title: '调研管理',
@@ -112,7 +112,7 @@ export default {
   margin: 0 auto;
   margin-right: 20px;
 }
-a{
-  color: grey;
+.ivu-layout-content{
+  height: calc(100vh - 180px);
 }
 </style>

@@ -10,17 +10,17 @@
           <Form ref="formInline" :model="formInline"  inline>
             <FormItem prop="groupName">
               <Select v-model="formInline.groupName" style="width:200px" placeholder="选择组织名">
-                <Option v-for="item in cityList" :value="item.value" :key="item.value">{{ item.label }}</Option>
+                <Option v-for="item in groupNameList" :value="item.value" :key="item.value">{{ item.label }}</Option>
               </Select>
             </FormItem>
             <FormItem prop="researchName">
               <Select v-model="formInline.researchName" style="width:200px" placeholder="选择调研名">
-                <Option v-for="item in cityList" :value="item.value" :key="item.value">{{ item.label }}</Option>
+                <Option v-for="item in researchNameList" :value="item.value" :key="item.value">{{ item.label }}</Option>
               </Select>
             </FormItem>
             <FormItem prop="title">
               <Select v-model="formInline.title" style="width:200px" placeholder="选择题目">
-                <Option v-for="item in cityList" :value="item.value" :key="item.value">{{ item.label }}</Option>
+                <Option v-for="item in titleList" :value="item.value" :key="item.value">{{ item.label }}</Option>
               </Select>
             </FormItem>
             <FormItem>

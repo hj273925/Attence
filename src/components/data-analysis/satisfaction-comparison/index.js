@@ -37,38 +37,40 @@ export default {
           key: 'createTime'
         }
       ],
-      cityList: [
+      groupNameList: [
         {
-          value: 'New York',
+          value: '集团',
           label: 'New York'
         },
         {
-          value: 'London',
+          value: '上汽大众',
           label: 'London'
         },
         {
-          value: 'Sydney',
+          value: '上汽大通',
           label: 'Sydney'
+        }
+      ],
+      researchNameList: [
+        {
+          value: '2015调研',
+          label: 'New York'
         },
         {
-          value: 'Ottawa',
-          label: 'Ottawa'
+          value: '2016调研',
+          label: 'London'
         },
         {
-          value: 'Paris',
-          label: 'Paris'
-        },
-        {
-          value: 'Canberra',
-          label: 'Canberra'
+          value: '2017调研',
+          label: 'Sydney'
         }
       ],
       formInline: {
         researchName: '',
         groupName: ''
       },
-      groupNameList: ['上汽大通', '上汽大众'],
-      researchNameList: ['2016调研', '2017调研'],
+      groupList: ['上汽大通', '上汽大众'],
+      researchList: ['2016调研', '2017调研'],
       data: [],
       selected: [],
       tableLoading: false

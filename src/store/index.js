@@ -8,8 +8,10 @@ Vue.use(Vuex)
 
 const state = {
   menus: {
-
-  }
+  },
+  groupList: [],
+  researchList: [],
+  titleList: []
 }
 
 export default new Vuex.Store({
