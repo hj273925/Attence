@@ -112,6 +112,12 @@ export default {
   margin: 0 auto;
   margin-right: 20px;
 }
+a{
+  color: grey;
+}
+.ivu-layout-sider{
+  overflow: auto;
+}
 .ivu-layout-content{
   height: calc(100vh - 180px);
 }
