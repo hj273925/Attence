@@ -14,7 +14,7 @@
           </i-input>
         </div>
         <div>
-          <Table border ref="selection" :columns="columns4" :data="data1"></Table>
+          <Table border stripe ref="selection" :columns="columns4" :data="data1"></Table>
         </div>
         <div class="table-page">
 

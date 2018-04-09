@@ -42,6 +42,36 @@ export default {
           key: 'createTime'
         }
       ],
+      cityList: [
+        {
+          value: 'New York',
+          label: 'New York'
+        },
+        {
+          value: 'London',
+          label: 'London'
+        },
+        {
+          value: 'Sydney',
+          label: 'Sydney'
+        },
+        {
+          value: 'Ottawa',
+          label: 'Ottawa'
+        },
+        {
+          value: 'Paris',
+          label: 'Paris'
+        },
+        {
+          value: 'Canberra',
+          label: 'Canberra'
+        }
+      ],
+      formInline: {
+        name: '',
+        groupName: ''
+      },
       formCustom: {
         name: '',
         orgId: '',
