@@ -2,7 +2,7 @@
   <div>
     <Breadcrumb :style="{margin: '24px 0'}">
       <BreadcrumbItem>数据分析</BreadcrumbItem>
-      <BreadcrumbItem>样本成分分析</BreadcrumbItem>
+      <BreadcrumbItem>7维21指标对比</BreadcrumbItem>
     </Breadcrumb>
     <Content :style="{padding: '24px', minHeight: '280px', background: '#fff'}">
       <div class="table-container">
@@ -15,6 +15,11 @@
             </FormItem>
             <FormItem prop="researchName">
               <Select v-model="formInline.researchName" style="width:200px" placeholder="选择调研名">
+                <Option v-for="item in cityList" :value="item.value" :key="item.value">{{ item.label }}</Option>
+              </Select>
+            </FormItem>
+            <FormItem prop="title">
+              <Select v-model="formInline.title" style="width:200px" placeholder="选择题目">
                 <Option v-for="item in cityList" :value="item.value" :key="item.value">{{ item.label }}</Option>
               </Select>
             </FormItem>

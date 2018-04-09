@@ -63,8 +63,8 @@ export default {
           { required: true, message: '请输入用户手机号', trigger: 'blur' }
         ],
         email: [
-          { required: true, message: '请输入用户邮箱', trigger: 'blur'},
-          { type: 'email', message: '邮箱格式错误', trigger: 'blur'}
+          { required: true, message: '请输入用户邮箱', trigger: 'blur' },
+          { type: 'email', message: '邮箱格式错误', trigger: 'blur' }
         ]
       },
       data: [],

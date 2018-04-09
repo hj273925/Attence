@@ -37,7 +37,7 @@
           <Input type="text" v-model="formCustom.title"></Input>
         </FormItem>
         <FormItem label="手机" prop="mobile">
-          <Input type="text" v-model="formCustom.mobile" number></Input>
+          <Input type="text" v-model="formCustom.mobile"></Input>
         </FormItem>
         <FormItem label="邮箱" prop="email">
           <Input type="email" v-model="formCustom.email"></Input>

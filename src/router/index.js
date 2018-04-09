@@ -46,6 +46,36 @@ export default new Router({
       component: function (resolve) {
         require(['@/components/data-analysis/sample-composition/index.vue'], resolve)
       }
+    }, {
+      path: '/satisfaction-comparison',
+      name: 'SatisfactionComparison',
+      component: function (resolve) {
+        require(['@/components/data-analysis/satisfaction-comparison/index.vue'], resolve)
+      }
+    }, {
+      path: '/satisfaction-distribution',
+      name: 'SatisfactionDistribution',
+      component: function (resolve) {
+        require(['@/components/data-analysis/satisfaction-distribution/index.vue'], resolve)
+      }
+    }, {
+      path: '/index-comparison',
+      name: 'IndexComparison',
+      component: function (resolve) {
+        require(['@/components/data-analysis/index-comparison/index.vue'], resolve)
+      }
+    }, {
+      path: '/index-distribution',
+      name: 'IndexDistribution',
+      component: function (resolve) {
+        require(['@/components/data-analysis/index-distribution/index.vue'], resolve)
+      }
+    }, {
+      path: '/problem-distribution',
+      name: 'ProblemDistribution',
+      component: function (resolve) {
+        require(['@/components/data-analysis/problem-distribution/index.vue'], resolve)
+      }
     }]
 })
 
