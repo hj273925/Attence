@@ -30,6 +30,15 @@
         <FormItem label="用户名" prop="name">
           <Input type="text" v-model="formCustom.name"></Input>
         </FormItem>
+        <FormItem label="密码" prop="password">
+          <Input type="text" v-model="formCustom.password"></Input>
+        </FormItem>
+        <FormItem label="性别" prop="gender">
+          <RadioGroup v-model="formCustom.gender">
+              <Radio label="男"></Radio>
+              <Radio label="女"></Radio>
+          </RadioGroup>
+        </FormItem>
         <FormItem label="单位" prop="orgId">
           <Input type="text" v-model="formCustom.orgId"></Input>
         </FormItem>
@@ -41,6 +50,15 @@
         </FormItem>
         <FormItem label="邮箱" prop="email">
           <Input type="email" v-model="formCustom.email"></Input>
+        </FormItem>
+        <FormItem label="备注" prop="note">
+          <Input type="email" v-model="formCustom.note"></Input>
+        </FormItem>
+        <FormItem label="状态" prop="status">
+          <RadioGroup v-model="formCustom.status">
+              <Radio label="启用"></Radio>
+              <Radio label="禁用"></Radio>
+          </RadioGroup>
         </FormItem>
       </Form>
       <div slot="footer">
