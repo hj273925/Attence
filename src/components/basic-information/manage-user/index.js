@@ -64,7 +64,7 @@ export default {
         },
         {
           title: '创建时间',
-          key: 'createdBy'
+          key: 'createdAt'
         }
       ],
       formCustom: {
