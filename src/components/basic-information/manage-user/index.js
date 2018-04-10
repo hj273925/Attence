@@ -2,9 +2,11 @@
  * Created by hj on 2018/3/30.
  */
 import ManageUserService from '@/services/manageUser.service'
+import table from '@/core/mixins/table'
 
 export default {
   name: 'ManageUser',
+  extends: table(2),
   data() {
     return {
       columns: [
@@ -106,7 +108,6 @@ export default {
           { required: true, message: '请选择用户状态', trigger: 'blur' }
         ]
       },
-      data: [],
       selected: [],
       loading: true,
       tableLoading: false,
@@ -125,7 +126,7 @@ export default {
       this.tableLoading = true
       ManageUserService.getUsers()
         .then((res) => {
-          this.data = res.items
+          this.tCurrentRows = res.items
         })
         .catch(() => {
           this.$Message.error('获取用户列表失败！')
@@ -219,10 +220,6 @@ export default {
         .catch(() => {
           this.$Message.error('删除用户失败！')
         })
-    },
-    // 点击页脚触发
-    changePage(index) {
-      console.log(index)
     }
   }
 }
