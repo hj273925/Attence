@@ -203,7 +203,6 @@ export default {
     // 单击取消触发
     handleCancel(name) {
       this.modal = false
-      this.$refs[name].resetFields()
     },
     // 删除用户
     deleteUsers() {

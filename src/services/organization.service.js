@@ -9,6 +9,10 @@ class OrganizationService {
     return this.api.get('/org/query')
   }
 
+  getOrganizationsByName(params) {
+    return this.api.post('/org/queryByName', params)
+  }
+
   addOrganization(params) {
     return this.api.post('/org/create', params)
   }

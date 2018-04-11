@@ -2,9 +2,11 @@
  * Created by hj on 2018/3/30.
  */
 import OrganizationService from '@/services/organization.service'
+import table from '@/core/mixins/table'
 
 export default {
   name: 'ManageOrg',
+  extends: table(2),
   data() {
     return {
       columns: [
@@ -19,7 +21,19 @@ export default {
         },
         {
           title: '全称',
-          key: 'fullName'
+          key: 'fullName',
+          render: (h, params) => {
+            return h('a', {
+              style: {
+                color: 'blue'
+              },
+              on: {
+                click: () => {
+                  this.clickRow(params.row)
+                }
+              }
+            }, params.row.fullName)
+          }
         },
         {
           title: '简称',
@@ -39,7 +53,16 @@ export default {
         },
         {
           title: '状态',
-          key: 'status'
+          key: 'status',
+          render(h, params) {
+            let cor = params.row.status === 'ON' ? 'blue' : 'red'
+            let status = params.row.status === 'ON' ? '开启' : '关闭'
+            return h('Tag', {
+              props: {
+                color: cor
+              }
+            }, status)
+          }
         }
       ],
       formCustom: {
@@ -93,7 +116,7 @@ export default {
       this.tableLoading = true
       OrganizationService.getOrganizations()
         .then((res) => {
-          this.data = res.items
+          this.tCurrentRows = res.items
         })
         .catch(() => {
           this.$Message.error('获取组织列表失败！')
@@ -170,7 +193,6 @@ export default {
     // 单击取消触发
     handleCancel(name) {
       this.modal = false
-      this.$refs[name].resetFields()
     },
     // 删除用户
     deleteOrgs() {

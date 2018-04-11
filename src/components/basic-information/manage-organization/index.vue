@@ -10,14 +10,14 @@
           <Button  type="primary" @click="showModal">新建</Button>
           <Button  type="primary" :disabled = !Boolean(selected.length) @click="deleteOrgs">删除</Button>
           <Button  type="primary" @click="loadOrglist">刷新</Button>
-          <i-input placeholder="搜索组织"  icon="ios-search" class="search_input pull-right" style="width: 200px">
+          <i-input placeholder="搜索组织" v-model="tSearchWord" @on-change="searchOrg()" icon="ios-search" class="search_input pull-right" style="width: 200px">
           </i-input>
         </div>
         <div>
-          <Table :loading="tableLoading" @on-row-click="clickRow" @on-selection-change="selectChange" border ref="selection" :columns="columns" :data="data"></Table>
+          <Table :loading="tableLoading" @on-selection-change="selectChange" border ref="selection" :columns="columns" :data="tCurrentRows"></Table>
         </div>
         <div class="table-page">
-          <Page v-show="data.length" :total="data.length"  @on-change="changePage" show-elevator></Page>
+          <Page v-show="tCurrentRows.length" :total="tCurrentRows.length"  @on-change="changePage" show-elevator></Page>
         </div>
       </div>
     </Content>
