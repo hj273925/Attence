@@ -3,10 +3,11 @@
  */
 import ManageUserService from '@/services/manageUser.service'
 import table from '@/core/mixins/table'
+import QS from 'qs'
 
 export default {
   name: 'ManageUser',
-  extends: table(2),
+  extends: table(5),
   data() {
     return {
       columns: [
@@ -118,6 +119,7 @@ export default {
   },
   created() {
     this.loadUserlist()
+    console.log(QS)
   },
   methods: {
     // 加载数据
