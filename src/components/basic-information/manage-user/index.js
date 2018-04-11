@@ -110,7 +110,6 @@ export default {
       },
       selected: [],
       loading: true,
-      tableLoading: false,
       modal_loading: false,
       modal: false,
       modal_title: '增加用户',
@@ -124,9 +123,11 @@ export default {
     // 加载数据
     loadUserlist() {
       this.tableLoading = true
+      const { tLimit, current } = this
       ManageUserService.getUsers()
         .then((res) => {
-          this.tCurrentRows = res.items
+          this.rows = res.items
+          this.tCurrentRows = res.items.slice((current - 1) * tLimit, current * tLimit)
         })
         .catch(() => {
           this.$Message.error('获取用户列表失败！')
