@@ -6,6 +6,7 @@ import ManageUserService from '@/services/manageUser.service'
 export default {
   name: 'ManageUser',
   data() {
+    const {groupNameList, researchNameList, titleList} = this.$store.state
     return {
       columns: [
         {

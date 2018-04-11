@@ -10,19 +10,15 @@ class ManageUserService {
   }
 
   queryUsers(kw, pageSize, curPage) {
-    return this.api.post('/user/query', {
-      'keyword' : kw,
+    return this.api.post('/user/query', qs.strify({
+      'keyword': kw,
       'pageSize': pageSize,
       'curPage': curPage
-    })
+    }))
   }
 
   getUsers() {
     return this.api.get('/user/query')
-  }
-
-  getUsersByName(params) {
-    return this.api.post('/user/queryByName', params)
   }
 
   addUser(params) {

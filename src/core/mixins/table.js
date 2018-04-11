@@ -10,14 +10,17 @@ export default function tableFactory(...config) {
       const [tLimit] = config
       return {
         tCurrentRows: [],
+        rows: [],
+        current: 1,
         tSearchWord: '',
         tPagination: 0,
+        tableLoading: false,
         tLimit
       }
     },
     methods: {
       searchUsers: debounce(function () {
-        ManageUserService.getUsersByName({'name': this.tSearchWord})
+        ManageUserService.queryUsers({'name': this.tSearchWord})
           .then((res) => {
             this.tCurrentRows = res
           })
@@ -35,7 +38,8 @@ export default function tableFactory(...config) {
           })
       }, 1000),
       changePage(index) {
-        console.log(index)
+        const { tLimit } = this
+        this.tCurrentRows = this.rows.slice((index - 1) * tLimit, index * tLimit)
       }
     }
   }
