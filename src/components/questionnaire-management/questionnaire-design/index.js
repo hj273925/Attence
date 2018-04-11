@@ -8,27 +8,33 @@ export default {
       modal: false,
       statusList: ['新建', '完成'],
       modal_title: '增加题目',
-      titleList: [
-        {
-          name: '你购买的车型？'
-        },
-        {
-          name: '你购买的车型？'
-        },
-        {
-          name: '你购买的车型？'
-        },
-        {
-          name: '你购买的车型？'
-        }
-      ],
+      record: {
+        name: '',
+        title: '',
+        subTitle: '',
+        status: 'ON',
+        items: []
+      },
       formCustom: {
         name: '',
         status: ''
       },
       formRadio: {
-        name: '',
-        content: ''
+        nodeType: 'Q_SINGLE_CHOICE',
+        idx: '',
+        topic: '',
+        content: '',
+        items: []
+      },
+      formCheckBox: {
+        nodeType: 'Q_MULTIPLE_CHOICE',
+        idx: '',
+        topic: '',
+        content: '',
+        items: [],
+        minChoice: 1,
+        maxChoice: 2
+
       },
       ruleRadio: {
         name: [

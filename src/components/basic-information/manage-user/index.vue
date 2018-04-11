@@ -14,7 +14,7 @@
           </i-input>
         </div>
         <div>
-          <Table :loading="tableLoading" @on-selection-change="selectChange" border stripe ref="selection" :columns="columns" :data="tCurrentRows"></Table>
+          <Table :loading="tableLoading" @on-selection-change="selectChange" border stripe ref="selection" :columns="columns" :data="rows"></Table>
         </div>
         <div class="table-page">
           <Page v-show="rows.length" :total="rows.length" :current="current" :page-size="tLimit"  @on-change="changePage" show-elevator></Page>

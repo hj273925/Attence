@@ -70,7 +70,7 @@ export default {
             {name: '满意度对比', path: 'SatisfactionComparison'},
             {name: '满意度分布', path: 'SatisfactionDistribution'},
             {name: '7维21指标对比', path: 'IndexComparison'},
-            {name: '7维21指标分布', path: 'SurveyIntercalate'},
+            {name: '7维21指标分布', path: 'IndexDistribution'},
             {name: '问题选项分布', path: 'ProblemDistribution'}
           ]
         }
