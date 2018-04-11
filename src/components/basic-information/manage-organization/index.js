@@ -7,7 +7,7 @@ import { debounce } from 'lodash'
 
 export default {
   name: 'ManageOrg',
-  extends: table(2),
+  extends: table(5),
   data() {
     return {
       columns: [
@@ -220,7 +220,8 @@ export default {
     },
     // 点击页脚触发
     changePage(index) {
-      console.log(index)
+      this.current = index
+      this.loadOrglist()
     }
   }
 }

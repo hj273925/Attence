@@ -17,7 +17,7 @@
           <Table :loading="tableLoading" @on-selection-change="selectChange" border ref="selection" :columns="columns" :data="rows"></Table>
         </div>
         <div class="table-page">
-          <Page v-show="rows.length" :total="total"  @on-change="changePage" show-elevator></Page>
+          <Page v-show="rows.length" :total="total" :current="current" :page-size="tLimit" @on-change="changePage" show-elevator></Page>
         </div>
       </div>
     </Content>
