@@ -1,18 +1,14 @@
 import api from './api.service'
+import qs from 'qs'
 
 class OrganizationService {
   constructor() {
     this.api = api
   }
 
-  getOrganizations() {
-    return this.api.get('/org/query')
+  getOrganizations(keyword, pageSize, curPage) {
+    return this.api.get('/org/query', qs.parse({keyword, pageSize, curPage}))
   }
-
-  getOrganizationsByName(params) {
-    return this.api.post('/org/queryByName', params)
-  }
-
   addOrganization(params) {
     return this.api.post('/org/create', params)
   }
