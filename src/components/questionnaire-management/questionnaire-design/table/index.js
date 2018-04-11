@@ -63,6 +63,9 @@ export default {
         label: '',
         score: 0
       })
+    },
+    commit() {
+      this.$emit('commit', this.rows)
     }
   }
 }

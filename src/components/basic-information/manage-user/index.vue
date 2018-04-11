@@ -10,7 +10,7 @@
           <Button  type="primary" @click="showModal">新建</Button>
           <Button  type="primary" :disabled = !Boolean(selected.length) @click="deleteUsers">删除</Button>
           <Button  type="primary" @click="loadUserlist">刷新</Button>
-          <i-input placeholder="搜索用户" v-model="tSearchWord" @on-change="searchUsers"  icon="ios-search" class="search_input pull-right" style="width: 200px">
+          <i-input placeholder="用户名/邮箱/手机" v-model="tSearchWord" @on-change="searchUsers"  icon="ios-search" class="search_input pull-right" style="width: 200px">
           </i-input>
         </div>
         <div>

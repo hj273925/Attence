@@ -10,7 +10,7 @@
           <Button  type="primary" @click="showModal">新建</Button>
           <Button  type="primary" :disabled = !Boolean(selected.length) @click="deleteOrgs">删除</Button>
           <Button  type="primary" @click="loadOrglist">刷新</Button>
-          <i-input placeholder="搜索组织" v-model="tSearchWord" @on-change="searchOrg" icon="ios-search" class="search_input pull-right" style="width: 200px">
+          <i-input placeholder="全称/简称" v-model="tSearchWord" @on-change="searchOrg" icon="ios-search" class="search_input pull-right" style="width: 200px">
           </i-input>
         </div>
         <div>
