@@ -1,7 +1,11 @@
 /**
  * Created by hj on 2018/3/30.
  */
+import radioTable from './table/index.vue'
 export default {
+  components: {
+    radioTable
+  },
   data() {
     return {
       data: [],
@@ -13,7 +17,19 @@ export default {
         title: '',
         subTitle: '',
         status: 'ON',
-        items: []
+        items: [{
+          nodeType: 'Q_SINGLE_CHOICE',
+          idx: '',
+          topic: '',
+          content: '',
+          items: []
+        }, {
+          nodeType: 'Q_MULTIPLE_CHOICE',
+          idx: '',
+          topic: '',
+          content: '',
+          items: []
+        }]
       },
       formCustom: {
         name: '',
@@ -34,7 +50,32 @@ export default {
         items: [],
         minChoice: 1,
         maxChoice: 2
-
+      },
+      formMatrix: {
+        nodeType: 'Q_MATRIX',
+        idx: '',
+        topic: '',
+        rows: [],
+        cols: [],
+        scores: []
+      },
+      formOpen: {
+        nodeType: 'Q_OPEN_ENDED',
+        idx: '',
+        topic: '',
+        maxLength: 200,
+        labels: []
+      },
+      formSort: {
+        nodeType: 'Q_RANKING',
+        idx: '',
+        topic: '',
+        maxChoice: 2,
+        items: [ {
+          type: 'SIMPLE',
+          label: '',
+          score: 0
+        }]
       },
       ruleRadio: {
         name: [

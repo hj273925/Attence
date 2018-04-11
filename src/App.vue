@@ -120,5 +120,6 @@ a{
 }
 .ivu-layout-content{
   height: calc(100vh - 180px);
+  min-height: 300px;
 }
 </style>

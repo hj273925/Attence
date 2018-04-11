@@ -8,14 +8,16 @@
       <Row>
         <Col span="18">
           <div class="menu-list">
-           <Card class="title-item" v-for="item in record.items">
+           <Card v-for="item in record.items">
              <ButtonGroup class="btn-group">
                <Button type="ghost">上移</Button>
                <Button type="ghost">下移</Button>
                <Button type="ghost">编辑</Button>
                <Button type="ghost">删除</Button>
              </ButtonGroup>
-             <p>{{item.name}}</p>
+             <p slot="title">
+               {{item.nodeType | titleTypeFilter}}
+             </p>
            </Card>
           </div>
         </Col>
@@ -43,7 +45,10 @@
               <ul>
                 <li><span>单选</span> <Button type="primary" @click="addTitle">添加</Button></li>
                 <li><span>多选</span> <Button type="primary" @click="addTitle">添加</Button></li>
-                <li><span>填空</span> <Button type="primary" @click="addTitle">添加</Button></li>
+                <li><span>排序</span> <Button type="primary" @click="addTitle">添加</Button></li>
+                <li><span>矩阵</span> <Button type="primary" @click="addTitle">添加</Button></li>
+                <li><span>开放</span> <Button type="primary" @click="addTitle">添加</Button></li>
+                <li><span>矩阵</span> <Button type="primary" @click="addTitle">添加</Button></li>
               </ul>
             </div>
           </div>
@@ -59,7 +64,7 @@
           <Input type="text" v-model="formRadio.topic"></Input>
         </FormItem>
         <FormItem label="选项" prop="content">
-          <Input type="text" v-model="formRadio.content"></Input>
+          <radioTable/>
         </FormItem>
       </Form>
       <div slot="footer">
@@ -95,17 +100,6 @@
   }
   .tool-list li button{
     margin-left: 20px;
-  }
-  .title-item{
-    border: 2px solid gainsboro;
-    padding: 20px;
-    border-radius: 5px;
-    min-height: 100px;
-    margin-bottom: 20px;
-    position: relative;
-  }
-  .title-item p{
-    font-weight: bolder;
   }
   .btn-group{
     position: absolute;
