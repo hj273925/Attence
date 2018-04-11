@@ -3,6 +3,7 @@
  */
 import OrganizationService from '@/services/organization.service'
 import table from '@/core/mixins/table'
+import { debounce } from 'lodash'
 
 export default {
   name: 'ManageOrg',
@@ -114,9 +115,11 @@ export default {
     // 加载数据
     loadOrglist() {
       this.tableLoading = true
-      OrganizationService.getOrganizations()
+      const { tSearchWord, tLimit, current } = this
+      OrganizationService.getOrganizations(tSearchWord, tLimit, current)
         .then((res) => {
-          this.tCurrentRows = res.items
+          this.rows = res.items
+          this.total = res.totalNumber
         })
         .catch(() => {
           this.$Message.error('获取组织列表失败！')
@@ -125,6 +128,11 @@ export default {
           this.tableLoading = false
         })
     },
+    // 搜索数据
+    searchOrg: debounce(function () {
+      this.current = 1
+      this.loadOrglist()
+    }, 1000),
     // 多选触发事件
     selectChange(selection) {
       this.selected = selection
@@ -196,9 +204,14 @@ export default {
     },
     // 删除用户
     deleteOrgs() {
-      OrganizationService.deleteOrganization(this.selected)
+      let selections = []
+      this.selected.forEach((value) => {
+        selections.push(value.id)
+      })
+      OrganizationService.deleteOrganization(selections)
         .then(() => {
           this.$Message.success('组织已删除！')
+          this.selected = []
           this.loadOrglist()
         })
         .catch(() => {

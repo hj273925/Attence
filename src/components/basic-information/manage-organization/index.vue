@@ -14,10 +14,10 @@
           </i-input>
         </div>
         <div>
-          <Table :loading="tableLoading" @on-selection-change="selectChange" border ref="selection" :columns="columns" :data="tCurrentRows"></Table>
+          <Table :loading="tableLoading" @on-selection-change="selectChange" border ref="selection" :columns="columns" :data="rows"></Table>
         </div>
         <div class="table-page">
-          <Page v-show="tCurrentRows.length" :total="tCurrentRows.length"  @on-change="changePage" show-elevator></Page>
+          <Page v-show="rows.length" :total="total"  @on-change="changePage" show-elevator></Page>
         </div>
       </div>
     </Content>

@@ -124,7 +124,7 @@ export default {
     // 加载数据
     loadUserlist() {
       this.tableLoading = true
-      const { tLimit, current, tSearchWord } = this
+      const { tSearchWord, tLimit, current } = this
       ManageUserService.getUsers(tSearchWord, tLimit, current)
         .then((res) => {
           this.rows = res.items
@@ -215,7 +215,7 @@ export default {
     deleteUsers() {
       let selections = []
       this.selected.forEach((value) => {
-        selections.push({ids: value.id})
+        selections.push(value.id)
       })
       ManageUserService.deleteUser(selections)
         .then(() => {
