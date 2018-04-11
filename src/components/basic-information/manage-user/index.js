@@ -3,10 +3,11 @@
  */
 import ManageUserService from '@/services/manageUser.service'
 import table from '@/core/mixins/table'
+import { debounce } from 'lodash'
 
 export default {
   name: 'ManageUser',
-  extends: table(2),
+  extends: table(5),
   data() {
     return {
       columns: [
@@ -127,6 +128,7 @@ export default {
       ManageUserService.getUsers(tSearchWord, tLimit, current)
         .then((res) => {
           this.rows = res.items
+          this.total = res.totalNumber
         })
         .catch(() => {
           this.$Message.error('获取用户列表失败！')
@@ -135,6 +137,11 @@ export default {
           this.tableLoading = false
         })
     },
+    // 搜索数据
+    searchUsers: debounce(function () {
+      this.current = 1
+      this.loadUserlist()
+    }, 1000),
     // 多选触发事件
     selectChange(selection) {
       this.selected = selection
@@ -208,7 +215,7 @@ export default {
     deleteUsers() {
       let selections = []
       this.selected.forEach((value) => {
-        selections.push(value.id)
+        selections.push({ids: value.id})
       })
       ManageUserService.deleteUser(selections)
         .then(() => {
@@ -219,6 +226,11 @@ export default {
         .catch(() => {
           this.$Message.error('删除用户失败！')
         })
+    },
+    // 分页
+    changePage(index) {
+      this.current = index
+      this.loadUserlist()
     }
   }
 }
