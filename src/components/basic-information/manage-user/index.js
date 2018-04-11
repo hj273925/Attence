@@ -3,11 +3,10 @@
  */
 import ManageUserService from '@/services/manageUser.service'
 import table from '@/core/mixins/table'
-import QS from 'qs'
 
 export default {
   name: 'ManageUser',
-  extends: table(5),
+  extends: table(2),
   data() {
     return {
       columns: [
@@ -119,17 +118,15 @@ export default {
   },
   created() {
     this.loadUserlist()
-    console.log(QS)
   },
   methods: {
     // 加载数据
     loadUserlist() {
       this.tableLoading = true
-      const { tLimit, current } = this
-      ManageUserService.getUsers()
+      const { tLimit, current, tSearchWord } = this
+      ManageUserService.getUsers(tSearchWord, tLimit, current)
         .then((res) => {
           this.rows = res.items
-          this.tCurrentRows = res.items.slice((current - 1) * tLimit, current * tLimit)
         })
         .catch(() => {
           this.$Message.error('获取用户列表失败！')
@@ -211,7 +208,7 @@ export default {
     deleteUsers() {
       let selections = []
       this.selected.forEach((value) => {
-        selections.push({id: value.id})
+        selections.push(value.id)
       })
       ManageUserService.deleteUser(selections)
         .then(() => {

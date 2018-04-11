@@ -6,6 +6,7 @@ import ManageUserService from '@/services/manageUser.service'
 export default {
   name: 'ManageUser',
   data() {
+    const {groupNameList, researchNameList, titleList} = this.$store.state
     return {
       columns: [
         {
@@ -37,32 +38,9 @@ export default {
           key: 'createTime'
         }
       ],
-      cityList: [
-        {
-          value: 'New York',
-          label: 'New York'
-        },
-        {
-          value: 'London',
-          label: 'London'
-        },
-        {
-          value: 'Sydney',
-          label: 'Sydney'
-        },
-        {
-          value: 'Ottawa',
-          label: 'Ottawa'
-        },
-        {
-          value: 'Paris',
-          label: 'Paris'
-        },
-        {
-          value: 'Canberra',
-          label: 'Canberra'
-        }
-      ],
+      groupNameList,
+      researchNameList,
+      titleList,
       formInline: {
         researchName: '',
         groupName: '',

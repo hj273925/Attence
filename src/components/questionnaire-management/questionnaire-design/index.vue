@@ -8,7 +8,7 @@
       <Row>
         <Col span="18">
           <div class="menu-list">
-           <div class="title-item" v-for="item in titleList">
+           <Card class="title-item" v-for="item in record.items">
              <ButtonGroup class="btn-group">
                <Button type="ghost">上移</Button>
                <Button type="ghost">下移</Button>
@@ -16,7 +16,7 @@
                <Button type="ghost">删除</Button>
              </ButtonGroup>
              <p>{{item.name}}</p>
-           </div>
+           </Card>
           </div>
         </Col>
         <Col span="6">
@@ -56,7 +56,7 @@
       width="600">
       <Form ref="formRadio" :model="formRadio" :rules="ruleRadio" :label-width="80">
         <FormItem label="题目" prop="name">
-          <Input type="text" v-model="formRadio.name"></Input>
+          <Input type="text" v-model="formRadio.topic"></Input>
         </FormItem>
         <FormItem label="选项" prop="content">
           <Input type="text" v-model="formRadio.content"></Input>

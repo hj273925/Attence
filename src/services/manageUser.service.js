@@ -8,17 +8,8 @@ class ManageUserService {
   constructor() {
     this.api = api
   }
-
-  queryUsers(kw, pageSize, curPage) {
-    return this.api.post('/user/query', qs.strify({
-      'keyword': kw,
-      'pageSize': pageSize,
-      'curPage': curPage
-    }))
-  }
-
-  getUsers() {
-    return this.api.get('/user/query')
+  getUsers(keyword, pageSize, curPage) {
+    return this.api.get('/user/query', qs.parse({keyword, pageSize, curPage}))
   }
 
   addUser(params) {
@@ -30,7 +21,7 @@ class ManageUserService {
   }
 
   deleteUser(params) {
-    return this.api.post('/user/deleteAll', params)
+    return this.api.post('/user/delete', params)
   }
 }
 
