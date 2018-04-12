@@ -60,11 +60,11 @@
       :title="modal_title"
       width="600">
       <Form ref="formRadio" :model="formRadio" :rules="ruleRadio" :label-width="80">
-        <FormItem label="题目" prop="name">
+        <FormItem label="题目" prop="topic">
           <Input type="text" v-model="formRadio.topic"></Input>
         </FormItem>
         <FormItem label="选项" prop="content">
-          <radioTable/>
+          <radioTable ref="radioTable" @commit="addItems"/>
         </FormItem>
       </Form>
       <div slot="footer">

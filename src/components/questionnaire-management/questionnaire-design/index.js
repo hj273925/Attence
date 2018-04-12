@@ -78,7 +78,7 @@ export default {
         }]
       },
       ruleRadio: {
-        name: [
+        topic: [
           { required: true, message: '请输入题目名', trigger: 'blur' }
         ]
       }
@@ -93,14 +93,18 @@ export default {
       this.modal = false
       this.$refs[name].resetFields()
     },
+    addItems(value) {
+      this.formRadio.items = value
+    },
     //  单击确定触发
     handleConfirm(name) {
       const self = this
+      this.$refs.radioTable.commit()
       this.$refs[name].validate((valid) => {
         if (valid) {
+          console.log(self.formRadio)
           self.titleList.push(self.formRadio)
           self.modal = false
-          self.$refs[name].resetFields()
         }
       })
     }
