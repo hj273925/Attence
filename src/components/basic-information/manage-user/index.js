@@ -7,7 +7,7 @@ import { debounce } from 'lodash'
 
 export default {
   name: 'ManageUser',
-  extends: table(5),
+  extends: table(10),
   data() {
     return {
       columns: [
