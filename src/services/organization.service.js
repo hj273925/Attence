@@ -7,7 +7,7 @@ class OrganizationService {
   }
 
   getOrganizations(keyword, pageSize, curPage) {
-    return this.api.get('/org/query', qs.parse({keyword, pageSize, curPage}))
+    return this.api.post('/org/query', qs.stringify({keyword, pageSize, curPage}))
   }
   addOrganization(params) {
     return this.api.post('/org/create', params)

@@ -7,7 +7,7 @@ import { debounce } from 'lodash'
 
 export default {
   name: 'ManageOrg',
-  extends: table(5),
+  extends: table(10),
   data() {
     return {
       columns: [
@@ -59,7 +59,7 @@ export default {
             let cor = params.row.status === 'ON' ? 'blue' : 'red'
             let status = params.row.status === 'ON' ? '开启' : '关闭'
             return h('Tag', {
-              props: {
+              attrs: {
                 color: cor
               }
             }, status)
