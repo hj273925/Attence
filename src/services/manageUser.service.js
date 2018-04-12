@@ -9,7 +9,7 @@ class ManageUserService {
     this.api = api
   }
   getUsers(keyword, pageSize, curPage) {
-    return this.api.get('/user/query', qs.parse({keyword, pageSize, curPage}))
+    return this.api.post('/user/query', qs.stringify({keyword, pageSize, curPage}))
   }
 
   addUser(params) {

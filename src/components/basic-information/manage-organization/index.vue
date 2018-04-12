@@ -10,7 +10,7 @@
           <Button  type="primary" @click="showModal">新建</Button>
           <Button  type="primary" :disabled = !Boolean(selected.length) @click="deleteOrgs">删除</Button>
           <Button  type="primary" @click="loadOrglist">刷新</Button>
-          <i-input placeholder="全称/简称" v-model="tSearchWord" @on-change="searchOrg" icon="ios-search" class="search_input pull-right" style="width: 200px">
+          <i-input placeholder="代码/全称/简称" v-model="tSearchWord" @on-change="searchOrg" icon="ios-search" class="search_input pull-right" style="width: 200px">
           </i-input>
         </div>
         <div>
@@ -37,13 +37,13 @@
             <Input type="text" v-model="formCustom.shortName"></Input>
           </FormItem>
           <FormItem label="规模" prop="scale">
-            <Input type="number" v-model="formCustom.scale"></Input>
+            <Input type="text" v-model="formCustom.scale"></Input>
           </FormItem>
           <FormItem label="抽样率" prop="sampleRate">
-            <Input type="number" v-model="formCustom.sampleRate"></Input>
+            <Input type="text" v-model="formCustom.sampleRate"></Input>
           </FormItem>
           <FormItem label="冗余率" prop="extraRate">
-            <Input type="number" v-model="formCustom.extraRate"></Input>
+            <Input type="text" v-model="formCustom.extraRate"></Input>
           </FormItem>
           <FormItem label="状态" prop="status">
             <RadioGroup v-model="formCustom.status">

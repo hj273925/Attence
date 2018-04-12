@@ -59,7 +59,7 @@ export default {
             let cor = params.row.status === 'ON' ? 'blue' : 'red'
             let status = params.row.status === 'ON' ? '开启' : '关闭'
             return h('Tag', {
-              props: {
+              attrs: {
                 color: cor
               }
             }, status)
