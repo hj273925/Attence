@@ -2,9 +2,11 @@
  * Created by hj on 2018/3/30.
  */
 import radioTable from './table/index.vue'
+import tCard from './card/index.vue'
 export default {
   components: {
-    radioTable
+    radioTable,
+    tCard
   },
   data() {
     return {
@@ -20,9 +22,13 @@ export default {
         items: [{
           nodeType: 'Q_SINGLE_CHOICE',
           idx: '',
-          topic: '',
+          topic: 'asdasasd',
           content: '',
-          items: []
+          items: [{
+            type: 'SIMPLE',
+            label: 'dasas',
+            score: 0
+          }]
         }, {
           nodeType: 'Q_MULTIPLE_CHOICE',
           idx: '',
@@ -92,6 +98,7 @@ export default {
     handleCancel(name) {
       this.modal = false
       this.$refs[name].resetFields()
+      this.$refs.radioTable.resetRows()
     },
     addItems(value) {
       this.formRadio.items = value
@@ -102,8 +109,9 @@ export default {
       this.$refs.radioTable.commit()
       this.$refs[name].validate((valid) => {
         if (valid) {
-          console.log(self.formRadio)
-          self.titleList.push(self.formRadio)
+          self.record.items.push(self.formRadio)
+          self.$refs[name].resetFields()
+          self.$refs.radioTable.resetRows()
           self.modal = false
         }
       })

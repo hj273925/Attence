@@ -8,7 +8,7 @@
       <Row>
         <Col span="18">
           <div class="menu-list">
-           <Card v-for="item in record.items">
+           <Card v-for="item,index in record.items" style="margin-bottom: 20px">
              <ButtonGroup class="btn-group">
                <Button type="ghost">上移</Button>
                <Button type="ghost">下移</Button>
@@ -18,6 +18,7 @@
              <p slot="title">
                {{item.nodeType | titleTypeFilter}}
              </p>
+             <tCard :record="item"/>
            </Card>
           </div>
         </Col>
@@ -48,7 +49,6 @@
                 <li><span>排序</span> <Button type="primary" @click="addTitle">添加</Button></li>
                 <li><span>矩阵</span> <Button type="primary" @click="addTitle">添加</Button></li>
                 <li><span>开放</span> <Button type="primary" @click="addTitle">添加</Button></li>
-                <li><span>矩阵</span> <Button type="primary" @click="addTitle">添加</Button></li>
               </ul>
             </div>
           </div>

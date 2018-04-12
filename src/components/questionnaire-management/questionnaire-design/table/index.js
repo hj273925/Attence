@@ -10,9 +10,17 @@ export default {
           title: '选项',
           key: 'label',
           render: (h, params) => {
-            return h('Input', {
-              props: {
+            const { index } = params
+            return h('input', {
+              attrs: {
+                class: 'ivu-input',
                 value: params.row.label
+              },
+              on: {
+                blur: (e) => {
+                  // this.rows[index].label = e.target.value
+                  this.evaluate('label', e.target.value, index)
+                }
               }
             })
           }
@@ -22,10 +30,20 @@ export default {
           key: 'score',
           width: '20%',
           render: (h, params) => {
-            return h('Input', {
+            const { index } = params
+            const score = this.rows[index].score
+            return h('input', {
               props: {
-                type: 'number',
-                value: params.row.score
+                type: 'number'
+              },
+              attrs: {
+                class: 'ivu-input',
+                value: score
+              },
+              on: {
+                blur: (e) => {
+                  this.evaluate('score', e.target.value, index)
+                }
               }
             })
           }
@@ -63,6 +81,16 @@ export default {
         label: '',
         score: 0
       })
+    },
+    evaluate(key, value, index) {
+      this.rows[index][key] = value
+    },
+    resetRows() {
+      this.rows = [{
+        type: 'SIMPLE',
+        label: '',
+        score: 0
+      }]
     },
     commit() {
       this.$emit('commit', this.rows)
