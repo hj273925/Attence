@@ -82,6 +82,12 @@ export default new Router({
       component: function (resolve) {
         require(['@/components/questionnaire-management/questionnaire-design/index.vue'], resolve)
       }
+    }, {
+      path: '/manage-questionnaire',
+      name: 'ManageQuestionnaire',
+      component: function (resolve) {
+        require(['@/components/questionnaire-management/manage-questionnaire/index.vue'], resolve)
+      }
     }]
 })
 
