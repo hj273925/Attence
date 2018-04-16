@@ -31,14 +31,13 @@ export default {
           width: '20%',
           render: (h, params) => {
             const { index } = params
-            const score = this.rows[index].score
             return h('input', {
               props: {
                 type: 'number'
               },
               attrs: {
                 class: 'ivu-input',
-                value: score
+                value: params.row.score
               },
               on: {
                 blur: (e) => {
@@ -60,40 +59,135 @@ export default {
               on: {
                 click: () => {
                   const { index } = params
-                  this.rows.splice(index, 1)
+                  this.record[this.nodeType].items.splice(index, 1)
                 }
               }
             }, '删除')
           }
         }
       ],
-      rows: [{
-        type: 'SIMPLE',
-        label: '',
-        score: 0
-      }]
+      rule: {
+        topic: [
+          { required: true, message: '请输入题目名', trigger: 'blur' }
+        ]
+      },
+      contentRule: {
+        content: [
+          { required: true, message: '请输入备注内容', trigger: 'blur' }
+        ]
+      },
+      model: {
+        formRadio: false,
+        formCheckBox: false,
+        formSort: false,
+        formMatrix: false,
+        formOpen: false,
+        formNote: false
+      },
+      modal: false,
+      modal_title: {
+        formRadio: '单选题',
+        formCheckBox: '多选题',
+        formSort: '排序题',
+        formMatrix: '矩阵题',
+        formOpen: '开放题',
+        formNote: '备注'
+      },
+      nodeType: '',
+      formRadio: {
+        nodeType: 'Q_SINGLE_CHOICE',
+        idx: '',
+        topic: '',
+        content: '',
+        items: [{
+          type: 'SIMPLE',
+          label: '',
+          score: 0
+        }]
+      },
+      formCheckBox: {
+        nodeType: 'Q_MULTIPLE_CHOICE',
+        idx: '',
+        topic: '',
+        content: '',
+        items: [{
+          type: 'SIMPLE',
+          label: '',
+          score: 0
+        }],
+        minChoice: 1,
+        maxChoice: 2
+      },
+      formMatrix: {
+        nodeType: 'Q_MATRIX',
+        idx: '',
+        topic: '',
+        rows: [],
+        cols: [],
+        scores: []
+      },
+      formOpen: {
+        nodeType: 'Q_OPEN_ENDED',
+        idx: '',
+        topic: '',
+        maxLength: 200,
+        labels: []
+      },
+      formSort: {
+        nodeType: 'Q_RANKING',
+        idx: '',
+        topic: '',
+        maxChoice: 2,
+        items: [ {
+          type: 'SIMPLE',
+          label: '',
+          score: 0
+        }]
+      },
+      formNote: {
+        nodeType: 'NOTE',
+        content: ''
+      }
     }
   },
   methods: {
     add() {
-      this.rows.push({
+      this[this.nodeType].items.push({
         type: 'SIMPLE',
         label: '',
         score: 0
       })
     },
+    // 点击添加按钮
+    addTitle(value) {
+      this.model[value] = true
+      this.nodeType = value
+    },
     evaluate(key, value, index) {
-      this.rows[index][key] = value
+      this[this.nodeType].items[index][key] = value
     },
     resetRows() {
-      this.rows = [{
+      this.$refs[this.nodeType].resetFields()
+      this[this.nodeType].items = [{
         type: 'SIMPLE',
         label: '',
         score: 0
       }]
     },
-    commit() {
-      this.$emit('commit', this.rows)
+    handleConfirm() {
+      this.$refs[this.nodeType].validate((valid) => {
+        if (valid) {
+          const data = JSON.parse(JSON.stringify(this[this.nodeType]))
+          this.$emit('handleConfirm', data)
+          this.handleCancel()
+          this.resetRows()
+        }
+      })
+    },
+    handleCancel() {
+      this.model[this.nodeType] = false
+      this.resetRows()
     }
+
   }
 }

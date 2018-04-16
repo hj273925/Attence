@@ -18,12 +18,12 @@
         <Layout>
           <Sider hide-trigger :style="{background: '#fff'}">
             <Menu active-name="组织管理" theme="light" width="auto" :open-names="[0]">
-              <Submenu :name = index v-for="(submenu,index) in menu">
+              <Submenu :name = index v-for="(submenu,index) in menu" :key="index">
                 <template slot="title">
                   <Icon type="ios-navigate"></Icon>
                   {{submenu.title}}
                 </template>
-                <router-link :to="{ name: item.path }" v-for="item in submenu.subMenu">
+                <router-link :to="{ name: item.path }" :key="item.path" v-for="item in submenu.subMenu">
                   <MenuItem :name="item.name">{{item.name}}</MenuItem>
                 </router-link>
               </Submenu>

@@ -8,18 +8,7 @@
       <Row>
         <Col span="18">
           <div class="menu-list">
-           <Card v-for="item,index in record.items" style="margin-bottom: 20px">
-             <ButtonGroup class="btn-group">
-               <Button type="ghost">上移</Button>
-               <Button type="ghost">下移</Button>
-               <Button type="ghost">编辑</Button>
-               <Button type="ghost">删除</Button>
-             </ButtonGroup>
-             <p slot="title">
-               {{item.nodeType | titleTypeFilter}}
-             </p>
-             <tCard :record="item"/>
-           </Card>
+             <tCard :record="item" :index="index" :key="index" v-for="item,index in record.items"/>
           </div>
         </Col>
         <Col span="6">
@@ -42,36 +31,11 @@
                 </Form>
               </div>
             </div>
-            <div class="tool-list">
-              <ul>
-                <li><span>单选</span> <Button type="primary" @click="addTitle">添加</Button></li>
-                <li><span>多选</span> <Button type="primary" @click="addTitle">添加</Button></li>
-                <li><span>排序</span> <Button type="primary" @click="addTitle">添加</Button></li>
-                <li><span>矩阵</span> <Button type="primary" @click="addTitle">添加</Button></li>
-                <li><span>开放</span> <Button type="primary" @click="addTitle">添加</Button></li>
-              </ul>
-            </div>
+            <tTable @handleConfirm="addItems"/>
           </div>
         </Col>
       </Row>
     </Content>
-    <Modal
-      v-model="modal"
-      :title="modal_title"
-      width="600">
-      <Form ref="formRadio" :model="formRadio" :rules="ruleRadio" :label-width="80">
-        <FormItem label="题目" prop="topic">
-          <Input type="text" v-model="formRadio.topic"></Input>
-        </FormItem>
-        <FormItem label="选项" prop="content">
-          <radioTable ref="radioTable" @commit="addItems"/>
-        </FormItem>
-      </Form>
-      <div slot="footer">
-        <Button type="ghost" @click="handleCancel('formRadio')">取消</Button>
-        <Button type="primary" @click="handleConfirm('formRadio')">确定</Button>
-      </div>
-    </Modal>
   </div>
 </template>
 
@@ -90,21 +54,6 @@
   .tool-menu{
     border-bottom: 2px solid gainsboro;
     padding-top: 20px;
-  }
-  .tool-list{
-    padding-top: 20px;
-    text-align: center;
-  }
-  .tool-list li{
-    margin-bottom: 10px;
-  }
-  .tool-list li button{
-    margin-left: 20px;
-  }
-  .btn-group{
-    position: absolute;
-    top:0px;
-    right: 0px;
   }
   .ivu-layout-content{
     border: 2px solid gainsboro;
