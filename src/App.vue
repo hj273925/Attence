@@ -55,6 +55,7 @@ export default {
         }, {
           title: '问卷管理',
           subMenu: [
+            {name: '问卷信息', path: 'ManageQuestionnaire'},
             {name: '问卷设计', path: 'QuestionnaireDesign'}
           ]
         }, {
