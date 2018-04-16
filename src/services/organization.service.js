@@ -18,7 +18,7 @@ class OrganizationService {
   }
 
   deleteOrganization(params) {
-    return this.api.post('/org/deleteAll', params)
+    return this.api.post('/org/delete', params)
   }
 }
 
