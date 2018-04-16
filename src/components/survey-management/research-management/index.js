@@ -1,10 +1,13 @@
 /**
  * Created by hj on 2018/3/30.
  */
-import ManageUserService from '@/services/manageUser.service'
+import ResearchManage from '@/services/ResearchManage.service'
+import table from '@/core/mixins/table'
+import { debounce } from 'lodash'
 
 export default {
-  name: 'ManageUser',
+  name: 'ResearchManage',
+  extends: table(10),
   data() {
     return {
       columns: [
@@ -14,62 +17,121 @@ export default {
           align: 'center'
         },
         {
-          title: '名字',
-          key: 'name'
+          title: '调研名称',
+          key: 'name',
+          render: (h, params) => {
+            return h('a', {
+              style: {
+                color: 'blue'
+              },
+              on: {
+                click: () => {
+                  this.clickRow(params.row)
+                }
+              }
+            }, params.row.name)
+          }
         },
         {
           title: '状态',
-          key: 'status'
+          width: 100,
+          key: 'status',
+          render(h, params) {
+            let cor = params.row.status === 'ON' ? 'blue' : 'red'
+            let status = params.row.status === 'ON' ? '开启' : '关闭'
+            return h('Tag', {
+              props: {
+                color: cor
+              }
+            }, status)
+          }
         },
         {
-          title: '创建时间',
-          key: 'createTime'
+          title: '计划开始时间',
+          key: 'startDate'
         },
         {
-          title: '创建人',
-          key: 'createBy'
+          title: '计划结束时间',
+          key: 'endDate'
+        },
+        {
+          title: '是否自动催填',
+          key: 'autoResend',
+          render(h, params) {
+            let cor = params.row.status === 'true' ? 'blue' : 'red'
+            let autoResend = params.row.status === 'true' ? '是' : '否'
+            return h('Tag', {
+              props: {
+                color: cor
+              }
+            }, autoResend)
+          }
+        },
+        {
+          title: '催填间隔',
+          key: 'resendInterval'
         }
       ],
-      data: [],
       selected: [],
-      tableLoading: false
+      loading: true,
+      record: {}
     }
   },
   created() {
-    this.loadUserlist()
+    this.loadResearchList()
   },
   methods: {
     // 加载数据
-    loadUserlist() {
+    loadResearchList() {
       this.tableLoading = true
-      ManageUserService.getUsers()
+      const { tSearchWord, tLimit, current } = this
+      ResearchManage.getResearch(tSearchWord, tLimit, current)
         .then((res) => {
-          this.data = res.items
+          this.rows = res.items
+          this.total = res.totalNumber
         })
         .catch(() => {
-          this.$Message.error('获取用户列表失败！')
+          this.$Message.error('获取问卷列表失败！')
         })
         .finally(() => {
           this.tableLoading = false
         })
     },
+    // 搜索数据
+    searchResearch: debounce(function () {
+      this.current = 1
+      this.loadResearchList()
+    }, 1000),
     // 多选触发事件
     selectChange(selection) {
       this.selected = selection
     },
-    // 删除用户
-    deleteUsers() {
-      ManageUserService.deleteUser(this.selected)
+    // 跳转到调研设置
+    addResearch() {
+    },
+    // 单击表格
+    clickRow(data) {
+    },
+    // 删除问卷
+    deleteResearch() {
+      let selections = []
+      this.selected.forEach((value) => {
+        selections.push(value.id)
+      })
+      ResearchManage.deleteResearch(selections)
         .then(() => {
-          this.$Message.success('用户已删除！')
+          this.$Message.success('调研事件已删除！')
+          this.selected = []
+          this.loadResearchList()
         })
         .catch(() => {
-          this.$Message.error('删除用户失败！')
+          this.$Message.error('删除调研事件失败！')
         })
     },
-    // 点击页脚触发
+    // 分页
     changePage(index) {
-      console.log(index)
+      this.current = index
+      this.loadResearchList()
     }
   }
 }

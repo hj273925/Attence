@@ -61,7 +61,7 @@ export default {
         }, {
           title: '调研管理',
           subMenu: [
-            {name: '调研管理', path: 'SurveyManagement'},
+            {name: '调研信息', path: 'ResearchManageService'},
             {name: '调研设置', path: 'SurveyIntercalate'}
           ]
         }, {
