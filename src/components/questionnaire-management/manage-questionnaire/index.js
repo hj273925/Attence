@@ -95,7 +95,11 @@ export default {
     },
     // 跳转到问卷设计
     addQuestionnaire() {
-      this.loadQuestionnaireList()
+      // location.href = '/#/questionnaire-design'
+    },
+    // 单击表格
+    clickRow(data) {
+      // location.href = '/#/questionnaire-design'
     },
     // 删除问卷
     deleteQuestionnaire() {
