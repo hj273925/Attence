@@ -95,7 +95,6 @@ export default {
     },
     // 跳转到问卷设计
     addQuestionnaire(value) {
-      console.log(value)
       this.$router.push({name: 'QuestionnaireDesign', query: { id: value.id }})
     },
     // 删除问卷

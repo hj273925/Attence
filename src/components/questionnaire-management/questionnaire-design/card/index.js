@@ -8,13 +8,9 @@ export default {
     index: { type: Number, required: true }
   },
   methods: {
-    // 上移
-    shifUp() {
-      console.log(this.index)
-    },
-    // 下移
-    shifDown() {
-      console.log(this.index)
+    // 切换位置
+    switchingPosition(action) {
+      this.$emit('switchingPosition', action, this.index)
     },
     // 编辑
     editTitle() {
@@ -22,7 +18,7 @@ export default {
     },
     // 删除
     deleteTitle() {
-      console.log(this.index)
+      this.$emit('deleteTitle', this.index)
     }
   }
 }

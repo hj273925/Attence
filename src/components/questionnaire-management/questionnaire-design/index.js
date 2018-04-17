@@ -18,23 +18,7 @@ export default {
         title: '',
         subTitle: '',
         status: 'ON',
-        items: [{
-          nodeType: 'Q_SINGLE_CHOICE',
-          idx: '',
-          topic: 'asdasasd',
-          content: '',
-          items: [{
-            type: 'SIMPLE',
-            label: 'dasas',
-            score: 0
-          }]
-        }, {
-          nodeType: 'Q_MULTIPLE_CHOICE',
-          idx: '',
-          topic: '',
-          content: '',
-          items: []
-        }]
+        items: []
       },
       formCustom: {
         name: '',
@@ -45,6 +29,20 @@ export default {
   methods: {
     addItems(value) {
       this.record.items.push(value)
+    },
+    // 删除题型
+    deleteItem(index) {
+      this.record.items.splice(index, 1)
+    },
+    // 切换位置
+    switchingPosition(action, index) {
+      const list = this.record.items
+      console.log(list[index])
+      if (action === 'down') {
+        list[index] = list[index + 1]
+      } else {
+        list[index] = list[index - 1]
+      }
     }
   }
 }

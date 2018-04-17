@@ -1,7 +1,62 @@
 /**
  * Created by hj on 2018/4/11.
  */
-
+const record = {
+  formRadio: {
+    nodeType: 'Q_SINGLE_CHOICE',
+    idx: '',
+    topic: '',
+    content: '',
+    items: [{
+      type: 'SIMPLE',
+      label: '',
+      score: 0
+    }]
+  },
+  formCheckBox: {
+    nodeType: 'Q_MULTIPLE_CHOICE',
+    idx: '',
+    topic: '',
+    content: '',
+    items: [{
+      type: 'SIMPLE',
+      label: '',
+      score: 0
+    }],
+    minChoice: 0,
+    maxChoice: 0
+  },
+  formMatrix: {
+    nodeType: 'Q_MATRIX',
+    idx: '',
+    topic: '',
+    rows: [''],
+    cols: [''],
+    scores: ['']
+  },
+  formOpen: {
+    nodeType: 'Q_OPEN_ENDED',
+    idx: '',
+    topic: '',
+    maxLength: 200,
+    labels: []
+  },
+  formSort: {
+    nodeType: 'Q_RANKING',
+    idx: '',
+    topic: '',
+    maxChoice: 2,
+    items: [ {
+      type: 'SIMPLE',
+      label: '',
+      score: 0
+    }]
+  },
+  formNote: {
+    nodeType: 'NOTE',
+    content: ''
+  }
+}
 export default {
   data() {
     return {
@@ -59,7 +114,7 @@ export default {
               on: {
                 click: () => {
                   const { index } = params
-                  this.record[this.nodeType].items.splice(index, 1)
+                  this[this.nodeType].items.splice(index, 1)
                 }
               }
             }, '删除')
@@ -69,9 +124,13 @@ export default {
       rule: {
         topic: [
           { required: true, message: '请输入题目名', trigger: 'blur' }
-        ]
-      },
-      contentRule: {
+        ],
+        minChoice: [
+          { required: true, message: '请输入最小选择数', trigger: 'blur' }
+        ],
+        maxChoice: [
+          { required: true, message: '请输入最大选择数', trigger: 'blur' }
+        ],
         content: [
           { required: true, message: '请输入备注内容', trigger: 'blur' }
         ]
@@ -115,23 +174,23 @@ export default {
           label: '',
           score: 0
         }],
-        minChoice: 1,
-        maxChoice: 2
+        minChoice: 0,
+        maxChoice: 0
       },
       formMatrix: {
         nodeType: 'Q_MATRIX',
         idx: '',
         topic: '',
-        rows: [],
-        cols: [],
-        scores: []
+        rows: [''],
+        cols: [''],
+        scores: ['']
       },
       formOpen: {
         nodeType: 'Q_OPEN_ENDED',
         idx: '',
         topic: '',
         maxLength: 200,
-        labels: []
+        labels: ['']
       },
       formSort: {
         nodeType: 'Q_RANKING',
@@ -151,9 +210,9 @@ export default {
     }
   },
   methods: {
-    add() {
+    add(type) {
       this[this.nodeType].items.push({
-        type: 'SIMPLE',
+        type: type,
         label: '',
         score: 0
       })
@@ -163,17 +222,24 @@ export default {
       this.model[value] = true
       this.nodeType = value
     },
+    // 添加矩阵列表
+    addMatrixItem(value) {
+      this[this.nodeType][value].push('')
+    },
+    // 删除矩阵列表
+    deleteMatrixItem(index, value) {
+      this[this.nodeType][value].splice(index, 1)
+    },
     evaluate(key, value, index) {
       this[this.nodeType].items[index][key] = value
     },
+    // 清空表单
     resetRows() {
       this.$refs[this.nodeType].resetFields()
-      this[this.nodeType].items = [{
-        type: 'SIMPLE',
-        label: '',
-        score: 0
-      }]
+      const type = this.nodeType
+      this[type] = record[type]
     },
+    // 传递数据给父组件
     handleConfirm() {
       this.$refs[this.nodeType].validate((valid) => {
         if (valid) {
@@ -184,6 +250,7 @@ export default {
         }
       })
     },
+    // 点击取消
     handleCancel() {
       this.model[this.nodeType] = false
       this.resetRows()
