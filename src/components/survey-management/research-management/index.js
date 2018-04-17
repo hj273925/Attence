@@ -26,7 +26,7 @@ export default {
               },
               on: {
                 click: () => {
-                  this.clickRow(params.row)
+                  this.addResearch(params.row)
                 }
               }
             }, params.row.name)
@@ -107,10 +107,9 @@ export default {
       this.selected = selection
     },
     // 跳转到调研设置
-    addResearch() {
-    },
-    // 单击表格
-    clickRow(data) {
+    addResearch(value) {
+      console.log(value)
+      this.$router.push({name: 'SurveyIntercalate', query: { id: value.id }})
     },
     // 删除问卷
     deleteResearch() {

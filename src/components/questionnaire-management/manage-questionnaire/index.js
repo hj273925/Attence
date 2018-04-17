@@ -116,7 +116,7 @@ export default {
     // 分页
     changePage(index) {
       this.current = index
-      this.loadUserlist()
+      this.loadQuestionnaireList()
     }
   }
 }
