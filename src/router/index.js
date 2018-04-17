@@ -88,12 +88,6 @@ export default new Router({
       component: function (resolve) {
         require(['@/components/questionnaire-management/manage-questionnaire/index.vue'], resolve)
       }
-    }, {
-      path: '/research-management',
-      name: 'ResearchManageService',
-      component: function (resolve) {
-        require(['@/components/survey-management/research-management/index.vue'], resolve)
-      }
     }]
 })
 
