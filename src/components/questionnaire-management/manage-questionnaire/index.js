@@ -26,7 +26,7 @@ export default {
               },
               on: {
                 click: () => {
-                  this.clickRow(params.row)
+                  this.addQuestionnaire(params.row)
                 }
               }
             }, params.row.name)
@@ -94,12 +94,9 @@ export default {
       this.selected = selection
     },
     // 跳转到问卷设计
-    addQuestionnaire() {
-      // location.href = '/#/questionnaire-design'
-    },
-    // 单击表格
-    clickRow(data) {
-      // location.href = '/#/questionnaire-design'
+    addQuestionnaire(value) {
+      console.log(value)
+      this.$router.push({name: 'QuestionnaireDesign', query: { id: value.id }})
     },
     // 删除问卷
     deleteQuestionnaire() {
