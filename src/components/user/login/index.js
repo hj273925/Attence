@@ -1,0 +1,67 @@
+/**
+ * Created by hj on 2018/3/30.
+ */
+import LoginService from '@/services/login.service'
+
+export default {
+  data() {
+    return {
+      identifyImage: '',
+      formCustom: {
+        phone: '',
+        code: '',
+        pwd: ''
+      },
+      ruleCustom: {
+        telephone: [
+          { required: true, message: '请输入手机号', trigger: 'blur' }
+        ],
+        number: [
+          { required: true, message: '请输入验证码', trigger: 'blur' }
+        ],
+        password: [
+          { required: true, message: '请输入密码', trigger: 'blur' }
+        ]
+      }
+    }
+  },
+  created() {
+    this.identifyImage = process.env.BASE_URL + '/auth/captcha.jpg'
+  },
+  methods: {
+    // 切换验证码
+    changeIdentify() {
+      this.identifyImage = process.env.BASE_URL + '/auth/captcha.jpg?' + Math.random()
+    },
+    // 发送验证码
+    sendSmsPwd() {
+      const params = {code: this.formCustom.code, phone: this.formCustom.phone}
+      LoginService.sendSmsPwd(params)
+        .then((res) => {
+          console.log(res)
+        })
+        .catch(() => {
+          this.$Message.error('验证码错误！')
+        })
+    },
+    handleSubmit(name) {
+      const params = {pwd: this.formCustom.pwd, phone: this.formCustom.phone}
+      this.$refs[name].validate((valid) => {
+        if (valid) {
+          LoginService.Login(params)
+            .then((res) => {
+              console.log(res.data)
+              this.$router.push({name: 'Manage'})
+            })
+            .catch(() => {
+              this.$Message.error('登录失败！')
+            })
+        }
+      })
+    },
+    handleReset(name) {
+      this.$refs[name].resetFields()
+    }
+  }
+}
+

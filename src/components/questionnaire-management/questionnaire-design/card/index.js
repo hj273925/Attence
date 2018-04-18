@@ -14,7 +14,7 @@ export default {
     },
     // 编辑
     editTitle() {
-      console.log(this.index)
+      console.log(this.record.nodeType)
     },
     // 删除
     deleteTitle() {
