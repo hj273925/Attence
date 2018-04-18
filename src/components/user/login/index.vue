@@ -20,7 +20,7 @@
           <Button type="primary" :disabled="formCustom.code.length !== 5" @click="sendSmsPwd">发送密码</Button>
         </FormItem>
         <FormItem label="密码" prop="pwd">
-          <Input type="text" v-model="formCustom.pwd" number></Input>
+          <Input type="text" v-model="formCustom.pwd"></Input>
         </FormItem>
         <FormItem>
           <Button type="primary" @click="handleSubmit('formCustom')">登录</Button>
