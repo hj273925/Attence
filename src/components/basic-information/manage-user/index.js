@@ -220,6 +220,7 @@ export default {
       ManageUserService.deleteUser(selections)
         .then(() => {
           this.$Message.success('用户已删除！')
+          this.current = 1
           this.selected = []
           this.loadUserlist()
         })

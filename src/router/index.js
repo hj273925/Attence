@@ -13,9 +13,43 @@ export default new Router({
     }, {
       path: '/console',
       name: 'Console',
+      redirect: '/console/research-information',
       component: function (resolve) {
         require(['@/components/user/console-user/index.vue'], resolve)
-      }
+      },
+      children: [
+        {
+          path: '/console/fill-progress',
+          name: 'FillProgress',
+          component: function (resolve) {
+            require(['@/components/console/fill-progress/index.vue'], resolve)
+          }
+        }, {
+          path: '/console/data-upload',
+          name: 'DataUpload',
+          component: function (resolve) {
+            require(['@/components/console/data-upload/index.vue'], resolve)
+          }
+        }, {
+          path: '/console/questionnaire-distribution',
+          name: 'QuestionnaireDistribution',
+          component: function (resolve) {
+            require(['@/components/console/questionnaire-distribution/index.vue'], resolve)
+          }
+        }, {
+          path: '/console/research-information',
+          name: 'ResearchInformation',
+          component: function (resolve) {
+            require(['@/components/console/research-information/index.vue'], resolve)
+          }
+        }, {
+          path: '/console/sample-selection',
+          name: 'SampleSelection',
+          component: function (resolve) {
+            require(['@/components/console/sample-selection/index.vue'], resolve)
+          }
+        }
+      ]
     }, {
       path: '/manage',
       name: 'Manage',

@@ -6,7 +6,6 @@ import ResearchIntercalate from '@/services/researchIntercalate.service'
 export default {
   data() {
     return {
-      data: [],
       columns: [
         {
           title: '单位',
@@ -23,24 +22,9 @@ export default {
         {
           title: '冗余率',
           key: 'mobile'
-        },
-        {
-          title: '员工数量',
-          key: 'count'
-        },
-        {
-          title: '抽样数量',
-          key: 'amount'
-        },
-        {
-          title: '抽样比例',
-          key: 'percent'
-        },
-        {
-          title: '填写进度',
-          key: 'progess'
         }
-      ]
+      ],
+      data: []
     }
   },
   created() {

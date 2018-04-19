@@ -6,55 +6,38 @@ import ResearchIntercalate from '@/services/researchIntercalate.service'
 export default {
   data() {
     return {
+      data: [],
       columns: [
         {
-          title: '单位',
+          type: 'selection',
+          width: 60,
+          align: 'center'
+        },
+        {
+          title: '工号',
           key: 'name'
         },
         {
-          title: '规模',
+          title: '员工类型',
           key: 'orgId'
         },
         {
-          title: '抽样率',
+          title: '姓名',
           key: 'title'
         },
         {
-          title: '荣誉率',
+          title: '性别',
           key: 'mobile'
+        },
+        {
+          title: '出生年份',
+          key: 'count'
+        },
+        {
+          title: '学历',
+          key: 'amount'
         }
-      ],
-      nameList: [
-        {
-          value: 'New York',
-          label: 'New York'
-        },
-        {
-          value: 'London',
-          label: 'London'
-        },
-        {
-          value: 'Sydney',
-          label: 'Sydney'
-        },
-        {
-          value: 'Ottawa',
-          label: 'Ottawa'
-        },
-        {
-          value: 'Paris',
-          label: 'Paris'
-        },
-        {
-          value: 'Canberra',
-          label: 'Canberra'
-        }
-      ],
-      data: [],
-      formCustom: {
-        name: '',
-        parameter: ''
-      }
+      ]
     }
   },
   created() {
@@ -76,8 +59,8 @@ export default {
         })
     },
     // 点击页脚触发
-    changePage(index) {
-      console.log(index)
+    next() {
+      this.$emit('changePage')
     }
   }
 }
