@@ -202,7 +202,7 @@ export default {
     handleCancel(name) {
       this.modal = false
     },
-    // 删除用户
+    // 删除组织
     deleteOrgs() {
       let selections = []
       this.selected.forEach((value) => {
