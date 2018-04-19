@@ -143,7 +143,6 @@ export default {
         formOpen: false,
         formNote: false
       },
-      modal: false,
       modal_title: {
         formRadio: '单选题',
         formCheckBox: '多选题',

@@ -7,6 +7,26 @@ export default {
     record: { type: Object, required: true },
     index: { type: Number, required: true }
   },
+  data() {
+    return {
+      model: {
+        formRadio: false,
+        formCheckBox: false,
+        formSort: false,
+        formMatrix: false,
+        formOpen: false,
+        formNote: false
+      },
+      modal_title: {
+        formRadio: '单选题',
+        formCheckBox: '多选题',
+        formSort: '排序题',
+        formMatrix: '矩阵题',
+        formOpen: '开放题',
+        formNote: '备注'
+      }
+    }
+  },
   methods: {
     // 切换位置
     switchingPosition(action) {
@@ -14,7 +34,7 @@ export default {
     },
     // 编辑
     editTitle() {
-      console.log(this.record.nodeType)
+      this.$emit('editTitle', this.index)
     },
     // 删除
     deleteTitle() {

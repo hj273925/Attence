@@ -9,36 +9,33 @@ export default {
       data: [],
       columns: [
         {
-          title: '单位',
+          type: 'selection',
+          width: 60,
+          align: 'center'
+        },
+        {
+          title: '工号',
           key: 'name'
         },
         {
-          title: '规模',
+          title: '员工类型',
           key: 'orgId'
         },
         {
-          title: '抽样率',
+          title: '姓名',
           key: 'title'
         },
         {
-          title: '冗余率',
+          title: '性别',
           key: 'mobile'
         },
         {
-          title: '员工数量',
+          title: '出生年份',
           key: 'count'
         },
         {
-          title: '抽样数量',
+          title: '学历',
           key: 'amount'
-        },
-        {
-          title: '抽样比例',
-          key: 'percent'
-        },
-        {
-          title: '状态',
-          key: 'status'
         }
       ]
     }
@@ -61,8 +58,9 @@ export default {
           this.tableLoading = false
         })
     },
-    next() {
-      this.$emit('changePage')
+    // 点击页脚触发
+    changePage(index) {
+      console.log(index)
     }
   }
 }

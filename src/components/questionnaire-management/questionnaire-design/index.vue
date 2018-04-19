@@ -8,7 +8,13 @@
       <Row>
         <Col span="18">
           <div class="menu-list">
-             <tCard @deleteTitle="deleteItem" @switchingPosition="switchingPosition" :record="item" :index="index" :key="index" v-for="item,index in record.items"/>
+             <tCard v-for="item,index in record.items"
+                    @editTitle ='editItem'
+                    @deleteTitle="deleteItem"
+                    @switchingPosition="switchingPosition"
+                    :record="item"
+                    :index="index"
+                    :key="index"/>
           </div>
         </Col>
         <Col span="6">

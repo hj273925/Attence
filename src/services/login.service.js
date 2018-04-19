@@ -9,11 +9,11 @@ class LoginService {
     this.api = api
   }
   sendSmsPwd(params) {
-    return this.api.post('/auth/sendSmsPwd', qs.stringify(params))
+    return this.api.post('/auth/sendSmsPwd', qs.stringify(params), {withCredentials: true})
   }
 
   Login(params) {
-    return this.api.post('/auth/login', qs.stringify(params))
+    return this.api.post('/auth/login', qs.stringify(params), {withCredentials: true})
   }
 
   Logout(params) {

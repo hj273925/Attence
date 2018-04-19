@@ -10,8 +10,7 @@ export default {
   },
   data() {
     return {
-      data: [],
-      modal: false,
+      data: {},
       statusList: ['新建', '完成'],
       record: {
         name: '',
@@ -34,14 +33,18 @@ export default {
     deleteItem(index) {
       this.record.items.splice(index, 1)
     },
+    // 编辑题型
+    editItem(index) {
+      console.log(this.record.items[index])
+      this.data = this.record.items[index]
+    },
     // 切换位置
     switchingPosition(action, index) {
       const list = this.record.items
-      console.log(list[index])
       if (action === 'down') {
-        list[index] = list[index + 1]
+        list.splice(index, 2, list[index + 1], list[index])
       } else {
-        list[index] = list[index - 1]
+        list.splice(index - 1, 2, list[index], list[index - 1])
       }
     }
   }
