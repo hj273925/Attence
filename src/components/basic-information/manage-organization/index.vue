@@ -45,10 +45,13 @@
           <FormItem label="冗余率" prop="extraRate">
             <Input type="text" v-model="formCustom.extraRate"></Input>
           </FormItem>
+          <FormItem label="冗余数" prop="extraNum">
+            <Input type="text" v-model="formCustom.extraNum"></Input>
+          </FormItem>
           <FormItem label="状态" prop="status">
             <RadioGroup v-model="formCustom.status">
-                <Radio label="ON"></Radio>
-                <Radio label="OFF"></Radio>
+                <Radio label="ON">启用</Radio>
+                <Radio label="OFF">禁用</Radio>
             </RadioGroup>
           </FormItem>
       </Form>

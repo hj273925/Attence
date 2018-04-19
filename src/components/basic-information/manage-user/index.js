@@ -102,9 +102,6 @@ export default {
           { required: true, message: '请输入用户邮箱', trigger: 'blur' },
           { type: 'email', message: '邮箱格式错误', trigger: 'blur' }
         ],
-        note: [
-          { required: true, message: '请输入用户备注', trigger: 'blur' }
-        ],
         status: [
           { required: true, message: '请选择用户状态', trigger: 'blur' }
         ]

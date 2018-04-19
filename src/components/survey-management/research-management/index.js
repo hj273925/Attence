@@ -58,8 +58,8 @@ export default {
           title: '是否自动催填',
           key: 'autoResend',
           render(h, params) {
-            let cor = params.row.status === 'true' ? 'blue' : 'red'
-            let autoResend = params.row.status === 'true' ? '是' : '否'
+            let cor = params.row.autoResend === true ? 'blue' : 'red'
+            let autoResend = params.row.autoResend === true ? '是' : '否'
             return h('Tag', {
               props: {
                 color: cor

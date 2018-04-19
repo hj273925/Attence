@@ -53,6 +53,10 @@ export default {
           key: 'extraRate'
         },
         {
+          title: '冗余数',
+          key: 'extraNum'
+        },
+        {
           title: '状态',
           key: 'status',
           render(h, params) {
@@ -73,6 +77,7 @@ export default {
         scale: '',
         sampleRate: '',
         extraRate: '',
+        extraNum: '',
         status: ''
       },
       ruleCustom: {
@@ -93,6 +98,9 @@ export default {
         ],
         extraRate: [
           { required: true, message: '请输入组织冗余率', trigger: 'blur' }
+        ],
+        extraNum: [
+          { required: true, message: '请输入组织冗余数', trigger: 'blur' }
         ],
         status: [
           { required: true, message: '请选择组织状态', trigger: 'blur' }
