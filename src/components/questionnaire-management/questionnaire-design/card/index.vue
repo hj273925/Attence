@@ -2,8 +2,8 @@
   <div>
     <Card style="margin-bottom: 20px">
       <ButtonGroup class="btn-group">
-        <Button type="ghost" @click="switchingPosition('up')">上移</Button>
-        <Button type="ghost" @click="switchingPosition('down')">下移</Button>
+        <Button type="ghost" @click="switchingPosition('up')" :disabled="index === 0">上移</Button>
+        <Button type="ghost" @click="switchingPosition('down')" :disabled="index === length - 1">下移</Button>
         <Button type="ghost" @click="editTitle">编辑</Button>
         <Button type="ghost" @click="deleteTitle">删除</Button>
       </ButtonGroup>

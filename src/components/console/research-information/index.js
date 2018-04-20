@@ -41,7 +41,7 @@ export default {
     // 加载数据
     loadOrglist() {
       this.tableLoading = true
-      this.rows = console.log(this.$store.state.orgInfo)
+      this.rows = [this.$store.state.orgInfo]
       // OrganizationService.getOrganizations()
       //   .then((res) => {
       //     this.rows = res.items
