@@ -47,6 +47,19 @@ export default {
         {
           title: '变量值',
           key: 'value'
+        },
+        {
+          title: '状态',
+          key: 'enable',
+          render(h, params) {
+            let cor = String(params.row.enable) === 'true' ? 'blue' : 'red'
+            let enable = String(params.row.enable) === 'true' ? '启用' : '禁用'
+            return h('Tag', {
+              props: {
+                color: cor
+              }
+            }, enable)
+          }
         }
       ],
       formCustom: {
@@ -54,7 +67,8 @@ export default {
         groupId: '',
         key: '',
         label: '',
-        value: ''
+        value: '',
+        enable: ''
       },
       ruleCustom: {
         groupName: [
@@ -71,6 +85,9 @@ export default {
         ],
         value: [
           { required: true, message: '请输入变量值', trigger: 'blur' }
+        ],
+        enable: [
+          { required: true, message: '请选择状态', trigger: 'blur' }
         ]
       },
       selected: [],
@@ -118,6 +135,7 @@ export default {
     // 单击表格
     clickRow(data) {
       this.modal_title = '编辑数据字典'
+      data.enable = String(data.enable)
       this.formCustom = data
       this.modal = true
     },

@@ -35,8 +35,8 @@
         </FormItem>
         <FormItem label="性别" prop="gender">
           <RadioGroup v-model="formCustom.gender">
-              <Radio label="MALE"></Radio>
-              <Radio label="FEMALE"></Radio>
+              <Radio label="MALE">男</Radio>
+              <Radio label="FEMALE">女</Radio>
           </RadioGroup>
         </FormItem>
         <FormItem label="单位" prop="orgId">
@@ -56,8 +56,8 @@
         </FormItem>
         <FormItem label="状态" prop="status">
           <RadioGroup v-model="formCustom.status">
-              <Radio label="ON"></Radio>
-              <Radio label="OFF"></Radio>
+              <Radio label="ON">启用</Radio>
+              <Radio label="OFF">禁用</Radio>
           </RadioGroup>
         </FormItem>
       </Form>

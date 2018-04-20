@@ -42,6 +42,12 @@
         <FormItem label="变量值" prop="value">
           <Input type="text" v-model="formCustom.value"></Input>
         </FormItem>
+        <FormItem label="状态">
+          <RadioGroup v-model="formCustom.enable">
+              <Radio label="true">启用</Radio>
+              <Radio label="false">禁用</Radio>
+          </RadioGroup>
+        </FormItem>
       </Form>
       <div slot="footer">
         <Button type="ghost" @click="handleCancel('formCustom')">取消</Button>
