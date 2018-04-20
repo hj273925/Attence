@@ -7,8 +7,8 @@ import * as actions from './actions'
 Vue.use(Vuex)
 
 const state = {
-  menus: {
-  },
+  orgInfo: {},
+  userInfo: {},
   groupNameList: [
     {
       value: '集团',

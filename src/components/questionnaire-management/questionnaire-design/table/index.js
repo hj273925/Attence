@@ -243,6 +243,7 @@ export default {
       this.$refs[this.nodeType].validate((valid) => {
         if (valid) {
           const data = JSON.parse(JSON.stringify(this[this.nodeType]))
+          console.log(data)
           this.$emit('handleConfirm', data)
           this.handleCancel()
           this.resetRows()

@@ -6,7 +6,7 @@
     </Breadcrumb>
     <Content :style="{padding: '24px', minHeight: '280px', background: '#fff'}">
       <div class="table-container">
-        <Form :model="formCustom" label-position="left" :label-width="100">
+        <Form label-position="left" :label-width="100">
           <FormItem label="问卷">
             <Row>
               <Col span="2">

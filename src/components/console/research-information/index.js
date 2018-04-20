@@ -29,6 +29,7 @@ export default {
   },
   created() {
     this.loadUserlist()
+    console.log(this.$store.state.orgInfo)
   },
   methods: {
     // 加载数据

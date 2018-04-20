@@ -5,27 +5,8 @@
 export default {
   props: {
     record: { type: Object, required: true },
-    index: { type: Number, required: true }
-  },
-  data() {
-    return {
-      model: {
-        formRadio: false,
-        formCheckBox: false,
-        formSort: false,
-        formMatrix: false,
-        formOpen: false,
-        formNote: false
-      },
-      modal_title: {
-        formRadio: '单选题',
-        formCheckBox: '多选题',
-        formSort: '排序题',
-        formMatrix: '矩阵题',
-        formOpen: '开放题',
-        formNote: '备注'
-      }
-    }
+    index: { type: Number, required: true },
+    length: { type: Number, required: true }
   },
   methods: {
     // 切换位置
