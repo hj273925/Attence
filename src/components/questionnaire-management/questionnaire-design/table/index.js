@@ -236,17 +236,17 @@ export default {
     resetRows() {
       this.$refs[this.nodeType].resetFields()
       const type = this.nodeType
-      this[type] = record[type]
+      this[type] = JSON.parse(JSON.stringify(record[type]))
     },
     // 传递数据给父组件
     handleConfirm() {
       this.$refs[this.nodeType].validate((valid) => {
         if (valid) {
+          console.log(this[this.nodeType])
           const data = JSON.parse(JSON.stringify(this[this.nodeType]))
           console.log(data)
           this.$emit('handleConfirm', data)
           this.handleCancel()
-          this.resetRows()
         }
       })
     },
@@ -255,6 +255,5 @@ export default {
       this.model[this.nodeType] = false
       this.resetRows()
     }
-
   }
 }
