@@ -87,10 +87,9 @@ export default {
           render: (h, params) => {
             const { index } = params
             return h('input', {
-              props: {
-                type: 'number'
-              },
               attrs: {
+                min: 0,
+                type: 'number',
                 class: 'ivu-input',
                 value: params.row.score
               },
@@ -138,12 +137,6 @@ export default {
       rule: {
         topic: [
           { required: true, message: '请输入题目名', trigger: 'blur' }
-        ],
-        minChoice: [
-          { required: true, message: '请输入最小选择数', trigger: 'blur' }
-        ],
-        maxChoice: [
-          { required: true, message: '请输入最大选择数', trigger: 'blur' }
         ],
         content: [
           { required: true, message: '请输入备注内容', trigger: 'blur' }
@@ -244,7 +237,12 @@ export default {
       this[this.nodeType][value].splice(index, 1)
     },
     evaluate(key, value, index) {
-      this[this.nodeType].items[index][key] = value
+      if (key === 'score') {
+        this[this.nodeType].items[index][key] = Number(value)
+        console.log(this[this.nodeType].items[index][key])
+      } else {
+        this[this.nodeType].items[index][key] = value
+      }
     },
     // 清空表单
     resetRows() {

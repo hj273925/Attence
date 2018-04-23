@@ -42,10 +42,10 @@
           <Input type="text" v-model="formCheckBox.topic"></Input>
         </FormItem>
         <FormItem label="最少选择个数" prop="minChoice">
-          <Input type="text" v-model="formCheckBox.minChoice" style="width: 200px"></Input>
+          <InputNumber   v-model="formCheckBox.minChoice" style="width: 200px"></InputNumber >
         </FormItem>
         <FormItem label="最多选择个数" prop="maxChoice">
-          <Input type="text" v-model="formCheckBox.maxChoice" style="width: 200px"></Input>
+          <InputNumber   v-model="formCheckBox.maxChoice" style="width: 200px"></InputNumber >
         </FormItem>
         <FormItem label="选项">
           <Table  border stripe :columns="columns" :data="formCheckBox.items"></Table>
@@ -106,7 +106,7 @@
         <FormItem label="分值">
           <Row v-for="item,index in formMatrix.scores" :key="index" style="margin-bottom: 10px">
             <Col span="16">
-              <Input type="text" v-model="formMatrix.scores[index]"></Input>
+              <InputNumber v-model="formMatrix.scores[index]"></InputNumber >
             </Col>
             <Col span="4" offset="1">
               <Button type="ghost" @click="deleteMatrixItem(index,'scores')">删除</Button>
@@ -136,7 +136,7 @@
           <Input type="text" v-model="formSort.topic"></Input>
         </FormItem>
         <FormItem label="最多选择个数" prop="maxChoice">
-          <Input type="text" v-model="formSort.maxChoice" style="width: 200px"></Input>
+          <InputNumber v-model="formSort.maxChoice" style="width: 200px"></InputNumber >
         </FormItem>
         <FormItem label="选项">
           <Table  border stripe :columns="columns" :data="formSort.items"></Table>
@@ -178,7 +178,7 @@
           </Row>
         </FormItem>
         <FormItem label="最大字数" prop="maxLength">
-          <Input type="text" v-model="formOpen.maxLength" style="width: 200px"></Input>
+          <InputNumber  v-model="formOpen.maxLength" style="width: 200px"></InputNumber >
         </FormItem>
       </Form>
       <div slot="footer">

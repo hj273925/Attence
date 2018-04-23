@@ -245,15 +245,31 @@
 
 <script src="./index.js"></script>
 
-<style scoped>
+<style  scoped>
   .menu-list{
-    height: calc(100vh - 182px);
+    height: calc(100vh - 185px);
+    min-height: 500px;
     overflow: auto;
     padding: 20px;
+  }
+  .menu-list::-webkit-scrollbar {/*滚动条整体样式*/
+    width: 4px;     /*高宽分别对应横竖滚动条的尺寸*/
+    height: 4px;
+  }
+  .menu-list::-webkit-scrollbar-thumb {/*滚动条里面小方块*/
+    border-radius: 5px;
+    -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+    background: rgba(0,0,0,0.2);
+  }
+  .menu-list::-webkit-scrollbar-track {/*滚动条里面轨道*/
+    -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+    border-radius: 0;
+    background: rgba(0,0,0,0.1);
   }
   .tool{
     border-left: 2px solid gainsboro;
     height:calc(100vh - 182px);
+    overflow: auto;
   }
   .tool-menu{
     border-bottom: 2px solid gainsboro;
