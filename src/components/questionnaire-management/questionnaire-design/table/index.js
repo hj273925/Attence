@@ -39,7 +39,7 @@ const record = {
     idx: '',
     topic: '',
     maxLength: 200,
-    labels: []
+    labels: ['']
   },
   formSort: {
     nodeType: 'Q_RANKING',
@@ -100,6 +100,20 @@ export default {
                 }
               }
             })
+          }
+        },
+        {
+          title: '类型',
+          key: 'type',
+          width: '20%',
+          render: (h, params) => {
+            let cor = params.row.type === 'SIMPLE' ? 'blue' : 'red'
+            let type = params.row.type === 'SIMPLE' ? '普通' : '其它'
+            return h('Tag', {
+              props: {
+                color: cor
+              }
+            }, type)
           }
         },
         {
@@ -180,7 +194,7 @@ export default {
         nodeType: 'Q_MATRIX',
         idx: '',
         topic: '',
-        rows: ['大飒飒大'],
+        rows: [''],
         cols: [''],
         scores: ['']
       },

@@ -66,6 +66,11 @@ export default {
           this.tableLoading = false
         })
     },
+    // 添加标签
+    addTag() {
+      const tag = `${this.formInline.researchName}-${this.formInline.groupName}`
+      this.tagList.push(tag)
+    },
     // 删除标签
     deleteTag(name) {
       const index = this.tagList.indexOf(name)
