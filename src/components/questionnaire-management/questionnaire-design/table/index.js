@@ -180,7 +180,7 @@ export default {
         nodeType: 'Q_MATRIX',
         idx: '',
         topic: '',
-        rows: ['大飒飒大'],
+        rows: [''],
         cols: [''],
         scores: ['']
       },

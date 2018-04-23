@@ -70,9 +70,9 @@
           <Input type="text" v-model="formMatrix.topic"></Input>
         </FormItem>
         <FormItem label="行">
-          <Row v-for="index,item in formMatrix.rows" :key="index" style="margin-bottom: 10px">
+          <Row v-for="item,index in formMatrix.rows" :key="index" style="margin-bottom: 10px">
             <Col span="16">
-              <Input type="text"></Input>
+              <Input type="text" v-model="formMatrix.rows[index]"></Input>
             </Col>
             <Col span="4" offset="1">
               <Button type="ghost" @click="deleteMatrixItem(index,'rows')">删除</Button>
@@ -87,9 +87,9 @@
           </Row>
         </FormItem>
         <FormItem label="列">
-          <Row v-for="index,item in formMatrix.cols" :key="index" style="margin-bottom: 10px">
+          <Row v-for="item,index in formMatrix.cols" :key="index" style="margin-bottom: 10px">
             <Col span="16">
-              <Input type="text"></Input>
+              <Input type="text" v-model="formMatrix.cols[index]"></Input>
             </Col>
             <Col span="4" offset="1">
               <Button type="ghost" @click="deleteMatrixItem(index,'cols')">删除</Button>
@@ -104,9 +104,9 @@
           </Row>
         </FormItem>
         <FormItem label="分值">
-          <Row v-for="index,item in formMatrix.scores" :key="index" style="margin-bottom: 10px">
+          <Row v-for="item,index in formMatrix.scores" :key="index" style="margin-bottom: 10px">
             <Col span="16">
-              <Input type="text"></Input>
+              <Input type="text" v-model="formMatrix.scores[index]"></Input>
             </Col>
             <Col span="4" offset="1">
               <Button type="ghost" @click="deleteMatrixItem(index,'scores')">删除</Button>
@@ -161,9 +161,9 @@
           <Input type="text" v-model="formOpen.topic"></Input>
         </FormItem>
         <FormItem label="选项">
-          <Row v-for="index,item in formOpen.labels" :key="item" style="margin-bottom: 10px">
+          <Row v-for="item,index in formOpen.labels" :key="item" style="margin-bottom: 10px">
             <Col span="16">
-              <Input type="text"></Input>
+              <Input type="text" v-model="formOpen.labels[index]"></Input>
             </Col>
             <Col span="4" offset="1">
               <Button type="ghost" @click="deleteMatrixItem(index,'labels')">删除</Button>
