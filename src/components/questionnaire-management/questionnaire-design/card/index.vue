@@ -14,9 +14,15 @@
       <RadioGroup v-if="record.nodeType === 'Q_SINGLE_CHOICE'">
         <Radio :label="item.label" v-for="item in record.items" :key="item.label"></Radio>
       </RadioGroup>
+      <RadioGroup v-if="record.nodeType === 'Q_OPEN_ENDED'">
+        <Radio :label="item" v-for="item in record.labels" :key="item"></Radio>
+      </RadioGroup>
       <CheckboxGroup v-if="record.nodeType === 'Q_MULTIPLE_CHOICE'">
         <Checkbox :label="item.label" v-for="item in record.items" :key="item.label"></Checkbox>
       </CheckboxGroup>
+      <div v-if="record.nodeType === 'Q_MATRIX'">
+
+      </div>
       <p v-if="record.nodeType === 'NOTE'">{{record.content}}</p>
     </Card>
   </div>

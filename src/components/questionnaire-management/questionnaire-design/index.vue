@@ -22,9 +22,15 @@
           <div class="tool">
             <div class="tool-menu">
               <div>
-                <Form ref="formCustom" :model="record":label-width="80">
+                <Form ref="formCustom" :model="record" rule='ruleCustom' :label-width="80">
                   <FormItem label="名字" prop="name">
                     <Input type="text" v-model="record.name" style="width: 200px"></Input>
+                  </FormItem>
+                  <FormItem label="标题" prop="name">
+                    <Input type="text" v-model="record.title" style="width: 200px"></Input>
+                  </FormItem>
+                  <FormItem label="副标题" prop="name">
+                    <Input type="text" v-model="record.subTitle" style="width: 200px"></Input>
                   </FormItem>
                   <FormItem label="状态" prop="status">
                     <Select v-model="record.status" style="width:200px" placeholder="选择状态">
@@ -32,7 +38,7 @@
                     </Select>
                   </FormItem>
                   <FormItem>
-                    <Button type="primary">保存</Button>
+                    <Button type="primary" @click="createQuestionnaire">保存</Button>
                     <Button type="ghost" style="margin-left: 8px">预览</Button>
                   </FormItem>
                 </Form>
@@ -194,7 +200,7 @@
           <Input type="text" v-model="data.topic"></Input>
         </FormItem>
         <FormItem label="选项">
-          <Row v-for="item,index in data.labels" :key="item" style="margin-bottom: 10px">
+          <Row v-for="item,index in data.labels" :key="index" style="margin-bottom: 10px">
             <Col span="16">
               <Input type="text" v-model="data.labels[index]"></Input>
             </Col>

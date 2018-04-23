@@ -161,7 +161,7 @@
           <Input type="text" v-model="formOpen.topic"></Input>
         </FormItem>
         <FormItem label="选项">
-          <Row v-for="item,index in formOpen.labels" :key="item" style="margin-bottom: 10px">
+          <Row v-for="item,index in formOpen.labels" :key="index" style="margin-bottom: 10px">
             <Col span="16">
               <Input type="text" v-model="formOpen.labels[index]"></Input>
             </Col>

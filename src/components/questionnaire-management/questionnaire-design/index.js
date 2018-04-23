@@ -3,6 +3,7 @@
  */
 import tTable from './table/index.vue'
 import tCard from './card/index.vue'
+import ManageQuestionnaire from '@/services/questionnaire.service'
 export default {
   components: {
     tTable,
@@ -50,6 +51,20 @@ export default {
                 }
               }
             })
+          }
+        },
+        {
+          title: '类型',
+          key: 'type',
+          width: '20%',
+          render: (h, params) => {
+            let cor = params.row.type === 'SIMPLE' ? 'blue' : 'red'
+            let type = params.row.type === 'SIMPLE' ? '普通' : '其它'
+            return h('Tag', {
+              props: {
+                color: cor
+              }
+            }, type)
           }
         },
         {
@@ -121,6 +136,11 @@ export default {
       formCustom: {
         name: '',
         status: ''
+      },
+      ruleCustom: {
+        name: [
+          { required: true, message: '请输入问卷名', trigger: 'blur' }
+        ]
       }
     }
   },
@@ -181,6 +201,20 @@ export default {
       } else {
         list.splice(index - 1, 2, list[index], list[index - 1])
       }
+    },
+    // 创建问卷
+    createQuestionnaire() {
+      this.$refs['formCustom'].validate((valid) => {
+        if (valid) {
+          ManageQuestionnaire.addQuestionnaire(this.record)
+            .then((res) => {
+              this.$Message.success('问卷创建成功！')
+            })
+            .catch(() => {
+              this.$Message.error('问卷创建失败！')
+            })
+        }
+      })
     },
     // 检查题型
     checkTitle(value) {

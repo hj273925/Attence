@@ -19,7 +19,7 @@
               </Select>
             </FormItem>
             <FormItem>
-              <Button type="primary">添加</Button>
+              <Button type="primary" @click="addTag">添加</Button>
             </FormItem>
           </Form>
         </div>
