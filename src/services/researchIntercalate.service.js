@@ -9,8 +9,8 @@ class ResearchIntercalate {
     this.api = api
   }
 
-  getResearch() {
-    return this.api.post('/survey/findById', qs.stringify({ id: '5ad95ebd84f19c195caddf9d' }))
+  getResearch(keyword, pageSize, curPage) {
+    return this.api.post('/org/query', qs.stringify({keyword, pageSize, curPage}))
   }
 
   addResearch(params) {

@@ -8,7 +8,9 @@
       <div class="table-container">
         <div class="table-toolbar">
           <Button  type="primary" >膜版下载</Button>
-          <Button  type="primary" >上传数据</Button>
+          <Upload action="http://localhost:8080/staff/upload?surveyId=5add4e5484f19c2b78743945" style='display:inline-block'>
+              <Button type="primary" icon="ios-cloud-upload-outline">上传数据</Button>
+          </Upload>
           <Button  type="primary" >保存</Button>
           <Button  type="primary" >删除</Button>
           <Button class="pull-right" type="primary" >确认上传完毕</Button>
