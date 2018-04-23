@@ -40,7 +40,11 @@
           </RadioGroup>
         </FormItem>
         <FormItem label="单位" prop="orgId">
-          <Input type="text" v-model="formCustom.orgId"></Input>
+          <template>
+            <Select v-model="formCustom.orgId">
+                <Option>{{ formCustom.orgId }}</Option>
+            </Select>
+          </template>
         </FormItem>
         <FormItem label="职务" prop="title">
           <Input type="text" v-model="formCustom.title"></Input>

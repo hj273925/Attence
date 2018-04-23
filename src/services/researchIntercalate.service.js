@@ -2,25 +2,26 @@
  * Created by hj on 2018/4/8.
  */
 import api from './api.service'
+import qs from 'qs'
 
 class ResearchIntercalate {
   constructor() {
     this.api = api
   }
 
-  getOrganizations() {
-    return this.api.get('/org/query')
+  getResearch() {
+    return this.api.post('/survey/findById', qs.stringify({ id: '5ad95ebd84f19c195caddf9d' }))
   }
 
-  addOrganization(params) {
+  addResearch(params) {
     return this.api.post('/org/create', params)
   }
 
-  editOrganization(params) {
+  editResearch(params) {
     return this.api.post('/org/update', params)
   }
 
-  deleteOrganization(params) {
+  deleteResearch(params) {
     return this.api.post('/org/deleteAll', params)
   }
 }
