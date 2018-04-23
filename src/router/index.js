@@ -13,7 +13,7 @@ export default new Router({
     }, {
       path: '/console',
       name: 'Console',
-      redirect: '/console/research-information',
+      redirect: '/console/survey-list',
       component: function (resolve) {
         require(['@/components/user/console-user/index.vue'], resolve)
       },
@@ -47,6 +47,12 @@ export default new Router({
           name: 'SampleSelection',
           component: function (resolve) {
             require(['@/components/console/sample-selection/index.vue'], resolve)
+          }
+        }, {
+          path: '/console/survey-list',
+          name: 'SurveyList',
+          component: function (resolve) {
+            require(['@/components/console/survey-list/index.vue'], resolve)
           }
         }
       ]

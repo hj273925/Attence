@@ -180,7 +180,7 @@ export default {
         nodeType: 'Q_MATRIX',
         idx: '',
         topic: '',
-        rows: [''],
+        rows: ['大飒飒大'],
         cols: [''],
         scores: ['']
       },
@@ -244,7 +244,6 @@ export default {
         if (valid) {
           console.log(this[this.nodeType])
           const data = JSON.parse(JSON.stringify(this[this.nodeType]))
-          console.log(data)
           this.$emit('handleConfirm', data)
           this.handleCancel()
         }

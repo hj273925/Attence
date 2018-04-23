@@ -12,8 +12,8 @@ class ResearchManageService {
     return this.api.post('/survey/query', qs.stringify({keyword, pageSize, curPage}))
   }
 
-  getSurveyByOrgId(params) {
-    return this.api.post('/survey/findByOrgId', qs.stringify(params))
+  getSurveyByOrgId(keyword, pageSize, curPage) {
+    return this.api.post('/survey/findByOrgId', qs.stringify({keyword, pageSize, curPage}))
   }
 
   addResearch(params) {

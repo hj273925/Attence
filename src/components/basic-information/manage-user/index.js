@@ -2,6 +2,7 @@
  * Created by hj on 2018/3/30.
  */
 import ManageUserService from '@/services/manageUser.service'
+import OrganizationService from '@/services/organization.service'
 import table from '@/core/mixins/table'
 import { debounce } from 'lodash'
 
@@ -146,6 +147,7 @@ export default {
     showModal() {
       this.modal_title = '增加用户'
       this.formCustom = {}
+      this.formCustom.orgId = OrganizationService.getOrganizations().orgId
       this.modal = true
     },
     // 单击表格

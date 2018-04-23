@@ -15,41 +15,43 @@ export default {
         },
         {
           title: '工号',
-          key: 'name'
+          key: 'code'
         },
         {
           title: '员工类型',
-          key: 'orgId'
+          key: 'type'
         },
         {
           title: '姓名',
-          key: 'title'
+          key: 'name'
         },
         {
           title: '性别',
-          key: 'mobile'
+          key: 'gender'
         },
         {
           title: '出生年份',
-          key: 'count'
+          key: 'birthYear'
         },
         {
           title: '学历',
-          key: 'amount'
+          key: 'degree'
         }
       ]
     }
   },
   created() {
-    this.loadUserlist()
+    this.loadResearchList()
   },
   methods: {
     // 加载数据
-    loadUserlist() {
+    loadResearchList() {
       this.tableLoading = true
-      ResearchIntercalate.getOrganizations()
+      // const { tSearchWord, tLimit, current } = this
+      ResearchIntercalate.getResearch()
         .then((res) => {
-          this.data = res.items
+          this.rows = res.items
+          this.total = res.totalNumber
         })
         .catch(() => {
           this.$Message.error('获取用户列表失败！')
@@ -58,9 +60,10 @@ export default {
           this.tableLoading = false
         })
     },
-    // 点击页脚触发
-    next() {
-      this.$emit('changePage')
+    // 分页
+    changePage(index) {
+      this.current = index
+      this.loadResearchList()
     }
   }
 }

@@ -9,6 +9,7 @@ export default {
       menu: [{
         title: '调研管理',
         subMenu: [
+          {name: '调研列表', path: 'SurveyList'},
           {name: '调研信息', path: 'ResearchInformation'},
           {name: '人员数据上传', path: 'DataUpload'},
           {name: '样本筛选', path: 'SampleSelection'},

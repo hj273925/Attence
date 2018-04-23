@@ -47,7 +47,7 @@ export default {
     // 加载数据
     loadUserlist() {
       this.tableLoading = true
-      ResearchIntercalate.getOrganizations()
+      ResearchIntercalate.getResearch()
         .then((res) => {
           this.data = res.items
         })
