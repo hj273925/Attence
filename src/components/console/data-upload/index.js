@@ -6,7 +6,6 @@ import ResearchIntercalate from '@/services/researchIntercalate.service'
 export default {
   data() {
     return {
-      data: [],
       columns: [
         {
           type: 'selection',
@@ -38,6 +37,10 @@ export default {
           key: 'degree'
         }
       ],
+      data: [],
+      params: {
+        id: ''
+      },
       file: null,
       loadingStatus: false
     }
@@ -49,15 +52,10 @@ export default {
     // 上传数据
     handleUpload(file) {
       this.file = file
-      return false
     },
-    upload() {
-      this.loadingStatus = true
-      setTimeout(() => {
-        this.file = null
-        this.loadingStatus = false
-        this.$Message.success('上传成功！')
-      }, 1500)
+    handleSuccess(file, url) {
+      console.log(file, url)
+      this.$Message.success('上传文件成功！')
     },
     // 加载数据
     loadResearchList() {
