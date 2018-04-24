@@ -81,10 +81,10 @@
           <Input type="text" v-model="data.topic"></Input>
         </FormItem>
         <FormItem label="最少选择个数" prop="minChoice">
-          <InputNumber type="text" v-model="data.minChoice" style="width: 200px"></InputNumber>
+          <InputNumber v-model="data.minChoice" style="width: 200px"></InputNumber>
         </FormItem>
         <FormItem label="最多选择个数" prop="maxChoice">
-          <InputNumber type="text" v-model="data.maxChoice" style="width: 200px"></InputNumber>
+          <InputNumber v-model="data.maxChoice" style="width: 200px"></InputNumber>
         </FormItem>
         <FormItem label="选项">
           <Table  border stripe :columns="columns" :data="data.items"></Table>
@@ -145,7 +145,7 @@
         <FormItem label="分值">
           <Row v-for="item,index in data.scores" :key="index" style="margin-bottom: 10px">
             <Col span="16">
-              <InputNumber type="text" v-model="data.scores[index]"></InputNumber>
+              <InputNumber v-model="data.scores[index]"></InputNumber>
             </Col>
             <Col span="4" offset="1">
               <Button type="ghost" @click="deleteMatrixItem(index,'scores')">删除</Button>
@@ -175,7 +175,7 @@
           <Input type="text" v-model="data.topic"></Input>
         </FormItem>
         <FormItem label="最多选择个数" prop="maxChoice">
-          <InputNumber type="text" v-model="data.maxChoice" style="width: 200px"></InputNumber>
+          <InputNumber v-model="data.maxChoice" style="width: 200px"></InputNumber>
         </FormItem>
         <FormItem label="选项">
           <Table  border stripe :columns="columns" :data="data.items"></Table>
@@ -217,7 +217,7 @@
           </Row>
         </FormItem>
         <FormItem label="最大字数" prop="maxLength">
-          <InputNumber type="text" v-model="data.maxLength" style="width: 200px"></InputNumber>
+          <InputNumber v-model="data.maxLength" style="width: 200px"></InputNumber>
         </FormItem>
       </Form>
       <div slot="footer">
