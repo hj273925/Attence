@@ -189,7 +189,7 @@ export default {
         topic: '',
         rows: [''],
         cols: [''],
-        scores: ['']
+        scores: [0]
       },
       formOpen: {
         nodeType: 'Q_OPEN_ENDED',

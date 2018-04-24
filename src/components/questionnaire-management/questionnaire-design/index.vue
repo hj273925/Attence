@@ -81,10 +81,10 @@
           <Input type="text" v-model="data.topic"></Input>
         </FormItem>
         <FormItem label="最少选择个数" prop="minChoice">
-          <Input type="text" v-model="data.minChoice" style="width: 200px"></Input>
+          <InputNumber type="text" v-model="data.minChoice" style="width: 200px"></InputNumber>
         </FormItem>
         <FormItem label="最多选择个数" prop="maxChoice">
-          <Input type="text" v-model="data.maxChoice" style="width: 200px"></Input>
+          <InputNumber type="text" v-model="data.maxChoice" style="width: 200px"></InputNumber>
         </FormItem>
         <FormItem label="选项">
           <Table  border stripe :columns="columns" :data="data.items"></Table>
@@ -138,14 +138,14 @@
         <FormItem>
           <Row>
             <Col span="12">
-            <Button type="dashed" long  icon="plus-round" @click="addMatrixItem('cols')">添加列</Button>
+              <Button type="dashed" long  icon="plus-round" @click="addMatrixItem('cols')">添加列</Button>
             </Col>
           </Row>
         </FormItem>
         <FormItem label="分值">
           <Row v-for="item,index in data.scores" :key="index" style="margin-bottom: 10px">
             <Col span="16">
-              <Input type="text" v-model="data.scores[index]"></Input>
+              <InputNumber type="text" v-model="data.scores[index]"></InputNumber>
             </Col>
             <Col span="4" offset="1">
               <Button type="ghost" @click="deleteMatrixItem(index,'scores')">删除</Button>
@@ -155,7 +155,7 @@
         <FormItem>
           <Row>
             <Col span="12">
-            <Button type="dashed" long  icon="plus-round" @click="addMatrixItem('scores')">添加分值</Button>
+              <Button type="dashed" long  icon="plus-round" @click="addMatrixItem('scores')">添加分值</Button>
             </Col>
           </Row>
         </FormItem>
@@ -175,7 +175,7 @@
           <Input type="text" v-model="data.topic"></Input>
         </FormItem>
         <FormItem label="最多选择个数" prop="maxChoice">
-          <Input type="text" v-model="data.maxChoice" style="width: 200px"></Input>
+          <InputNumber type="text" v-model="data.maxChoice" style="width: 200px"></InputNumber>
         </FormItem>
         <FormItem label="选项">
           <Table  border stripe :columns="columns" :data="data.items"></Table>
@@ -212,12 +212,12 @@
         <FormItem>
           <Row>
             <Col span="12">
-            <Button type="dashed" long  icon="plus-round" @click="addMatrixItem('labels')">添加行</Button>
+              <Button type="dashed" long  icon="plus-round" @click="addMatrixItem('labels')">添加行</Button>
             </Col>
           </Row>
         </FormItem>
         <FormItem label="最大字数" prop="maxLength">
-          <Input type="text" v-model="data.maxLength" style="width: 200px"></Input>
+          <InputNumber type="text" v-model="data.maxLength" style="width: 200px"></InputNumber>
         </FormItem>
       </Form>
       <div slot="footer">
