@@ -238,6 +238,10 @@ export default {
           break
       }
       return type
+    },
+    preview() {
+      // let id = '5ad6b75884f19c04e893bcdb'
+      ManageQuestionnaire.preview({'id': '5ad6b75884f19c04e893bcdb'})
     }
   }
 }

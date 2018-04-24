@@ -40,11 +40,9 @@
           </RadioGroup>
         </FormItem>
         <FormItem label="单位" prop="orgId">
-          <template>
-            <Select v-model="formCustom.orgId">
-                <Option>{{ formCustom.orgId }}</Option>
-            </Select>
-          </template>
+          <Select v-model="formCustom.orgId">
+              <Option v-for="item in selectList" :value="item.id" :key="item.id">{{ item.fullName }}</Option>
+          </Select>
         </FormItem>
         <FormItem label="职务" prop="title">
           <Input type="text" v-model="formCustom.title"></Input>
@@ -56,7 +54,7 @@
           <Input type="email" v-model="formCustom.email"></Input>
         </FormItem>
         <FormItem label="备注" prop="note">
-          <Input type="email" v-model="formCustom.note"></Input>
+          <Input type="text" v-model="formCustom.note"></Input>
         </FormItem>
         <FormItem label="状态" prop="status">
           <RadioGroup v-model="formCustom.status">

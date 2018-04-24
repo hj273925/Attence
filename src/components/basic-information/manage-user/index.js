@@ -107,6 +107,7 @@ export default {
           { required: true, message: '请选择用户状态', trigger: 'blur' }
         ]
       },
+      selectList: [],
       selected: [],
       loading: true,
       modal_loading: false,
@@ -117,6 +118,7 @@ export default {
   },
   created() {
     this.loadUserlist()
+    this.orgList()
   },
   methods: {
     // 加载数据
@@ -147,7 +149,6 @@ export default {
     showModal() {
       this.modal_title = '增加用户'
       this.formCustom = {}
-      this.formCustom.orgId = OrganizationService.getOrganizations().orgId
       this.modal = true
     },
     // 单击表格
@@ -155,6 +156,13 @@ export default {
       this.modal_title = '编辑用户'
       this.formCustom = data
       this.modal = true
+    },
+    // 组织下拉框回显
+    orgList() {
+      OrganizationService.getOrganizations()
+        .then((res) => {
+          this.selectList = res.items
+        })
     },
     // 增加用户
     addUser() {

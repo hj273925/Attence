@@ -39,7 +39,7 @@
                   </FormItem>
                   <FormItem>
                     <Button type="primary" @click="createQuestionnaire">保存</Button>
-                    <Button type="ghost" style="margin-left: 8px">预览</Button>
+                    <Button type="ghost" @click="preview" style="margin-left: 8px">预览</Button>
                   </FormItem>
                 </Form>
               </div>
