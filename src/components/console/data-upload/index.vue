@@ -8,18 +8,18 @@
       <div class="table-container">
         <div class="table-toolbar">
           <Button  type="primary" >膜版下载</Button>
-          <Upload action="http://localhost:8080/staff/upload?surveyId=5add4e5484f19c2b78743945" style='display:inline-block'>
-              <Button type="primary" icon="ios-cloud-upload-outline">上传数据</Button>
-          </Upload>
           <Button  type="primary" >保存</Button>
           <Button  type="primary" >删除</Button>
-          <Button class="pull-right" type="primary" >确认上传完毕</Button>
+          <Upload :before-upload="handleUpload" action="http://localhost:8080/staff/upload?surveyId=5add4e5484f19c2b78743945" style='display:inline-block'>
+              <Button type="primary" icon="ios-cloud-upload-outline">上传数据</Button>
+          </Upload>
+          <div v-if="file !== null" style='display:inline-block' class="pull-right">文件: {{ file.name }} <Button type="primary" @click="upload" :loading="loadingStatus">{{ loadingStatus ? 'Uploading' : '点击上传' }}</Button></div>
         </div>
         <div>
           <Table border stripe ref="selection" :columns="columns" :data="data"></Table>
         </div>
         <div class="table-page">
-          <Page  show-elevator></Page>
+
         </div>
       </div>
     </Content>

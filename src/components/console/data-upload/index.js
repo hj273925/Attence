@@ -37,13 +37,28 @@ export default {
           title: '学历',
           key: 'degree'
         }
-      ]
+      ],
+      file: null,
+      loadingStatus: false
     }
   },
   created() {
     this.loadResearchList()
   },
   methods: {
+    // 上传数据
+    handleUpload(file) {
+      this.file = file
+      return false
+    },
+    upload() {
+      this.loadingStatus = true
+      setTimeout(() => {
+        this.file = null
+        this.loadingStatus = false
+        this.$Message.success('上传成功！')
+      }, 1500)
+    },
     // 加载数据
     loadResearchList() {
       this.tableLoading = true
@@ -63,7 +78,7 @@ export default {
     // 分页
     changePage(index) {
       this.current = index
-      this.loadResearchList()
+      this.loadUserlist()
     }
   }
 }
