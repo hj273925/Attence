@@ -38,8 +38,8 @@
                     </Select>
                   </FormItem>
                   <FormItem>
-                    <Button type="primary" @click="createQuestionnaire">保存</Button>
-                    <Button type="ghost" @click="preview" style="margin-left: 8px">预览</Button>
+                    <Button type="primary" @click="operateQuestionnaire">保存</Button>
+                    <Button type="ghost" @click="preview"  style="margin-left: 8px">预览</Button>
                   </FormItem>
                 </Form>
               </div>
@@ -277,7 +277,7 @@
   }
   .tool-menu{
     border-bottom: 2px solid gainsboro;
-    padding: 0px 20px;
+    padding-right: 20px;
     padding-top: 20px;
   }
   .ivu-layout-content{

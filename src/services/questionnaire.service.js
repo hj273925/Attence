@@ -12,6 +12,9 @@ class ManageQuestionnaire {
     return this.api.post('/surveydoc/query', qs.stringify({keyword, pageSize, curPage}))
   }
 
+  getQuestionnaireInfo(params) {
+    return this.api.post('/surveydoc/findById', qs.stringify(params))
+  }
   addQuestionnaire(params) {
     return this.api.post('/surveydoc/create', params)
   }
@@ -22,10 +25,6 @@ class ManageQuestionnaire {
 
   deleteQuestionnaire(params) {
     return this.api.post('/surveydoc/delete', params)
-  }
-
-  preview(id) {
-    return this.api.post('/surveydoc/preview', qs.stringify(id))
   }
 }
 

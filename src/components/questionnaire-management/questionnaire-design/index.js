@@ -115,6 +115,7 @@ export default {
         value: '关闭'
       }],
       data: {},
+      questionNaireId: '',
       index: 0,
       nodeType: '',
       record: {
@@ -135,9 +136,27 @@ export default {
       }
     }
   },
+  created() {
+    const {id} = this.$route.query
+    this.questionNaireId = id
+    if (id) {
+      this.getQuestionnaireInfo()
+    }
+  },
   methods: {
     addItems(value) {
       this.record.items.push(value)
+    },
+    // 获取问卷信息
+    getQuestionnaireInfo() {
+      const {id} = this.$route.query
+      ManageQuestionnaire.getQuestionnaireInfo({id: id})
+        .then((res) => {
+          this.record = res
+        })
+        .catch(() => {
+          this.$Message.error('获取问卷信息失败！')
+        })
     },
     // 添加选项
     add(type) {
@@ -170,7 +189,7 @@ export default {
     evaluate(key, value, index) {
       this.data.items[index][key] = value
     },
-    // 点击确定
+    // 点击modal确定
     handleConfirm() {
       this.$refs[this.nodeType].validate((valid) => {
         if (valid) {
@@ -179,12 +198,12 @@ export default {
         }
       })
     },
-    // 点击取消
+    // 点击modal取消
     handleCancel() {
       const type = this.nodeType
       this.model[type] = false
     },
-    // 切换位置
+    // 切换题型位置
     switchingPosition(action, index) {
       const list = this.record.items
       if (action === 'down') {
@@ -193,16 +212,41 @@ export default {
         list.splice(index - 1, 2, list[index], list[index - 1])
       }
     },
+    // 点击保存
+    operateQuestionnaire() {
+      const {questionNaireId} = this
+      if (questionNaireId) {
+        this.editQuestionnaire()
+      } else {
+        this.createQuestionnaire()
+      }
+    },
     // 创建问卷
     createQuestionnaire() {
       this.$refs['formCustom'].validate((valid) => {
         if (valid) {
           ManageQuestionnaire.addQuestionnaire(this.record)
             .then((res) => {
+              this.questionNaireId = res.id
               this.$Message.success('问卷创建成功！')
             })
             .catch(() => {
               this.$Message.error('问卷创建失败！')
+            })
+        }
+      })
+    },
+    // 编辑问卷
+    editQuestionnaire() {
+      this.$refs['formCustom'].validate((valid) => {
+        if (valid) {
+          ManageQuestionnaire.editQuestionnaire(this.record)
+            .then((res) => {
+              this.questionNaireId = res.id
+              this.$Message.success('问卷编辑成功！')
+            })
+            .catch(() => {
+              this.$Message.error('问卷编辑失败！')
             })
         }
       })
@@ -232,9 +276,14 @@ export default {
       }
       return type
     },
+    // 点击预览
     preview() {
-      // let id = '5ad6b75884f19c04e893bcdb'
-      ManageQuestionnaire.preview({'id': '5ad6b75884f19c04e893bcdb'})
+      const {questionNaireId} = this
+      if (!questionNaireId) {
+        this.$Message.warning('请先创建问卷再预览！')
+        return
+      }
+      window.open(`${process.env.BASE_URL}/surveydoc/preview?id=${questionNaireId}`)
     }
   }
 }
