@@ -8,6 +8,11 @@ export default {
     index: { type: Number, required: true },
     length: { type: Number, required: true }
   },
+  data() {
+    return {
+      type: ''
+    }
+  },
   methods: {
     // 切换位置
     switchingPosition(action) {

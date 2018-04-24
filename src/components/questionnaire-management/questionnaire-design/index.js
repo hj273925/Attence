@@ -37,11 +37,9 @@ export default {
           width: '20%',
           render: (h, params) => {
             const { index } = params
-            return h('input', {
-              props: {
-                type: 'number'
-              },
+            return h('InputNumber ', {
               attrs: {
+                type: 'number',
                 class: 'ivu-input',
                 value: params.row.score
               },

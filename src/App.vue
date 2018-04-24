@@ -56,6 +56,5 @@ a{
 .ivu-layout-content{
   height: calc(100vh - 180px);
   min-height: 500px;
-  overflow: auto;
 }
 </style>
