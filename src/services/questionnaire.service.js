@@ -23,10 +23,6 @@ class ManageQuestionnaire {
   deleteQuestionnaire(params) {
     return this.api.post('/surveydoc/delete', params)
   }
-
-  preview(id) {
-    return this.api.post('/surveydoc/preview', qs.stringify(id))
-  }
 }
 
 export default new ManageQuestionnaire()
