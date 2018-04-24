@@ -242,7 +242,6 @@ export default {
         if (valid) {
           ManageQuestionnaire.editQuestionnaire(this.record)
             .then((res) => {
-              this.questionNaireId = res.id
               this.$Message.success('问卷编辑成功！')
             })
             .catch(() => {
