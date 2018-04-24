@@ -217,5 +217,8 @@
   .tool-list li button{
     margin-left: 20px;
   }
+  .input-number{
+    width: 60px;
+  }
 </style>
 

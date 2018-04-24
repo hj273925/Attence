@@ -24,16 +24,16 @@
               <div>
                 <Form ref="formCustom" :model="record" rule='ruleCustom' :label-width="80">
                   <FormItem label="名字" prop="name">
-                    <Input type="text" v-model="record.name" style="width: 200px"></Input>
+                    <Input type="text" v-model="record.name"></Input>
                   </FormItem>
                   <FormItem label="标题" prop="name">
-                    <Input type="text" v-model="record.title" style="width: 200px"></Input>
+                    <Input type="text" v-model="record.title" ></Input>
                   </FormItem>
                   <FormItem label="副标题" prop="name">
-                    <Input type="text" v-model="record.subTitle" style="width: 200px"></Input>
+                    <Input type="text" v-model="record.subTitle" ></Input>
                   </FormItem>
                   <FormItem label="状态" prop="status">
-                    <Select v-model="record.status" style="width:200px" placeholder="选择状态">
+                    <Select v-model="record.status" placeholder="选择状态">
                       <Option v-for="item in statusList" :value="item.label" :key="item.label">{{ item.value }}</Option>
                     </Select>
                   </FormItem>
@@ -246,6 +246,9 @@
 <script src="./index.js"></script>
 
 <style  scoped>
+  .ivu-table-cell .ivu-input-number{
+    width: 60px !important;
+  }
   .menu-list{
     height: calc(100vh - 185px);
     min-height: 500px;
@@ -268,11 +271,13 @@
   }
   .tool{
     border-left: 2px solid gainsboro;
-    height:calc(100vh - 182px);
+    max-height:calc(100vh - 182px);
+    min-height: 500px;
     overflow: auto;
   }
   .tool-menu{
     border-bottom: 2px solid gainsboro;
+    padding: 0px 20px;
     padding-top: 20px;
   }
   .ivu-layout-content{

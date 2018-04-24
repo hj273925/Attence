@@ -11,7 +11,10 @@
         {{record.nodeType | titleTypeFilter}}
       </p>
       <p class="title">{{record.topic}}</p>
-      <RadioGroup v-if="record.nodeType === 'Q_SINGLE_CHOICE' || 'Q_RANKING'" v-model="type">
+      <RadioGroup v-if="record.nodeType === 'Q_SINGLE_CHOICE'" v-model="type">
+        <Radio :label="item.label" v-for="item in record.items" :key="item.label"></Radio>
+      </RadioGroup>
+      <RadioGroup v-if="record.nodeType === 'Q_RANKING'" v-model="type">
         <Radio :label="item.label" v-for="item in record.items" :key="item.label"></Radio>
       </RadioGroup>
       <RadioGroup v-if="record.nodeType === 'Q_OPEN_ENDED'">

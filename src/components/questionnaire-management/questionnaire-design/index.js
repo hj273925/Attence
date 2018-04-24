@@ -37,15 +37,14 @@ export default {
           width: '20%',
           render: (h, params) => {
             const { index } = params
-            return h('InputNumber ', {
+            return h('InputNumber', {
               attrs: {
-                type: 'number',
-                class: 'ivu-input',
+                min: 0,
                 value: params.row.score
               },
               on: {
-                blur: (e) => {
-                  this.evaluate('score', e.target.value, index)
+                'on-change': (value) => {
+                  this.evaluate('score', value, index)
                 }
               }
             })
@@ -87,12 +86,6 @@ export default {
       rule: {
         topic: [
           { required: true, message: '请输入题目名', trigger: 'blur' }
-        ],
-        minChoice: [
-          { required: true, message: '请输入最小选择数', trigger: 'blur' }
-        ],
-        maxChoice: [
-          { required: true, message: '请输入最大选择数', trigger: 'blur' }
         ],
         content: [
           { required: true, message: '请输入备注内容', trigger: 'blur' }

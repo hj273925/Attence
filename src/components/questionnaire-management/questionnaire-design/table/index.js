@@ -73,7 +73,6 @@ export default {
               },
               on: {
                 blur: (e) => {
-                  // this.rows[index].label = e.target.value
                   this.evaluate('label', e.target.value, index)
                 }
               }
@@ -86,16 +85,14 @@ export default {
           width: '20%',
           render: (h, params) => {
             const { index } = params
-            return h('input', {
+            return h('InputNumber', {
               attrs: {
                 min: 0,
-                type: 'number',
-                class: 'ivu-input',
                 value: params.row.score
               },
               on: {
-                blur: (e) => {
-                  this.evaluate('score', e.target.value, index)
+                'on-change': (value) => {
+                  this.evaluate('score', value, index)
                 }
               }
             })
@@ -237,12 +234,7 @@ export default {
       this[this.nodeType][value].splice(index, 1)
     },
     evaluate(key, value, index) {
-      if (key === 'score') {
-        this[this.nodeType].items[index][key] = Number(value)
-        console.log(this[this.nodeType].items[index][key])
-      } else {
-        this[this.nodeType].items[index][key] = value
-      }
+      this[this.nodeType].items[index][key] = value
     },
     // 清空表单
     resetRows() {
@@ -254,7 +246,6 @@ export default {
     handleConfirm() {
       this.$refs[this.nodeType].validate((valid) => {
         if (valid) {
-          console.log(this[this.nodeType])
           const data = JSON.parse(JSON.stringify(this[this.nodeType]))
           this.$emit('handleConfirm', data)
           this.handleCancel()
