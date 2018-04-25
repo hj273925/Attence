@@ -32,9 +32,9 @@ export default {
         endDate: '',
         autoResend: '',
         resendInterval: '',
-        status: '',
-        orgIds: ''
+        status: ''
       },
+      rows: [],
       loading: true,
       tableLoading: false,
       record: {}
@@ -50,6 +50,7 @@ export default {
       researchManage.getResearchById({id: id})
         .then((res) => {
           this.surveyColumns = res
+          this.loadOrgList()
         })
         .catch(() => {
           this.$Message.error('获取调研信息失败！')
@@ -57,7 +58,20 @@ export default {
     },
     // 加载组织信息
     loadOrgList() {
-      OrganizationService.getOrganizations()
+      const {id} = {id: '5acde94384f19c2d5cae9b02'}
+      OrganizationService.getOrganizationsById({id: id})
+        .then((res) => {
+          console.log(res)
+          this.rows = [res]
+        })
+        .catch(() => {
+          this.$Message.error('获取组织信息失败！')
+        })
+    },
+    // 下一步 跳转到人员数据上传
+    next() {
+      const {id} = this.$route.query
+      this.$router.push({name: 'DataUpload', query: { id: id }})
     }
   }
 }
