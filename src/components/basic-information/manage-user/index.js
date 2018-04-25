@@ -78,6 +78,7 @@ export default {
         mobile: '',
         email: '',
         note: '',
+        type: '',
         status: ''
       },
       ruleCustom: {
@@ -102,6 +103,9 @@ export default {
         email: [
           { required: true, message: '请输入用户邮箱', trigger: 'blur' },
           { type: 'email', message: '邮箱格式错误', trigger: 'blur' }
+        ],
+        type: [
+          { required: true, message: '请选择用户权限', trigger: 'blur' }
         ],
         status: [
           { required: true, message: '请选择用户状态', trigger: 'blur' }

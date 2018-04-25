@@ -12,7 +12,7 @@
           </i-input>
         </div>
         <div>
-          <Table :loading="tableLoading" :columns="columns" :data="rows"></Table>
+          <Table stripe border :loading="tableLoading" :columns="columns" :data="rows"></Table>
         </div>
         <div class="table-page">
           <Page v-show="rows.length" :total="total" :current="current" :page-size="tLimit"  @on-change="changePage" show-elevator></Page>

@@ -1,6 +1,9 @@
 /**
  * Created by hj on 2018/3/30.
  */
+// import OrganizationService from '@/services/organization.service'
+import researchManage from '@/services/researchManage.service'
+import OrganizationService from '@/services/organization.service'
 
 export default {
   data() {
@@ -23,21 +26,38 @@ export default {
           key: 'extraRate'
         }
       ],
-      rows: [],
+      surveyColumns: {
+        surveyDocId: '',
+        startDate: '',
+        endDate: '',
+        autoResend: '',
+        resendInterval: '',
+        status: '',
+        orgIds: ''
+      },
       loading: true,
       tableLoading: false,
       record: {}
     }
   },
   created() {
-    this.loadOrglist()
-    console.log(this.$store.state.orgInfo)
+    this.loadSurveyList()
   },
   methods: {
-    // 加载数据
-    loadOrglist() {
-      this.tableLoading = true
-      this.rows = [this.$store.state.orgInfo]
+    // 加载调研信息
+    loadSurveyList() {
+      const {id} = this.$route.query
+      researchManage.getResearchById({id: id})
+        .then((res) => {
+          this.surveyColumns = res
+        })
+        .catch(() => {
+          this.$Message.error('获取调研信息失败！')
+        })
+    },
+    // 加载组织信息
+    loadOrgList() {
+      OrganizationService.getOrganizations()
     }
   }
 }

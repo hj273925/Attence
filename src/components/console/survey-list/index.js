@@ -11,13 +11,20 @@ export default {
     return {
       columns: [
         {
-          type: 'selection',
-          width: 60,
-          align: 'center'
-        },
-        {
           title: '调研名称',
-          key: 'name'
+          key: 'name',
+          render: (h, params) => {
+            return h('a', {
+              style: {
+                color: 'blue'
+              },
+              on: {
+                click: () => {
+                  this.clickRow(params.row)
+                }
+              }
+            }, params.row.name)
+          }
         },
         {
           title: '状态',
@@ -81,6 +88,10 @@ export default {
         .finally(() => {
           this.tableLoading = false
         })
+    },
+    // 单击表格
+    clickRow(data) {
+      this.$router.push({name: 'ResearchInformation', query: { id: data.id }})
     },
     // 搜索数据
     searchSurveys: debounce(function () {

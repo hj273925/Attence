@@ -91,7 +91,7 @@ export default {
           this.total = res.totalNumber
         })
         .catch(() => {
-          this.$Message.error('获取问卷列表失败！')
+          this.$Message.error('获取调研列表失败！')
         })
         .finally(() => {
           this.tableLoading = false
@@ -111,7 +111,7 @@ export default {
       console.log(value)
       this.$router.push({name: 'SurveyIntercalate', query: { id: value.id }})
     },
-    // 删除问卷
+    // 删除调研事件
     deleteResearch() {
       let selections = []
       this.selected.forEach((value) => {

@@ -56,6 +56,12 @@
         <FormItem label="备注" prop="note">
           <Input type="text" v-model="formCustom.note"></Input>
         </FormItem>
+        <FormItem label="权限" prop="type">
+          <RadioGroup v-model="formCustom.type">
+              <Radio label="ORG_ADMIN">单位管理员</Radio>
+              <Radio label="ORG_MEMBER">普通员工</Radio>
+          </RadioGroup>
+        </FormItem>
         <FormItem label="状态" prop="status">
           <RadioGroup v-model="formCustom.status">
               <Radio label="ON">启用</Radio>
