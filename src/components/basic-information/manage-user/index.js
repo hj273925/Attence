@@ -111,6 +111,7 @@ export default {
           { required: true, message: '请选择用户状态', trigger: 'blur' }
         ]
       },
+      rows: [],
       selectList: [],
       selected: [],
       loading: true,

@@ -4,7 +4,7 @@
       <BreadcrumbItem>调研管理</BreadcrumbItem>
       <BreadcrumbItem>调研信息</BreadcrumbItem>
     </Breadcrumb>
-    <Content :style="{padding: '24px', minHeight: '280px', background: '#fff'}">
+    <Content :style="{padding: '24px', background: '#fff'}">
       <div class="table-container">
         <Form label-position="left" :label-width="100" :model="surveyColumns">
           <FormItem label="问卷">
@@ -25,7 +25,8 @@
             <span><b>状态</b>：{{surveyColumns.status}}</span>
           </FormItem>
           <FormItem label="筛选参数">
-            <Table :columns="columns" ></Table>
+            <Table border stripe :columns="columns" :data="rows"></Table>
+            <Button type="primary" @click="next">下一步</Button>
           </FormItem>
         </Form>
       </div>
