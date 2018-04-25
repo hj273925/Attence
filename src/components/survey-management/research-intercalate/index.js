@@ -20,7 +20,7 @@ export default {
   data() {
     return {
       data: [],
-      current: 0
+      current: 1
     }
   },
   created() {

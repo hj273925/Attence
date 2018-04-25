@@ -207,6 +207,9 @@
 <script src="./index.js"></script>
 
 <style>
+  .ivu-table-cell .ivu-input-number{
+    width: 60px !important;
+  }
   .tool-list{
     padding-top: 20px;
     text-align: center;

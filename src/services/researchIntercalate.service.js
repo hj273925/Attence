@@ -8,7 +8,14 @@ class ResearchIntercalate {
   constructor() {
     this.api = api
   }
-
+  // 获取开放状态的问卷列表
+  getQuestionNaire() {
+    return this.api.post('/surveydoc/findByStatusON')
+  }
+  // 创建调研
+  createReasearch(params) {
+    return this.api.post('/survey/create', params)
+  }
   getResearch(keyword, pageSize, curPage) {
     return this.api.post('/org/query', qs.stringify({keyword, pageSize, curPage}))
   }

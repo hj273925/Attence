@@ -24,7 +24,16 @@
         <Checkbox :label="item.label" v-for="item in record.items" :key="item.label"></Checkbox>
       </CheckboxGroup>
       <div v-if="record.nodeType === 'Q_MATRIX'">
-
+        <table border="1" cellSpacing="0" class="ivu-table">
+          <tr>
+            <th>选项</th>
+            <th v-for="item in record.rows">{{item}}</th>
+          </tr>
+          <tr v-for="item in record.cols">
+            <th>{{item}}</th>
+            <th v-for="item in record.scores">{{item}}分</th>
+          </tr>
+        </table>
       </div>
       <p v-if="record.nodeType === 'NOTE'">{{record.content}}</p>
     </Card>
@@ -33,15 +42,25 @@
 
 <script src="./index.js"></script>
 
-<style scoped="">
+<style scoped>
   .title{
     font-weight: bolder;
     margin-bottom: 20px;
   }
-  .btn-group{
+  .btn-group {
     position: absolute;
-    top:0px;
+    top: 0px;
     right: 0px;
+  }
+  table th {
+    padding: 0px 18px;
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+    word-break: break-all;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
   }
 </style>
 
