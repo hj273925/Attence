@@ -44,7 +44,10 @@ export default {
     },
     // 点击页脚触发
     next() {
-      this.$emit('changePage')
+      this.$emit('next')
+    },
+    prev() {
+      this.$emit('prev')
     }
   }
 }

@@ -13,10 +13,10 @@
         <Step title="填写进度" icon="email"></Step>
       </Steps>
       <div class="step-content">
-        <QuestionnaireSetting v-if="current === 0" @changePage="next"/>
-        <DataUpload v-if="current === 1" @changePage="next"/>
-        <SampleSelection v-if="current === 2" @changePage="next"/>
-        <QuestionnaireDistribution v-if="current === 3" @changePage="next"/>
+        <QuestionnaireSetting v-if="current === 0" @next="next" />
+        <DataUpload v-if="current === 1" @next="next" @prev="prev"/>
+        <SampleSelection v-if="current === 2" @next="next" @prev="prev"/>
+        <QuestionnaireDistribution v-if="current === 3" @next="next" @prev="prev"/>
         <FillProgress v-if="current === 4"/>
       </div>
     </Content>

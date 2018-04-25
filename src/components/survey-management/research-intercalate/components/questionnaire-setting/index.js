@@ -105,7 +105,7 @@ export default {
           ResearchIntercalate.createReasearch(this.record)
             .then(() => {
               this.$Message.success('创建调研成功！')
-              this.$emit('changePage')
+              this.$emit('next')
             })
             .catch(() => {
               this.$Message.error('创建调研失败！')

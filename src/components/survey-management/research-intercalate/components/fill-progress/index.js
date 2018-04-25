@@ -60,10 +60,6 @@ export default {
         .finally(() => {
           this.tableLoading = false
         })
-    },
-    // 点击页脚触发
-    changePage(index) {
-      console.log(index)
     }
   }
 }
