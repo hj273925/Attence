@@ -6,9 +6,8 @@ import router from './router'
 import Cookies from 'js-cookie'
 import store from './store/index'
 import './core/mixins/mixin'
+import util from './components/tool/util'
 import axios from 'axios'
-import VueNoty from 'vuejs-noty'
-import 'vuejs-noty/dist/vuejs-noty.css'
 import './assets/css/table.css'
 
 import iView from 'iview'
@@ -18,12 +17,8 @@ import Vuerify from 'vuerify'
 Vue.config.productionTip = false
 Vue.use(iView)
 Vue.use(Vuerify)
+Vue.use(util)
 
-Vue.use(VueNoty, {
-  timeout: 2000,
-  progressBar: true,
-  layout: 'topCenter',
-})
 Vue.prototype.$axios = axios.create({
   timeout: 10000,
   withCredentials: true

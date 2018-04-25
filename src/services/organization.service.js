@@ -5,7 +5,6 @@ class OrganizationService {
   constructor() {
     this.api = api
   }
-
   getOrganizations(keyword, pageSize, curPage) {
     return this.api.post('/org/query', qs.stringify({keyword, pageSize, curPage}))
   }

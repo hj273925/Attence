@@ -13,14 +13,11 @@
         <Step title="填写进度" icon="email"></Step>
       </Steps>
       <div class="step-content">
-        <QuestionnaireSetting v-if="current === 0"/>
+        <QuestionnaireSetting v-if="current === 0" @changePage="next"/>
         <DataUpload v-if="current === 1" @changePage="next"/>
         <SampleSelection v-if="current === 2" @changePage="next"/>
         <QuestionnaireDistribution v-if="current === 3" @changePage="next"/>
         <FillProgress v-if="current === 4"/>
-      </div>
-      <div>
-        <Button type="primary" @click="next">Next step</Button>
       </div>
     </Content>
   </div>

@@ -245,10 +245,7 @@
 
 <script src="./index.js"></script>
 
-<style  scoped>
-  .ivu-table-cell .ivu-input-number{
-    width: 60px !important;
-  }
+<style scoped>
   .menu-list{
     height: calc(100vh - 185px);
     min-height: 500px;

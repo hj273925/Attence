@@ -1,7 +1,6 @@
 /**
  * Created by hj on 2018/3/30.
  */
-import ResearchIntercalate from '@/services/researchIntercalate.service'
 
 export default {
   data() {
@@ -42,16 +41,6 @@ export default {
     // 加载数据
     loadUserlist() {
       this.tableLoading = true
-      ResearchIntercalate.getOrganizations()
-        .then((res) => {
-          this.data = res.items
-        })
-        .catch(() => {
-          this.$Message.error('获取用户列表失败！')
-        })
-        .finally(() => {
-          this.tableLoading = false
-        })
     },
     // 点击页脚触发
     next() {
