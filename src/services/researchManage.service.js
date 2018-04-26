@@ -16,9 +16,9 @@ class ResearchManageService {
   getResearchById(params) {
     return this.api.post('/survey/findById', qs.stringify(params))
   }
-  // 根据组织id查询调研事件
-  getSurveyByOrgId(keyword, pageSize, curPage) {
-    return this.api.post('/survey/findByOrgId', qs.stringify({keyword, pageSize, curPage}))
+  // 登陆后根据组织id查询调研事件
+  getSurveyByOrgId(keyword, pageSize, curPage, orgIds) {
+    return this.api.post('/survey/findByOrgId', qs.stringify({keyword, pageSize, curPage, orgIds}))
   }
   // 创建调研事件
   addResearch(params) {

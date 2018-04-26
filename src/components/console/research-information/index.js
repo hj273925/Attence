@@ -62,7 +62,7 @@ export default {
     // 下一步 跳转到人员数据上传
     next() {
       const {id} = this.$route.query
-      this.$router.push({name: 'DataUpload', query: { id: id }})
+      this.$router.push({name: 'DataUpload', query: { surveyId: id }})
     }
   }
 }

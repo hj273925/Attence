@@ -38,15 +38,14 @@ export default {
         }
       ],
       data: [],
-      params: {
-        id: ''
-      },
+      surveyId: {},
       file: null,
       loadingStatus: false
     }
   },
   created() {
     this.loadResearchList()
+    this.surveyId = this.$route.query
   },
   methods: {
     // 上传数据
@@ -60,7 +59,6 @@ export default {
     // 加载数据
     loadResearchList() {
       this.tableLoading = true
-      // const { tSearchWord, tLimit, current } = this
       ResearchIntercalate.getResearch()
         .then((res) => {
           this.rows = res.items

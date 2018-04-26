@@ -77,7 +77,8 @@ export default {
     loadSurveyByOrgId() {
       this.tableLoading = true
       const { tSearchWord, tLimit, current } = this
-      ResearchManage.getSurveyByOrgId(tSearchWord, tLimit, current)
+      let orgIds = JSON.parse(sessionStorage.getItem('orgInfo')).id
+      ResearchManage.getSurveyByOrgId(tSearchWord, tLimit, current, orgIds)
         .then((res) => {
           this.rows = res.items
           this.total = res.totalNumber
