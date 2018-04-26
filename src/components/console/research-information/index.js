@@ -3,7 +3,6 @@
  */
 // import OrganizationService from '@/services/organization.service'
 import researchManage from '@/services/researchManage.service'
-import OrganizationService from '@/services/organization.service'
 
 export default {
   data() {
@@ -58,15 +57,7 @@ export default {
     },
     // 加载组织信息
     loadOrgList() {
-      const {id} = {id: '5acde94384f19c2d5cae9b02'}
-      OrganizationService.getOrganizationsById({id: id})
-        .then((res) => {
-          console.log(res)
-          this.rows = [res]
-        })
-        .catch(() => {
-          this.$Message.error('获取组织信息失败！')
-        })
+      this.rows = [JSON.parse(sessionStorage.getItem('orgInfo'))]
     },
     // 下一步 跳转到人员数据上传
     next() {

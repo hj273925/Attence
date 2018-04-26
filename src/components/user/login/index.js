@@ -51,7 +51,8 @@ export default {
           LoginService.Login(params)
             .then((res) => {
               this.$store.commit('setOrgInfo', res.org)
-              // sessionStorage.setItem('orgInfo', JSON.stringify(res.org))
+              sessionStorage.setItem('orgInfo', JSON.stringify(res.org))
+              console.log(sessionStorage.getItem('orgInfo'))
               this.$store.commit('setUserInfo', res.user)
               this.checkIditify(res.userType)
             })
