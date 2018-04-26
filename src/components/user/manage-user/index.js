@@ -6,9 +6,9 @@ const data = {
   ManageUser: '用户管理',
   DataDictionary: '数据字典',
   ManageQuestionnaire: '问卷信息',
-  QuestionnaireDesign: '问卷设计',
-  SurveyManagement: '样本成分分析',
-  SurveyIntercalate: '调研设置',
+  QuestionnaireDesign: '问卷信息',
+  SurveyManagement: '调研信息',
+  SurveyIntercalate: '调研信息',
   SampleComposition: '样本成分分析',
   SatisfactionComparison: '满意度对比',
   SatisfactionDistribution: '满意度分布',
@@ -31,14 +31,12 @@ export default {
         }, {
           title: '问卷管理',
           subMenu: [
-            {name: '问卷信息', path: 'ManageQuestionnaire'},
-            {name: '问卷设计', path: 'QuestionnaireDesign'}
+            {name: '问卷信息', path: 'ManageQuestionnaire'}
           ]
         }, {
           title: '调研管理',
           subMenu: [
-            {name: '调研信息', path: 'SurveyManagement'},
-            {name: '调研设置', path: 'SurveyIntercalate'}
+            {name: '调研信息', path: 'SurveyManagement'}
           ]
         }, {
           title: '数据分析',
