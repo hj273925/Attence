@@ -14,7 +14,7 @@
         <Upload :before-upload="handleUpload"
                 :format="['xlsx']"
                 :on-success="handleSuccess"
-                action="http://10.100.50.102:8080/staff/upload"
+                :action='uploadUrl'
                 :data='surveyId'
                 style='display:inline-block'>
           <Button type="primary" icon="ios-cloud-upload-outline">上传数据</Button>

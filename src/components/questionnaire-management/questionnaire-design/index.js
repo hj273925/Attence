@@ -240,7 +240,9 @@ export default {
     editQuestionnaire() {
       this.$refs['formCustom'].validate((valid) => {
         if (valid) {
-          ManageQuestionnaire.editQuestionnaire(this.record)
+          let params = JSON.parse(JSON.stringify(this.record))
+          params.id = this.questionNaireId
+          ManageQuestionnaire.editQuestionnaire(params)
             .then((res) => {
               this.$Message.success('问卷编辑成功！')
             })

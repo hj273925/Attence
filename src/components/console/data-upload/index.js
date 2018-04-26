@@ -43,6 +43,11 @@ export default {
       loadingStatus: false
     }
   },
+  computed: {
+    uploadUrl() {
+      return `${process.env.BASE_URL}/staff/upload`
+    }
+  },
   created() {
     this.loadResearchList()
     this.surveyId = this.$route.query
