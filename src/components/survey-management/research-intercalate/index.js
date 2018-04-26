@@ -62,9 +62,12 @@ export default {
         this.current += 1
       }
     },
-    // 点击页脚触发
-    changePage(index) {
-      console.log(index)
+    prev() {
+      if (this.current === 0) {
+        this.current = 0
+      } else {
+        this.current -= 1
+      }
     }
   }
 }

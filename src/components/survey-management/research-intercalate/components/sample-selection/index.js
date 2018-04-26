@@ -62,7 +62,10 @@ export default {
         })
     },
     next() {
-      this.$emit('changePage')
+      this.$emit('next')
+    },
+    prev() {
+      this.$emit('prev')
     }
   }
 }
