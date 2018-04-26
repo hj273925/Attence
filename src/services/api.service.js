@@ -3,10 +3,12 @@ const baseUrl = process.env.BASE_URL
 class Processor {
   constructor(endPointURL, config = {}) {
     const axiosConfig = Object.assign({
-      baseURL: endPointURL
+      baseURL: endPointURL,
+      withCredentials: true
     }, config)
     this.rest = axios.create(axiosConfig)
   }
+
   get(url, params, config) {
     const getConfig = {}
     if (params) Object.assign(getConfig, { params })
@@ -42,6 +44,8 @@ class APIService extends Processor {
       res => {
         if (res.status === 200) {
           return res.data
+        }else if(res.status === 403 ){
+           //TODO: redirect to login page.
         }
         return res
       }
