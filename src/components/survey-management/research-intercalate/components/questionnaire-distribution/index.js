@@ -69,7 +69,7 @@ export default {
     // 加载数据
     loadUserlist() {
       this.tableLoading = true
-      ResearchIntercalate.getOrganizations()
+      ResearchIntercalate.getQuestionNaire()
         .then((res) => {
           this.data = res.items
         })
