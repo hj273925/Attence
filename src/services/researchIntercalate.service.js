@@ -16,6 +16,10 @@ class ResearchIntercalate {
   createReasearch(params) {
     return this.api.post('/survey/create', params)
   }
+  // 人员数据上传
+  getData(params) {
+    return this.api.post('/survey/staffUploadStatus', qs.stringify(params))
+  }
   getResearch(keyword, pageSize, curPage) {
     return this.api.post('/org/query', qs.stringify({keyword, pageSize, curPage}))
   }

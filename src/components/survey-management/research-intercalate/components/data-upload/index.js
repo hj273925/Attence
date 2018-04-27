@@ -1,11 +1,11 @@
 /**
  * Created by hj on 2018/3/30.
  */
-
+import ResearchIntercalate from '@/services/researchIntercalate.service'
 export default {
   data() {
     return {
-      data: [],
+      rows: [],
       columns: [
         {
           title: '单位',
@@ -41,6 +41,13 @@ export default {
     // 加载数据
     loadUserlist() {
       this.tableLoading = true
+      ResearchIntercalate.getData({surveyId: '5add4e5484f19c2b78743945'})
+        .then(res => {
+          this.rows = res
+        })
+        .catch(() => {
+          this.$Message.error('获取数据列表失败！')
+        })
     },
     // 点击页脚触发
     next() {
