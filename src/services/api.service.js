@@ -10,6 +10,7 @@ class Processor {
     this.rest = axios.create(axiosConfig)
     this.initRest()
   }
+
   get(url, params, config) {
     const getConfig = {}
     if (params) Object.assign(getConfig, { params })
