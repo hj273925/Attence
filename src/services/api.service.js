@@ -39,8 +39,9 @@ class Processor {
           return res.data
         } else if (res.status === 403) {
           router.push({name: 'App'})
+        } else {
+          return res
         }
-        return res
       }
     )
   }

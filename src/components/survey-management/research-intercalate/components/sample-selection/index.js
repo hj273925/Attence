@@ -6,23 +6,23 @@ import ResearchIntercalate from '@/services/researchIntercalate.service'
 export default {
   data() {
     return {
-      data: [],
+      rows: [],
       columns: [
         {
           title: '单位',
-          key: 'name'
+          key: 'fullName'
         },
         {
           title: '规模',
-          key: 'orgId'
+          key: 'scale'
         },
         {
           title: '抽样率',
-          key: 'title'
+          key: 'sampleRate'
         },
         {
           title: '冗余率',
-          key: 'mobile'
+          key: 'extraRate'
         },
         {
           title: '员工数量',
@@ -38,9 +38,23 @@ export default {
         },
         {
           title: '状态',
-          key: 'status'
+          key: 'status',
+          render(h, params) {
+            let cor = params.row.status === 'ON' ? 'blue' : 'red'
+            let status = params.row.status === 'ON' ? '已确认' : '未确认'
+            return h('Tag', {
+              props: {
+                color: cor
+              }
+            }, status)
+          }
         }
       ]
+    }
+  },
+  computed: {
+    surveyId() {
+      return this.$route.query.id || sessionStorage.getItem('surveyId')
     }
   },
   created() {
@@ -50,12 +64,12 @@ export default {
     // 加载数据
     loadUserlist() {
       this.tableLoading = true
-      ResearchIntercalate.getOrganizations()
-        .then((res) => {
-          this.data = res.items
+      ResearchIntercalate.getFilterList({surveyId: this.surveyId})
+        .then(res => {
+          this.rows = res
         })
         .catch(() => {
-          this.$Message.error('获取用户列表失败！')
+          this.$Message.error('获取数据列表失败！')
         })
         .finally(() => {
           this.tableLoading = false

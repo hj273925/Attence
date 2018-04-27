@@ -75,10 +75,6 @@ export default {
     deleteTag(name) {
       const index = this.tagList.indexOf(name)
       this.tagList.splice(index, 1)
-    },
-    // 点击页脚触发
-    changePage(index) {
-      console.log(index)
     }
   }
 }

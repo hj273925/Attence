@@ -9,29 +9,43 @@ export default {
       columns: [
         {
           title: '单位',
-          key: 'name'
+          key: 'fullName'
         },
         {
           title: '规模',
-          key: 'orgId'
+          key: 'scale'
         },
         {
           title: '抽样率',
-          key: 'title'
+          key: 'sampleRate'
         },
         {
           title: '冗余率',
-          key: 'mobile'
+          key: 'extraRate'
         },
         {
           title: '上传员工数量',
-          key: 'count'
+          key: 'extraNum'
         },
         {
           title: '状态',
-          key: 'status'
+          key: 'status',
+          render(h, params) {
+            let cor = params.row.status === 'ON' ? 'blue' : 'red'
+            let status = params.row.status === 'ON' ? '已确认' : '未确认'
+            return h('Tag', {
+              props: {
+                color: cor
+              }
+            }, status)
+          }
         }
       ]
+    }
+  },
+  computed: {
+    surveyId() {
+      return this.$route.query.id || sessionStorage.getItem('surveyId')
     }
   },
   created() {
@@ -41,7 +55,7 @@ export default {
     // 加载数据
     loadUserlist() {
       this.tableLoading = true
-      ResearchIntercalate.getData({surveyId: '5add4e5484f19c2b78743945'})
+      ResearchIntercalate.getDataList({surveyId: this.surveyId})
         .then(res => {
           this.rows = res
         })
