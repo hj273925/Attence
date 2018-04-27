@@ -49,6 +49,10 @@ export default {
           this.$Message.error('获取数据列表失败！')
         })
     },
+    // 上传数据
+    upload() {
+      console.log('ok')
+    },
     // 点击页脚触发
     next() {
       this.$emit('next')

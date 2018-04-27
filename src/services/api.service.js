@@ -3,7 +3,8 @@ const baseUrl = process.env.BASE_URL
 class Processor {
   constructor(endPointURL, config = {}) {
     const axiosConfig = Object.assign({
-      baseURL: endPointURL
+      baseURL: endPointURL,
+      withCredentials: true
     }, config)
     this.rest = axios.create(axiosConfig)
   }
@@ -42,6 +43,8 @@ class APIService extends Processor {
       res => {
         if (res.status === 200) {
           return res.data
+        } else if (res.status === 403) {
+          console.log('ok')
         }
         return res
       }
