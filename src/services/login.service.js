@@ -10,7 +10,7 @@ class LoginService {
   }
   // 发送信息
   sendSmsPwd(params) {
-    return this.api.post('/auth/sendSmsPwd', qs.stringify(params), {withCredentials: true})
+    return this.api.post('/auth/sendSmsPwd', qs.stringify(params))
   }
   // 登录
   Login(params) {

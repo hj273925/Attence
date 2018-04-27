@@ -20,7 +20,7 @@
           <Button type="primary" icon="ios-cloud-upload-outline">上传数据</Button>
         </Upload>
         <div>
-          <Table border stripe ref="selection" :columns="columns" :data="data"></Table>
+          <Table border stripe ref="selection" :columns="columns" :data="rows"></Table>
         </div>
         <div class="table-page">
 

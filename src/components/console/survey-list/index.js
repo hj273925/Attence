@@ -1,7 +1,7 @@
 /**
  * Created by hj on 2018/3/30.
  */
-import ResearchManage from '@/services/ResearchManage.service'
+import ResearchManage from '@/services/researchManage.service'
 import table from '@/core/mixins/table'
 import { debounce } from 'lodash'
 
