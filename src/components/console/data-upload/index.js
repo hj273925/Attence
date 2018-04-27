@@ -37,6 +37,7 @@ export default {
           key: 'degree'
         }
       ],
+      rows: [],
       data: [],
       surveyId: {},
       file: null,
@@ -64,7 +65,9 @@ export default {
     // 加载数据
     loadResearchList() {
       this.tableLoading = true
-      ResearchIntercalate.getResearch()
+      const { tSearchWord, tLimit, current } = this
+      const {surveyId} = this.$route.query
+      ResearchIntercalate.getResearch(surveyId, tSearchWord, tLimit, current)
         .then((res) => {
           this.rows = res.items
           this.total = res.totalNumber
@@ -79,7 +82,7 @@ export default {
     // 分页
     changePage(index) {
       this.current = index
-      this.loadUserlist()
+      this.loadResearchList()
     }
   }
 }
