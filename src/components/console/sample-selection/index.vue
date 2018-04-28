@@ -27,17 +27,17 @@
         </Card>
         <div class="table-toolbar">
           <ButtonGroup>
-            <Button type="primary" @click="filtrate">筛选</Button>
+            <Button type="primary" @click="filtrate">开始筛选</Button>
             <Button @click="clean">清除</Button>
           </ButtonGroup>
           <ButtonGroup style="margin-left: 20px">
             <Button type="primary">补充</Button>
-            <Button>删除</Button>
+            <Button @click="cleanByIds">删除</Button>
           </ButtonGroup>
           <Button class="pull-right" type="primary" >确认筛选完毕</Button>
         </div>
         <div>
-          <Table border stripe ref="selection" :columns="columns" :data="rows"></Table>
+          <Table border stripe @on-selection-change="selectChange" ref="selection" :columns="columns" :data="rows"></Table>
         </div>
         <div class="table-page">
           <Page  show-elevator></Page>

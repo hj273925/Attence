@@ -45,7 +45,8 @@ export default {
         sample: '',
         extraNum: ''
       },
-      rows: []
+      rows: [],
+      selected: []
     }
   },
   created() {
@@ -65,7 +66,7 @@ export default {
       ResearchIntercalate.doSelectStaff(surveyId, id, this.sampleColumns.sample)
         .then((res) => {
           this.$Message.success('筛选成功！')
-          // this.loadResearchList()
+          this.loadStaffList()
         })
         .catch(() => {
           this.$Message.error('筛选失败！')
@@ -78,20 +79,42 @@ export default {
       ResearchIntercalate.clean(surveyId, id)
         .then((res) => {
           this.$Message.success('选中标记已清除！')
+          this.loadStaffList()
         })
         .catch(() => {
           this.$Message.error('已选中标记失败！')
         })
     },
-    // 加载员工数据
-    loadResearchList() {
-      this.tableLoading = true
-      const { tSearchWord, tLimit, current } = this
+    // 多选触发事件
+    selectChange(selection) {
+      this.selected = selection
+    },
+    // 清除指定人员的选中状态
+    cleanByIds() {
+      let selections = []
+      this.selected.forEach((selected) => {
+        selections.push(selected.id)
+      })
+      console.log(selections)
       const {surveyId} = this.$route.query
-      ResearchIntercalate.getResearch(surveyId, tSearchWord, tLimit, current)
+      const {id} = JSON.parse(sessionStorage.getItem('orgInfo'))
+      ResearchIntercalate.cleanByIds(surveyId, id, selections)
+        .then((res) => {
+          this.$Message.success('选中标记已清除！')
+          this.loadStaffList()
+        })
+        .catch(() => {
+          this.$Message.error('已选中标记失败！')
+        })
+    },
+    // 加载选中的员工数据
+    loadStaffList() {
+      this.tableLoading = true
+      const {surveyId} = this.$route.query
+      const {id} = JSON.parse(sessionStorage.getItem('orgInfo'))
+      ResearchIntercalate.queryBySelected(surveyId, id)
         .then((res) => {
           this.rows = res.items
-          this.total = res.totalNumber
         })
         .catch(() => {
           this.$Message.error('获取用户列表失败！')

@@ -24,9 +24,17 @@ class ResearchIntercalate {
   doSelectStaff(surveyId, orgId, total) {
     return this.api.post('/staff/doSelectStaff', qs.stringify({surveyId, orgId, total}))
   }
-  // 点击清除按钮清除已选中人员的选中标记
+  // 查询筛选后的员工
+  queryBySelected(surveyId, orgId) {
+    return this.api.post('/staff/queryBySelected', qs.stringify({surveyId, orgId}))
+  }
+  // 清除全部人员的选中标记
   clean(surveyId, orgId) {
     return this.api.post('/staff/cleanSelectedStaff', qs.stringify({surveyId, orgId}))
+  }
+  // 清除指定人员的选中标记
+  cleanByIds(surveyId, orgId, staffIds) {
+    return this.api.post('/staff/cleanByIds', qs.stringify({surveyId, orgId, staffIds}))
   }
   // 人员数据上传
   getData(params) {
