@@ -11,7 +11,8 @@
           <Button  type="primary" >保存</Button>
           <Button  type="primary" >删除</Button>
         </div>
-        <Upload :before-upload="handleUpload"
+        <Upload :with-credentials='true'
+                :before-upload="handleUpload"
                 :format="['xlsx']"
                 :on-success="handleSuccess"
                 :action='uploadUrl'
@@ -21,6 +22,7 @@
         </Upload>
         <div>
           <Table border stripe ref="selection" :columns="columns" :data="rows"></Table>
+          <Button type="primary" @click="next">下一步</Button>
         </div>
         <div class="table-page">
 

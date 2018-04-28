@@ -10,11 +10,25 @@
           <p slot="title">
             抽样信息
           </p>
+          <template :model="sampleColumns">
+            <Row>
+                <Col span="12">
+                  <p><span>总样本：{{sampleColumns.scale}}</span></p>
+                  <p><span>抽样率：{{sampleColumns.sampleRate}}%</span></p>
+                  <p><span>冗余率：{{sampleColumns.extraRate}}%</span></p>
+                </Col>
+                <Col span="12">
+                <p><span>抽样数量：{{sampleColumns.sampleNum}}</span></p>
+                <p><span>抽样：{{sampleColumns.sample}}</span></p>
+                <p><span>冗余：{{sampleColumns.extraNum}}</span></p>
+                </Col>
+            </Row>
+          </template>
         </Card>
         <div class="table-toolbar">
           <ButtonGroup>
-            <Button type="primary">筛选</Button>
-            <Button>清除</Button>
+            <Button type="primary" @click="filtrate">筛选</Button>
+            <Button @click="clean">清除</Button>
           </ButtonGroup>
           <ButtonGroup style="margin-left: 20px">
             <Button type="primary">补充</Button>
@@ -23,7 +37,7 @@
           <Button class="pull-right" type="primary" >确认筛选完毕</Button>
         </div>
         <div>
-          <Table border stripe ref="selection" :columns="columns" :data="data"></Table>
+          <Table border stripe ref="selection" :columns="columns" :data="rows"></Table>
         </div>
         <div class="table-page">
           <Page  show-elevator></Page>

@@ -40,6 +40,7 @@ export default {
       rows: [],
       data: [],
       surveyId: {},
+      orgId: '',
       file: null,
       loadingStatus: false
     }
@@ -50,7 +51,6 @@ export default {
     }
   },
   created() {
-    this.loadResearchList()
     this.surveyId = this.$route.query
   },
   methods: {
@@ -61,13 +61,15 @@ export default {
     handleSuccess(file, url) {
       console.log(file, url)
       this.$Message.success('上传文件成功！')
+      this.loadResearchList()
     },
     // 加载数据
     loadResearchList() {
       this.tableLoading = true
       const { tSearchWord, tLimit, current } = this
       const {surveyId} = this.$route.query
-      ResearchIntercalate.getResearch(surveyId, tSearchWord, tLimit, current)
+      const {id} = JSON.parse(sessionStorage.getItem('orgInfo'))
+      ResearchIntercalate.getResearch(surveyId, id, tSearchWord, tLimit, current)
         .then((res) => {
           this.rows = res.items
           this.total = res.totalNumber
@@ -83,6 +85,11 @@ export default {
     changePage(index) {
       this.current = index
       this.loadResearchList()
+    },
+    // 下一步 跳转到样本筛选
+    next() {
+      const {surveyId} = this.$route.query
+      this.$router.push({name: 'SampleSelection', query: { surveyId: surveyId }})
     }
   }
 }

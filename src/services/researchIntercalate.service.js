@@ -16,8 +16,17 @@ class ResearchIntercalate {
   createReasearch(params) {
     return this.api.post('/survey/create', params)
   }
-  getResearch(surveyId, keyword, pageSize, curPage) {
-    return this.api.post('/staff/query', qs.stringify({surveyId, keyword, pageSize, curPage}))
+  // 人员数据上传后根据调研事件和组织id进行查询
+  getResearch(surveyId, orgId, keyword, pageSize, curPage) {
+    return this.api.post('/staff/query', qs.stringify({surveyId, orgId, keyword, pageSize, curPage}))
+  }
+  // 筛选员工数据
+  doSelectStaff(surveyId, orgId, total) {
+    return this.api.post('/staff/doSelectStaff', qs.stringify({surveyId, orgId, total}))
+  }
+  // 点击清除按钮清除已选中人员的选中标记
+  clean(surveyId, orgId) {
+    return this.api.post('/staff/cleanSelectedStaff', qs.stringify({surveyId, orgId}))
   }
   // 人员数据上传
   getData(params) {
