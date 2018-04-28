@@ -56,17 +56,39 @@ export default {
       }
     }
   },
+  computed: {
+    surveyId() {
+      return this.$route.query.id || sessionStorage.getItem('surveyId')
+    }
+  },
   created() {
     this.loadOrglist()
     this.loadQuestionnaireList()
   },
   methods: {
+    // 获取调研信息
+    loadResearchInfo() {
+      const {id} = this.$route.query
+      ResearchIntercalate.getResearchById({id: id})
+        .then((res) => {
+          this.record = res
+          this.record.id = res.surveyDocId
+          this.record.date = [res.startDate, res.endDate]
+          this.record.status = res.status === 'ON' ?  true : false
+        })
+        .catch(() => {
+          this.$Message.error('获取调研信息失败！')
+        })
+    },
     // 加载单位列表
     loadOrglist() {
       this.tableLoading = true
       OrganizationService.getOrganizations()
         .then((res) => {
           this.rows = res.items
+          if (this.$route.query.id) {
+            this.loadResearchInfo()
+          }
         })
         .catch(() => {
           this.$Message.error('获取单位列表失败！')
@@ -103,8 +125,9 @@ export default {
           this.record.startDate = this.formatDate('yyy-MM-dd hh:mm:ss', this.record.date[0])
           this.record.endDate = this.formatDate('yyy-MM-dd hh:mm:ss', this.record.date[1])
           ResearchIntercalate.createReasearch(this.record)
-            .then(() => {
+            .then((res) => {
               this.$Message.success('创建调研成功！')
+              sessionStorage.setItem('surveyId', res.id)
               this.$emit('next')
             })
             .catch(() => {
@@ -112,6 +135,10 @@ export default {
             })
         }
       })
+    },
+    // 点击下一步
+    next() {
+      this.$emit('next')
     }
   }
 }

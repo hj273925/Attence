@@ -1,7 +1,6 @@
 /**
  * Created by hj on 2018/3/30.
  */
-// import OrganizationService from '@/services/organization.service'
 import researchManage from '@/services/researchManage.service'
 
 export default {

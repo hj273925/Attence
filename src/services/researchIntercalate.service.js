@@ -8,6 +8,10 @@ class ResearchIntercalate {
   constructor() {
     this.api = api
   }
+  // 根据id查询调研事件
+  getResearchById(params) {
+    return this.api.post('/survey/findById', qs.stringify(params))
+  }
   // 获取开放状态的问卷列表
   getQuestionNaire() {
     return this.api.post('/surveydoc/findByStatusON')
@@ -37,20 +41,20 @@ class ResearchIntercalate {
     return this.api.post('/staff/cleanByIds', qs.stringify({surveyId, orgId, staffIds}))
   }
   // 人员数据上传
-  getData(params) {
+  getDataList(params) {
     return this.api.post('/survey/staffUploadStatus', qs.stringify(params))
   }
-
-  addResearch(params) {
-    return this.api.post('/org/create', params)
+  // 获取筛选列表
+  getFilterList(params) {
+    return this.api.post('/survey/staffUploadStatus', qs.stringify(params))
   }
-
-  editResearch(params) {
-    return this.api.post('/org/update', params)
+  // 获取发放列表
+  getFrantList(params) {
+    return this.api.post('/survey/staffUploadStatus', qs.stringify(params))
   }
-
-  deleteResearch(params) {
-    return this.api.post('/org/deleteAll', params)
+  //  获取进度列表
+  getProgressList(params) {
+    return this.api.post('/survey/staffUploadStatus', qs.stringify(params))
   }
 }
 

@@ -1,4 +1,5 @@
 import axios from 'axios'
+import router from '../router'
 const baseUrl = process.env.BASE_URL
 class Processor {
   constructor(endPointURL, config = {}) {
@@ -7,7 +8,9 @@ class Processor {
       withCredentials: true
     }, config)
     this.rest = axios.create(axiosConfig)
+    this.initRest()
   }
+
   get(url, params, config) {
     const getConfig = {}
     if (params) Object.assign(getConfig, { params })
@@ -30,25 +33,25 @@ class Processor {
   patch(url, data, config) {
     return this.rest.patch(url, data, config)
   }
-}
-
-class APIService extends Processor {
-  constructor() {
-    super(baseUrl)
-    this.axios = axios
-    this.initRest()
-  }
   initRest() {
     this.rest.interceptors.response.use(
       res => {
         if (res.status === 200) {
           return res.data
         } else if (res.status === 403) {
-          console.log('ok')
+          router.push({name: 'App'})
+        } else {
+          return res
         }
-        return res
       }
     )
+  }
+}
+
+class APIService extends Processor {
+  constructor() {
+    super(baseUrl)
+    this.axios = axios
   }
   request(config) {
     return axios.request(config)
