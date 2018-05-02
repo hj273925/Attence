@@ -18,11 +18,19 @@
             </Row>
           </FormItem>
           <FormItem label="其它参数">
-            <span><b>计划开始时间</b>：{{surveyColumns.startDate}}</span>
-            <span><b>计划结束时间</b>：{{surveyColumns.endDate}}</span></br>
-            <span><b>是否自动催填</b>：{{surveyColumns.autoResend}}</span>
-            <span><b>催填间隔</b>：{{surveyColumns.resendInterval}}天</span>
-            <span><b>状态</b>：{{surveyColumns.status}}</span>
+            <template>
+              <Row>
+                  <Col span="12">
+                    <p><span><b>计划开始时间：</b>{{surveyColumns.startDate}}</span></p>
+                    <p><span><b>是否自动催填：</b>{{surveyColumns.autoResend}}</span></p>
+                    <p><span><b>状态：</b>{{surveyColumns.status}}</span></p>
+                  </Col>
+                  <Col span="12">
+                  <p><span><b>计划结束时间：</b>{{surveyColumns.endDate}}</span></p>
+                  <p><span><b>催填间隔：</b>{{surveyColumns.resendInterval}}天</span></p>
+                  </Col>
+              </Row>
+            </template>
           </FormItem>
           <FormItem label="筛选参数">
             <Table border stripe :columns="columns" :data="rows"></Table>
