@@ -31,48 +31,7 @@
         <div class="tag-list">
           <Tag v-for="item in tagList" :key="item" :name="item" closable color="blue" @on-close="deleteTag">{{ item }}</Tag>
         </div>
-        <div class="ivu-table-wrapper">
-          <div class="ivu-table ivu-table-border">
-            <div class="ivu-table-body">
-              <table  cellSpacing="0" style="width: 100%">
-                <tr>
-                  <th>
-                    <div class="ivu-table-cell">
-                  <span>
-                    选项
-                  </span>
-                    </div>
-                  </th>
-                  <th v-for="item in tagList">
-                    <div class="ivu-table-cell">
-                  <span>
-                    {{item}}
-                  </span>
-                    </div>
-                  </th>
-                </tr>
-                <tbody class="ivu-table-tbody">
-                  <tr v-for="item,index in rows" :key="item" class="ivu-table-row">
-                    <td>
-                      <div class="ivu-table-cell">
-                    <span>
-                      {{item}}
-                    </span>
-                      </div>
-                    </td>
-                    <td v-for="item in tagList">
-                      <div class="ivu-table-cell">
-                    <span>
-                      {{item}}
-                    </span>
-                      </div>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
+        <Stable :rows="rows" :cols="tagList"/>
         <div class="table-page">
           <Button type="primary">导出</Button>
         </div>

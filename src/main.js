@@ -7,6 +7,7 @@ import Cookies from 'js-cookie'
 import store from './store/index'
 import './core/mixins/mixin'
 import util from './components/tool/util'
+import './core/components'
 import axios from 'axios'
 import './assets/css/table.css'
 

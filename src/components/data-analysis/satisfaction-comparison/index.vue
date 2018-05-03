@@ -35,7 +35,7 @@
           </div>
         </div>
         <div>
-          <Table :loading="tableLoading"  border :columns="columns" :data="data"></Table>
+          <Stable :rows="groupList" :cols="researchList"/>
         </div>
         <div class="table-page">
           <Button type="primary">导出</Button>

@@ -8,36 +8,6 @@ export default {
   data() {
     const {groupNameList, researchNameList} = this.$store.state
     return {
-      columns: [
-        {
-          title: '用户名',
-          key: 'name'
-        },
-        {
-          title: '单位',
-          key: 'orgId'
-        },
-        {
-          title: '职务',
-          key: 'title'
-        },
-        {
-          title: '手机',
-          key: 'mobile'
-        },
-        {
-          title: '邮箱',
-          key: 'email'
-        },
-        {
-          title: '状态',
-          key: 'status'
-        },
-        {
-          title: '创建时间',
-          key: 'createTime'
-        }
-      ],
       groupNameList,
       researchNameList,
       formInline: {

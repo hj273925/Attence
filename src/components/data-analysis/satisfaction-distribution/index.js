@@ -8,36 +8,6 @@ export default {
   data() {
     const {groupNameList, researchNameList, titleList} = this.$store.state
     return {
-      columns: [
-        {
-          title: '用户名',
-          key: 'name'
-        },
-        {
-          title: '单位',
-          key: 'orgId'
-        },
-        {
-          title: '职务',
-          key: 'title'
-        },
-        {
-          title: '手机',
-          key: 'mobile'
-        },
-        {
-          title: '邮箱',
-          key: 'email'
-        },
-        {
-          title: '状态',
-          key: 'status'
-        },
-        {
-          title: '创建时间',
-          key: 'createTime'
-        }
-      ],
       groupNameList,
       researchNameList,
       titleList,
@@ -46,6 +16,7 @@ export default {
         groupName: '',
         title: ''
       },
+      rows: ['博士', '硕士', '本科', '大专', '大专以下'],
       tagList: ['集团-2017调研-W3', '集团-2016调研-W3', '集团-2015调研-W3'],
       data: [],
       tableLoading: false

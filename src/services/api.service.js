@@ -36,13 +36,17 @@ class Processor {
   initRest() {
     this.rest.interceptors.response.use(
       res => {
-        if (res.status === 200) {
+        if (/^20\d/.test(res.status)) {
           return res.data
-        } else if (res.status === 403) {
-          router.push({name: 'App'})
-        } else {
-          return res
         }
+        return res
+      },
+      error => {
+        // error reponse
+        if (error.response.status === 403) {
+          router.push({name: 'App'})
+        }
+        return Promise.reject(error)
       }
     )
   }
