@@ -135,7 +135,7 @@ export default {
           this.rows = res.items
           this.total = res.totalNumber
         })
-        .catch(() => {
+        .catch((err) => {
           this.$Message.error('获取用户列表失败！')
         })
         .finally(() => {

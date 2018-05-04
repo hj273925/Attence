@@ -13,8 +13,15 @@ export default {
       titleList,
       formInline: {
         researchName: '',
-        groupName: '',
-        title: ''
+        groupName: ''
+      },
+      formRule: {
+        researchName: [
+          { required: true, message: '请选择组织名', trigger: 'blur' }
+        ],
+        groupName: [
+          { required: true, message: '请选择调研名', trigger: 'blur' }
+        ]
       },
       rows: ['企业形象', '企业文化', '企业认同感归属感', '发展战略', '管理机制', '领导干部'],
       tagList: ['集团-2017调研', '集团-2016调研', '集团-2015调研'],
@@ -44,6 +51,16 @@ export default {
     deleteTag(name) {
       const index = this.tagList.indexOf(name)
       this.tagList.splice(index, 1)
+    },
+    // 添加标签
+    addTag() {
+      this.$refs['formInline'].validate((valid) => {
+        if (valid) {
+          const tag = `${this.formInline.researchName}-${this.formInline.groupName}`
+          this.tagList.push(tag)
+          this.$refs['formInline'].resetFields()
+        }
+      })
     }
   }
 }

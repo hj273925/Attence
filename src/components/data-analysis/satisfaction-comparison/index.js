@@ -39,18 +39,25 @@ export default {
           this.tableLoading = false
         })
     },
-    // 删除标签
+    // 删除组织
     deleteGroupName(name) {
-      const index = this.groupNameList.indexOf(name)
-      this.groupNameList.splice(index, 1)
+      const index = this.groupList.indexOf(name)
+      this.groupList.splice(index, 1)
     },
+    // 删除调研
     deleteResearchName(name) {
-      const index = this.researchNameList.indexOf(name)
-      this.researchNameList.splice(index, 1)
+      const index = this.researchList.indexOf(name)
+      this.researchList.splice(index, 1)
     },
-    // 点击页脚触发
-    changePage(index) {
-      console.log(index)
+    // 添加组织
+    addGroup() {
+      const { groupName } = this.formInline
+      this.groupList.push(groupName)
+    },
+    // 添加调研
+    addResearch() {
+      const { researchName } = this.formInline
+      this.researchList.push(researchName)
     }
   }
 }

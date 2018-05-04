@@ -14,7 +14,7 @@
               </Select>
             </FormItem>
             <FormItem>
-              <Button type="primary">添加</Button>
+              <Button type="primary" @click="addGroup">添加</Button>
             </FormItem>
             <FormItem prop="name">
               <Select v-model="formInline.researchName" style="width:200px" placeholder="选择调研名">
@@ -22,7 +22,7 @@
               </Select>
             </FormItem>
             <FormItem>
-              <Button type="primary">添加</Button>
+              <Button type="primary" @click="addResearch">添加</Button>
             </FormItem>
           </Form>
         </div>
