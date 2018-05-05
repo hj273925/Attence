@@ -24,15 +24,15 @@ export default {
           key: 'extraRate'
         },
         {
-          title: '上传员工数量',
-          key: 'extraNum'
+          title: '上传数量',
+          key: 'totalStaffs'
         },
         {
           title: '状态',
           key: 'status',
           render(h, params) {
-            let cor = params.row.status === 'ON' ? 'blue' : 'red'
-            let status = params.row.status === 'ON' ? '已确认' : '未确认'
+            let cor = params.row.uploadConfirm === 'ON' ? 'blue' : 'red'
+            let status = params.row.uploadConfirm === 'ON' ? '已确认' : '未确认'
             return h('Tag', {
               props: {
                 color: cor

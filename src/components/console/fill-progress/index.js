@@ -7,6 +7,7 @@ export default {
   data() {
     return {
       data: [],
+      isCompleted: null,
       columns: [
         {
           type: 'selection',
@@ -15,39 +16,61 @@ export default {
         },
         {
           title: '工号',
-          key: 'name'
-        },
-        {
-          title: '员工类型',
-          key: 'orgId'
+          key: 'code'
         },
         {
           title: '姓名',
-          key: 'title'
+          key: 'name'
         },
         {
           title: '性别',
-          key: 'mobile'
+          key: 'gender'
         },
         {
-          title: '出生年份',
-          key: 'count'
+          title: '电话',
+          key: 'phone'
         },
         {
-          title: '学历',
-          key: 'amount'
+          title: '邮箱',
+          key: 'email'
+        },
+        {
+          title: '是否完成',
+          render(h, params) {
+            let cor = params.row.isCompleted === true ? 'blue' : 'red'
+            let status = params.row.isCompleted === true ? '是' : '否'
+            return h('Tag', {
+              props: {
+                color: cor
+              }
+            }, status)
+          }
+        },
+        {
+          title: '完成时间',
+          key: 'completedDate'
         }
       ]
     }
   },
   created() {
-    this.loadUserlist()
+    this.loadStaffs()
   },
   methods: {
+    loadAll() {
+      this.isCompleted = null
+      this.loadStaffs()
+    },
+    loadCompleted(yn) {
+      this.isCompleted = yn
+      this.loadStaffs()
+    },
     // 加载数据
-    loadUserlist() {
+    loadStaffs() {
       this.tableLoading = true
-      ResearchIntercalate.getResearch()
+      const { surveyId } = this.$route.query
+      const { isCompleted, tLimit, current } = this
+      ResearchIntercalate.findStaffsByCompleteStatus(surveyId, isCompleted, tLimit, current)
         .then((res) => {
           this.data = res.items
         })

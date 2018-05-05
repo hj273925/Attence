@@ -56,6 +56,16 @@ class ResearchIntercalate {
   getProgressList(params) {
     return this.api.post('/survey/staffUploadStatus', qs.stringify(params))
   }
+
+  // 查询单位员工填写进度
+  findStaffsByCompleteStatus(surveyId, isCompleted, pageSize, curPage) {
+    return this.api.post('/staff/query', qs.stringify({surveyId, isCompleted, pageSize, curPage}))
+  }
+
+  // 查询员工根据通知状态
+  findStaffsByNotifiedStatus(surveyId, isNotified, pageSize, curPage) {
+    return this.api.post('/staff/query', qs.stringify({surveyId, isNotified, pageSize, curPage}))
+  }
 }
 
 export default new ResearchIntercalate()

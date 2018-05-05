@@ -18,30 +18,39 @@ export default {
         },
         {
           title: '抽样率',
-          key: 'sampleRate'
+          render(h, params) {
+            var val = (params.row.sampleRate * 100).toFixed(2)
+            return h('span', [val, '%'].join(''))
+          }
         },
         {
           title: '冗余率',
-          key: 'extraRate'
+          render(h, params) {
+            var val = (params.row.extraRate * 100).toFixed(2)
+            return h('span', [val, '%'].join(''))
+          }
         },
         {
-          title: '员工数量',
-          key: 'count'
+          title: '上传数量',
+          key: 'totalStaffs'
         },
         {
           title: '抽样数量',
-          key: 'amount'
+          key: 'realSampleCount'
         },
         {
           title: '抽样比例',
-          key: 'percent'
+          render(h, params) {
+            var val = (params.row.realSampleRate * 100).toFixed(2)
+            return h('span', [val, '%'].join(''))
+          }
         },
         {
           title: '状态',
           key: 'status',
           render(h, params) {
-            let cor = params.row.status === 'ON' ? 'blue' : 'red'
-            let status = params.row.status === 'ON' ? '已确认' : '未确认'
+            let cor = params.row.selectedConfirm === 'ON' ? 'blue' : 'red'
+            let status = params.row.selectedConfirm === 'ON' ? '已确认' : '未确认'
             return h('Tag', {
               props: {
                 color: cor

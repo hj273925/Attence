@@ -12,9 +12,9 @@
           </p>
         </Card>
         <div class="table-toolbar">
-          <Button  type="primary" >全部</Button>
-          <Button  type="primary" >已发放</Button>
-          <Button  type="primary" >未发放</Button>
+          <Button  type="primary" @click="loadAll()">全部</Button>
+          <Button  type="primary" @click="loadNotified(true)">已发放</Button>
+          <Button  type="primary" @click="loadNotified(false)">未发放</Button>
         </div>
         <div>
           <Table border stripe ref="selection" :columns="columns" :data="data"></Table>
@@ -22,6 +22,7 @@
         <div class="table-page">
           <Page  show-elevator></Page>
         </div>
+        <Button type="primary" @click="next">下一步</Button>
       </div>
     </Content>
   </div>

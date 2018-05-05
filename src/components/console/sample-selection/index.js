@@ -51,6 +51,7 @@ export default {
   },
   created() {
     this.loadOrgList()
+    this.loadStaffList()
   },
   methods: {
     // 加载抽样信息
@@ -124,7 +125,8 @@ export default {
         })
     },
     next() {
-      this.$emit('changePage')
+      const {surveyId} = this.$route.query
+      this.$router.push({name: 'QuestionnaireDistribution', query: { surveyId: surveyId }})
     }
   }
 }
