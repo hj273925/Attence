@@ -17,9 +17,11 @@
       <RadioGroup v-if="record.nodeType === 'Q_RANKING'" v-model="type">
         <Radio :label="item.label" v-for="item in record.items" :key="item.label"></Radio>
       </RadioGroup>
-      <RadioGroup v-if="record.nodeType === 'Q_OPEN_ENDED'">
-        <Radio :label="item" v-for="item in record.labels" :key="item"></Radio>
-      </RadioGroup>
+      <Form v-if="record.nodeType === 'Q_OPEN_ENDED'" inline>
+        <FormItem :label="item" v-for="item in record.labels" :key="item">
+          <Input type="text" ></Input>
+        </FormItem>
+      </Form>
       <CheckboxGroup v-if="record.nodeType === 'Q_MULTIPLE_CHOICE'">
         <Checkbox :label="item.label" v-for="item in record.items" :key="item.label"></Checkbox>
       </CheckboxGroup>
