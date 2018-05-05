@@ -56,6 +56,9 @@
       width="600">
       <Form ref="formRadio" :model="data" :rules="rule" :label-width="80">
         <FormItem label="题目" prop="topic">
+          <Input type="text" v-model="data.idx"></Input>
+        </FormItem>
+        <FormItem label="题目" prop="topic">
           <Input type="text" v-model="data.topic"></Input>
         </FormItem>
         <FormItem label="选项">
@@ -77,6 +80,9 @@
       :title="modal_title.formCheckBox"
       width="600">
       <Form ref="formCheckBox" :model="data" :rules="rule" :label-width="100">
+        <FormItem label="题目" prop="topic">
+          <Input type="text" v-model="data.idx"></Input>
+        </FormItem>
         <FormItem label="题目" prop="topic">
           <Input type="text" v-model="data.topic"></Input>
         </FormItem>
@@ -105,6 +111,9 @@
       :title="modal_title.formMatrix"
       width="600">
       <Form ref="formMatrix" :model="data" :rules="rule" :label-width="80">
+        <FormItem label="题目" prop="topic">
+          <Input type="text" v-model="data.idx"></Input>
+        </FormItem>
         <FormItem label="题目" prop="topic">
           <Input type="text" v-model="data.topic"></Input>
         </FormItem>
@@ -172,6 +181,9 @@
       width="600">
       <Form ref="formSort" :model="data" :rules="rule" :label-width="100">
         <FormItem label="题目" prop="topic">
+          <Input type="text" v-model="data.idx"></Input>
+        </FormItem>
+        <FormItem label="题目" prop="topic">
           <Input type="text" v-model="data.topic"></Input>
         </FormItem>
         <FormItem label="最多选择个数" prop="maxChoice">
@@ -196,6 +208,9 @@
       :title="modal_title.formOpen"
       width="600">
       <Form ref="formOpen" :model="data" :rules="rule" :label-width="80">
+        <FormItem label="题目" prop="topic">
+          <Input type="text" v-model="data.idx"></Input>
+        </FormItem>
         <FormItem label="题目" prop="topic">
           <Input type="text" v-model="data.topic"></Input>
         </FormItem>
