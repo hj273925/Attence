@@ -5,7 +5,7 @@
         <Input v-model="record.name" style="width: 300px" :disabled="Boolean(surveyId)"></Input>
       </FormItem>
       <FormItem label="问卷" prop="id">
-        <Select v-model="record.id" style="width:200px" :disabled="Boolean(surveyId)">
+        <Select v-model="record.surveyDocId" style="width:200px" :disabled="Boolean(surveyId)">
           <Option v-for="item in QuestionNaireList" :value="item.id" :key="item.id">{{ item.name }}</Option>
         </Select>
       </FormItem>

@@ -59,12 +59,14 @@ class ResearchIntercalate {
 
   // 查询单位员工填写进度
   findStaffsByCompleteStatus(surveyId, isCompleted, pageSize, curPage) {
-    return this.api.post('/staff/query', qs.stringify({surveyId, isCompleted, pageSize, curPage}))
+    const isSelected = true
+    return this.api.post('/staff/query', qs.stringify({surveyId, isSelected, isCompleted, pageSize, curPage}))
   }
 
   // 查询员工根据通知状态
   findStaffsByNotifiedStatus(surveyId, isNotified, pageSize, curPage) {
-    return this.api.post('/staff/query', qs.stringify({surveyId, isNotified, pageSize, curPage}))
+    const isSelected = true
+    return this.api.post('/staff/query', qs.stringify({surveyId, isNotified, isSelected, pageSize, curPage}))
   }
 }
 

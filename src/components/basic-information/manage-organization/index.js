@@ -46,11 +46,17 @@ export default {
         },
         {
           title: '抽样率',
-          key: 'sampleRate'
+          render(h, params) {
+            var val = (params.row.sampleRate * 100).toFixed(2)
+            return h('span', [val, '%'].join(''))
+          }
         },
         {
           title: '冗余率',
-          key: 'extraRate'
+          render(h, params) {
+            var val = (params.row.extraRate * 100).toFixed(2)
+            return h('span', [val, '%'].join(''))
+          }
         },
         {
           title: '冗余数',

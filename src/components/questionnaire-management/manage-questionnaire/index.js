@@ -33,22 +33,22 @@ export default {
           }
         },
         {
+          title: '问卷标题',
+          key: 'title'
+        },
+        {
           title: '状态',
           width: 100,
           key: 'status',
           render(h, params) {
             let cor = params.row.status === 'ON' ? 'blue' : 'red'
-            let status = params.row.status === 'ON' ? '开启' : '关闭'
+            let status = params.row.status === 'ON' ? '启用' : '禁用'
             return h('Tag', {
               props: {
                 color: cor
               }
             }, status)
           }
-        },
-        {
-          title: '问卷标题',
-          key: 'title'
         },
         {
           title: '创建时间',

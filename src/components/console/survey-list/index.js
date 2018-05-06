@@ -27,26 +27,26 @@ export default {
           }
         },
         {
-          title: '状态',
-          width: 100,
-          key: 'status',
-          render(h, params) {
-            let cor = params.row.status === 'ON' ? 'blue' : 'red'
-            let status = params.row.status === 'ON' ? '开启' : '关闭'
-            return h('Tag', {
-              props: {
-                color: cor
-              }
-            }, status)
-          }
-        },
-        {
           title: '计划开始时间',
           key: 'startDate'
         },
         {
           title: '计划结束时间',
           key: 'endDate'
+        },
+        {
+          title: '状态',
+          width: 100,
+          key: 'status',
+          render(h, params) {
+            let cor = params.row.status === 'true' ? 'blue' : 'red'
+            let status = params.row.status === 'true' ? '开启' : '关闭'
+            return h('Tag', {
+              props: {
+                color: cor
+              }
+            }, status)
+          }
         },
         {
           title: '是否自动催填',
