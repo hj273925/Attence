@@ -25,8 +25,8 @@ class ResearchIntercalate {
     return this.api.post('/staff/query', qs.stringify({surveyId, orgId, keyword, pageSize, curPage}))
   }
   // 筛选员工数据
-  doSelectStaff(surveyId, orgId, total) {
-    return this.api.post('/staff/doSelectStaff', qs.stringify({surveyId, orgId, total}))
+  doSelectStaff(surveyId, orgId) {
+    return this.api.post('/staff/doSelectStaff', qs.stringify({surveyId, orgId}))
   }
   // 查询筛选后的员工
   queryBySelected(surveyId, orgId) {
