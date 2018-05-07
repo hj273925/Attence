@@ -29,9 +29,9 @@
         <table border="1" cellSpacing="0" class="ivu-table">
           <tr>
             <th>选项</th>
-            <th v-for="item in record.rows">{{item}}</th>
+            <th v-for="item in record.cols">{{item}}</th>
           </tr>
-          <tr v-for="item in record.cols">
+          <tr v-for="item in record.rows">
             <th>{{item}}</th>
             <th v-for="item in record.scores">{{item}}分</th>
           </tr>
