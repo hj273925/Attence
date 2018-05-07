@@ -124,6 +124,10 @@ export default {
           this.tableLoading = false
         })
     },
+    last() {
+      const {surveyId} = this.$route.query
+      this.$router.push({name: 'DataUpload', query: { surveyId: surveyId }})
+    },
     next() {
       const {surveyId} = this.$route.query
       this.$router.push({name: 'QuestionnaireDistribution', query: { surveyId: surveyId }})

@@ -42,6 +42,7 @@
         <div class="table-page">
           <Page  show-elevator></Page>
         </div>
+        <Button type="primary" @click="last">上一步</Button>
         <Button type="primary" @click="next">下一步</Button>
       </div>
     </Content>

@@ -81,6 +81,10 @@ export default {
           this.tableLoading = false
         })
     },
+    last() {
+      const {surveyId} = this.$route.query
+      this.$router.push({name: 'SampleSelection', query: { surveyId: surveyId }})
+    },
     // 点击页脚触发
     next() {
       const {surveyId} = this.$route.query
