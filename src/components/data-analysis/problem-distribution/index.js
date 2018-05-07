@@ -1,16 +1,15 @@
 /**
  * Created by hj on 2018/3/30.
  */
-import ManageUserService from '@/services/manageUser.service'
+import AnalysisService from '@/services/analysis.service.js'
 
 export default {
   name: 'ManageUser',
   data() {
-    const {groupNameList, researchNameList, titleList} = this.$store.state
     return {
-      groupNameList,
-      researchNameList,
-      titleList,
+      groupNameList: [],
+      researchNameList: [],
+      titleList: [],
       formInline: {
         researchName: '',
         groupName: '',
@@ -29,26 +28,36 @@ export default {
       },
       rows: ['选项1', '选项2', '选项3', '选项4', '选项5', '选项6'],
       tagList: ['集团-2017调研-W3', '集团-2016调研-W3', '集团-2015调研-W3'],
-      data: [],
+      data: [1, 2, 3],
       tableLoading: false
     }
   },
   created() {
-    this.loadUserlist()
+    AnalysisService.getSurveyList()
+      .then((res) => {
+        console.log(res)
+        this.researchNameList = res
+      })
+      .catch(() => {
+        this.$Message.error('获取数据失败！')
+    })
   },
   methods: {
-    // 加载数据
-    loadUserlist() {
-      this.tableLoading = true
-      ManageUserService.getUsers()
+    onSurveyChange(val) {
+      console.log(val)
+      AnalysisService.getSurveyOrgList(val)
         .then((res) => {
-          this.data = res.items
+          this.groupNameList = res
         })
         .catch(() => {
-          this.$Message.error('获取用户列表失败！')
+          this.$Message.error('获取数据失败！')
         })
-        .finally(() => {
-          this.tableLoading = false
+      AnalysisService.getSurveyQuestionList(val)
+        .then((res) => {
+          this.titleList = res
+        })
+        .catch(() => {
+          this.$Message.error('获取数据失败！')
         })
     },
     // 删除标签

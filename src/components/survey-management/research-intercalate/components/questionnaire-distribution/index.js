@@ -13,28 +13,19 @@ export default {
           key: 'fullName'
         },
         {
-          title: '规模',
-          key: 'scale'
-        },
-        {
-          title: '抽样率',
-          key: 'sampleRate'
-        },
-        {
-          title: '冗余率',
-          key: 'extraRate'
-        },
-        {
           title: '员工数量',
-          key: 'count'
+          key: 'totalStaffs'
         },
         {
           title: '抽样数量',
-          key: 'amount'
+          key: 'realSampleCount'
         },
         {
           title: '抽样比例',
-          key: 'percent'
+          render(h, params) {
+            var val = (params.row.realSampleRate * 100).toFixed(2)
+            return h('span', [val, '%'].join(''))
+          }
         },
         {
           title: '发放进度',

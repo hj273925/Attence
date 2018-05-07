@@ -12,9 +12,9 @@
           </p>
         </Card>
         <div class="table-toolbar">
-          <Button  type="primary" >全部</Button>
-          <Button  type="primary" >已填写</Button>
-          <Button  type="primary" >未填写</Button>
+          <Button  type="primary" @click="loadAll()" >全部</Button>
+          <Button  type="primary" @click="loadCompleted(true)" >已填写</Button>
+          <Button  type="primary" @click="loadCompleted(false)">未填写</Button>
           <Button class="pull-right" type="primary" >催填</Button>
         </div>
         <div>

@@ -10,7 +10,7 @@
       <p slot="title">
         {{record.nodeType | titleTypeFilter}}
       </p>
-      <p class="title">{{record.topic}}</p>
+      <p class="title">{{record.idx}}.  {{record.topic}}</p>
       <RadioGroup v-if="record.nodeType === 'Q_SINGLE_CHOICE'" v-model="type">
         <Radio :label="item.label" v-for="item in record.items" :key="item.label"></Radio>
       </RadioGroup>

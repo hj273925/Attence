@@ -34,7 +34,7 @@ export default {
         name: [
           { required: true, message: '请输入调研名', trigger: 'blur' }
         ],
-        id: [
+        surveyDocId: [
           { required: true, message: '请选择问卷', trigger: 'blur' }
         ]
       },
@@ -52,13 +52,14 @@ export default {
         resendInterval: 0,
         autoResend: false,
         status: true,
-        orgIds: []
+        orgIds: [],
+        surveyDocId: ''
       }
     }
   },
   computed: {
     surveyId() {
-      return this.$route.query.id || sessionStorage.getItem('surveyId')
+      return this.$route.query.id
     }
   },
   created() {
@@ -72,9 +73,8 @@ export default {
       ResearchIntercalate.getResearchById({id: id})
         .then((res) => {
           this.record = res
-          this.record.id = res.surveyDocId
           this.record.date = [res.startDate, res.endDate]
-          this.record.status = res.status === 'ON' ?  true : false
+          this.record.status = res.status === 'ON'
         })
         .catch(() => {
           this.$Message.error('获取调研信息失败！')
@@ -122,8 +122,8 @@ export default {
           this.paramsList.forEach(value => {
             this.record.orgIds.push(value.id)
           })
-          this.record.startDate = this.formatDate('yyy-MM-dd hh:mm:ss', this.record.date[0])
-          this.record.endDate = this.formatDate('yyy-MM-dd hh:mm:ss', this.record.date[1])
+          this.record.startDate = this.formatDate('yyyy-MM-dd hh:mm:ss', this.record.date[0])
+          this.record.endDate = this.formatDate('yyyy-MM-dd hh:mm:ss', this.record.date[1])
           ResearchIntercalate.createReasearch(this.record)
             .then((res) => {
               this.$Message.success('创建调研成功！')

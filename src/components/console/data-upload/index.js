@@ -52,6 +52,7 @@ export default {
   },
   created() {
     this.surveyId = this.$route.query
+    this.loadResearchList()
   },
   methods: {
     // 上传数据

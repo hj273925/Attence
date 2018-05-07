@@ -7,7 +7,7 @@
     <Content :style="{padding: '24px', minHeight: '280px', background: '#fff'}">
       <div class="table-container">
         <div class="table-toolbar">
-          <Button  type="primary" >膜版下载</Button>
+          <Button  type="primary" >模板下载</Button>
           <Button  type="primary" >保存</Button>
           <Button  type="primary" >删除</Button>
         </div>
