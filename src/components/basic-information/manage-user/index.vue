@@ -30,9 +30,6 @@
         <FormItem label="用户名" prop="name">
           <Input type="text" v-model="formCustom.name"></Input>
         </FormItem>
-        <FormItem label="密码" prop="password">
-          <Input type="text" v-model="formCustom.password"></Input>
-        </FormItem>
         <FormItem label="性别" prop="gender">
           <RadioGroup v-model="formCustom.gender">
               <Radio label="MALE">男</Radio>
