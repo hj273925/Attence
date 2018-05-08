@@ -34,6 +34,7 @@
           </FormItem>
           <FormItem label="筛选参数">
             <Table border stripe :columns="columns" :data="rows"></Table>
+            <Button type="primary" @click="last">上一步</Button>
             <Button type="primary" @click="next">下一步</Button>
           </FormItem>
         </Form>

@@ -87,6 +87,11 @@ export default {
       this.current = index
       this.loadResearchList()
     },
+    // 上一步 跳转到调研信息
+    last() {
+      const {surveyId} = this.$route.query
+      this.$router.push({name: 'ResearchInformation', query: { id: surveyId }})
+    },
     // 下一步 跳转到样本筛选
     next() {
       const {surveyId} = this.$route.query

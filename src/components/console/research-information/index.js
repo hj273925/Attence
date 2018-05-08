@@ -58,6 +58,10 @@ export default {
     loadOrgList() {
       this.rows = [JSON.parse(sessionStorage.getItem('orgInfo'))]
     },
+    // 上一步 跳转到调研列表
+    last() {
+      this.$router.push({name: 'SurveyList'})
+    },
     // 下一步 跳转到人员数据上传
     next() {
       const {id} = this.$route.query

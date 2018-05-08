@@ -84,6 +84,9 @@ export default {
         }
       ],
       rule: {
+        idx: [
+          { required: true, message: '请输入题目编号', trigger: 'blur' }
+        ],
         topic: [
           { required: true, message: '请输入题目名', trigger: 'blur' }
         ],

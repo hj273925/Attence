@@ -62,9 +62,7 @@ export default {
     filtrate() {
       const {surveyId} = this.$route.query
       const {id} = JSON.parse(sessionStorage.getItem('orgInfo'))
-      this.sampleColumns.sample = '23'
-      console.log(surveyId, id, this.sampleColumns.sample)
-      ResearchIntercalate.doSelectStaff(surveyId, id, this.sampleColumns.sample)
+      ResearchIntercalate.doSelectStaff(surveyId, id)
         .then((res) => {
           this.$Message.success('筛选成功！')
           this.loadStaffList()
@@ -123,6 +121,10 @@ export default {
         .finally(() => {
           this.tableLoading = false
         })
+    },
+    last() {
+      const {surveyId} = this.$route.query
+      this.$router.push({name: 'DataUpload', query: { surveyId: surveyId }})
     },
     next() {
       const {surveyId} = this.$route.query

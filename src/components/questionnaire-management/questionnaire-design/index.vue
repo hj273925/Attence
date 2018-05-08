@@ -55,7 +55,7 @@
       :title="modal_title.formRadio"
       width="600">
       <Form ref="formRadio" :model="data" :rules="rule" :label-width="80">
-        <FormItem label="题目" prop="topic">
+        <FormItem label="编号" prop="idx">
           <Input type="text" v-model="data.idx"></Input>
         </FormItem>
         <FormItem label="题目" prop="topic">
@@ -80,7 +80,7 @@
       :title="modal_title.formCheckBox"
       width="600">
       <Form ref="formCheckBox" :model="data" :rules="rule" :label-width="100">
-        <FormItem label="题目" prop="topic">
+        <FormItem label="编号" prop="idx">
           <Input type="text" v-model="data.idx"></Input>
         </FormItem>
         <FormItem label="题目" prop="topic">
@@ -111,7 +111,7 @@
       :title="modal_title.formMatrix"
       width="600">
       <Form ref="formMatrix" :model="data" :rules="rule" :label-width="80">
-        <FormItem label="题目" prop="topic">
+        <FormItem label="编号" prop="idx">
           <Input type="text" v-model="data.idx"></Input>
         </FormItem>
         <FormItem label="题目" prop="topic">
@@ -180,7 +180,7 @@
       :title="modal_title.formSort"
       width="600">
       <Form ref="formSort" :model="data" :rules="rule" :label-width="100">
-        <FormItem label="题目" prop="topic">
+        <FormItem label="编号" prop="idx">
           <Input type="text" v-model="data.idx"></Input>
         </FormItem>
         <FormItem label="题目" prop="topic">
@@ -208,7 +208,7 @@
       :title="modal_title.formOpen"
       width="600">
       <Form ref="formOpen" :model="data" :rules="rule" :label-width="80">
-        <FormItem label="题目" prop="topic">
+        <FormItem label="编号" prop="idx">
           <Input type="text" v-model="data.idx"></Input>
         </FormItem>
         <FormItem label="题目" prop="topic">
