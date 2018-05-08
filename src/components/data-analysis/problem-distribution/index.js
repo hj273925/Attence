@@ -26,7 +26,44 @@ export default {
           { required: true, message: '请选择题目名', trigger: 'blur' }
         ]
       },
-      rows: [{title: '选项'}, {title: '选项1'}, '选项2', '选项3', '选项4', '选项5', '选项6'],
+      rows: [
+        {
+          key: 'name',
+          title: '选项'
+        },
+        {
+          key: 'key1',
+          title: '选项1'
+        },
+        {
+          key: 'key2',
+          title: '选项2'
+        },
+        {
+          key: 'key3',
+          title: '选项3'
+        },
+        {
+          key: 'key4',
+          title: '选项4'
+        },
+        {
+          key: 'key5',
+          title: '选项5'
+        },
+        {
+          key: 'key6',
+          title: '选项6'
+        }],
+      cols: [{
+        name: '集团-2017调研-W3',
+        key1: 'sd',
+        key2: 'asd',
+        key3: 'asd',
+        key4: 'sad',
+        key5: 'asd',
+        key6: 'dassa'
+      }],
       tagList: ['集团-2017调研-W3', '集团-2016调研-W3', '集团-2015调研-W3'],
       data: [1, 2, 3],
       tableLoading: false
