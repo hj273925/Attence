@@ -51,12 +51,20 @@ export default {
           key: 'email'
         },
         {
+          title: '类型',
+          key: 'type',
+          render(h, params) {
+            let status = params.row.type === 'ORG_ADMIN' ? '单位管理员' : '普通用户'
+            return h('b', status)
+          }
+        },
+        {
           title: '状态',
           width: 100,
           key: 'status',
           render(h, params) {
             let cor = params.row.status === 'ON' ? 'blue' : 'red'
-            let status = params.row.status === 'ON' ? '开启' : '关闭'
+            let status = params.row.status === 'ON' ? '启用' : '禁用'
             return h('Tag', {
               props: {
                 color: cor
@@ -71,7 +79,6 @@ export default {
       ],
       formCustom: {
         name: '',
-        password: '',
         gender: '',
         orgId: '',
         title: '',
@@ -84,9 +91,6 @@ export default {
       ruleCustom: {
         name: [
           { required: true, message: '请输入用户名', trigger: 'blur' }
-        ],
-        password: [
-          { required: true, message: '请输入用户密码', trigger: 'blur' }
         ],
         gender: [
           { required: true, message: '请选择用户性别', trigger: 'blur' }
@@ -135,7 +139,7 @@ export default {
           this.rows = res.items
           this.total = res.totalNumber
         })
-        .catch((err) => {
+        .catch(() => {
           this.$Message.error('获取用户列表失败！')
         })
         .finally(() => {
