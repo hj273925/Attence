@@ -8,14 +8,14 @@
       <div class="table-container">
         <div class="table-toolbar">
           <Form ref="formInline" :model="formInline" :rules="formRule"  inline>
+            <FormItem prop="researchName">
+              <Select v-model="formInline.researchName" style="width:200px" placeholder="选择调研名">
+                <Option v-for="item in researchNameList" :value="item.id" :key="item.name">{{ item.name }}</Option>
+              </Select>
+            </FormItem>
             <FormItem prop="groupName">
               <Select v-model="formInline.groupName" style="width:200px" placeholder="选择组织名">
                 <Option v-for="item in groupNameList" :value="item.value" :key="item.value">{{ item.value }}</Option>
-              </Select>
-            </FormItem>
-            <FormItem prop="researchName">
-              <Select v-model="formInline.researchName" style="width:200px" placeholder="选择调研名">
-                <Option v-for="item in researchNameList" :value="item.value" :key="item.value">{{ item.value }}</Option>
               </Select>
             </FormItem>
             <FormItem prop="title">

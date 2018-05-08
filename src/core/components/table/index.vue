@@ -20,7 +20,7 @@
             </th>
           </tr>
           <tbody class="ivu-table-tbody">
-          <tr v-for="row,index in rows.slice(1)" :key="item" class="ivu-table-row">
+          <tr v-for="row,index in rows.slice(1)" :key="index" class="ivu-table-row">
             <td>
               <div class="ivu-table-cell">
                     <span>
@@ -47,7 +47,6 @@
 export default {
   name: 'Stable',
   props: {
-    rowTitle: { type: String, default: '选项' },
     rows: { type: Array, default: () => [] },
     cols: { type: Array, default: () => [] }
   }

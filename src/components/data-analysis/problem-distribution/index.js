@@ -6,9 +6,10 @@ import AnalysisService from '@/services/analysis.service.js'
 export default {
   name: 'ManageUser',
   data() {
+    const {researchNameList} = this.$store.state
     return {
+      researchNameList,
       groupNameList: [],
-      researchNameList: [],
       titleList: [],
       formInline: {
         researchName: '',
@@ -57,6 +58,22 @@ export default {
         }],
       cols: [{
         name: '集团-2017调研-W3',
+        key1: 'asdas',
+        key2: 'asd',
+        key3: 'asd',
+        key4: 'sad',
+        key5: 'asd',
+        key6: 'dassa'
+      }, {
+        name: '集团-2016调研-W3',
+        key1: 'sd',
+        key2: 'asd',
+        key3: 'asd',
+        key4: 'sad',
+        key5: 'asd',
+        key6: 'dassa'
+      }, {
+        name: '集团-2015调研-W3',
         key1: 'sd',
         key2: 'asd',
         key3: 'asd',
@@ -81,7 +98,6 @@ export default {
   },
   methods: {
     onSurveyChange(val) {
-      console.log(val)
       AnalysisService.getSurveyOrgList(val)
         .then((res) => {
           this.groupNameList = res
@@ -101,6 +117,7 @@ export default {
     deleteTag(name) {
       const index = this.tagList.indexOf(name)
       this.tagList.splice(index, 1)
+      this.cols.splice(index, 1)
     },
     // 添加标签
     addTag() {
@@ -108,6 +125,15 @@ export default {
         if (valid) {
           const tag = `${this.formInline.researchName}-${this.formInline.groupName}-${this.formInline.title}`
           this.tagList.push(tag)
+          this.cols.push({
+            name: tag,
+            key1: 'sd',
+            key2: 'asd',
+            key3: 'asd',
+            key4: 'sad',
+            key5: 'asd',
+            key6: 'dassa'
+          })
           this.$refs['formInline'].resetFields()
         }
       })

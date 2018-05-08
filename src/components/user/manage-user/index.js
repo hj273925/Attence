@@ -16,6 +16,7 @@ const data = {
   IndexDistribution: '7维21指标分布',
   ProblemDistribution: '问题选项分布'
 }
+import AnalysisService from '@/services/analysis.service.js'
 export default {
   data() {
     return {
@@ -54,6 +55,19 @@ export default {
   },
   created() {
     this.activeMenu = data[this.$route.name]
+    this.loadSurveyList()
+  },
+  methods: {
+    loadSurveyList() {
+      AnalysisService.getSurveyList()
+        .then((res) => {
+          console.log(res)
+          this.$store.commit('setResearchNameList', res)
+        })
+        .catch(() => {
+          this.$Message.error('获取数据失败！')
+        })
+    }
   }
 }
 
