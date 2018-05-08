@@ -3,17 +3,7 @@
     <div class="layout">
       <Layout>
         <Header>
-          <Menu mode="horizontal" theme="dark" active-name="1">
-            <div class="layout-logo">
-              <span>SAIC SURVEY CONSOLE</span>
-            </div>
-            <div class="layout-nav">
-              <MenuItem name="1">
-                <Avatar icon="person" />
-                admin
-              </MenuItem>
-            </div>
-          </Menu>
+          <Savater/>
         </Header>
         <Layout>
           <Sider hide-trigger :style="{background: '#fff'}">

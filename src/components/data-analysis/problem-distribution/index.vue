@@ -31,7 +31,7 @@
         <div class="tag-list">
           <Tag v-for="item in tagList" :key="item" :name="item" closable color="blue" @on-close="deleteTag">{{ item }}</Tag>
         </div>
-        <Stable :rows="rows" :cols="tagList"/>
+        <Stable :rows="rows" :cols="cols"/>
         <div class="table-page">
           <Button type="primary">导出</Button>
         </div>
