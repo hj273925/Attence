@@ -26,7 +26,7 @@ export default {
           { required: true, message: '请选择题目名', trigger: 'blur' }
         ]
       },
-      rows: ['选项1', '选项2', '选项3', '选项4', '选项5', '选项6'],
+      rows: [{title: '选项'}, {title: '选项1'}, '选项2', '选项3', '选项4', '选项5', '选项6'],
       tagList: ['集团-2017调研-W3', '集团-2016调研-W3', '集团-2015调研-W3'],
       data: [1, 2, 3],
       tableLoading: false

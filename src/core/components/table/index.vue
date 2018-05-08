@@ -7,31 +7,31 @@
             <th>
               <div class="ivu-table-cell">
                   <span>
-                    {{rowTitle}}
+                    {{rows[0].title}}
                   </span>
               </div>
             </th>
             <th v-for="item in cols">
               <div class="ivu-table-cell">
                   <span>
-                    {{item}}
+                    {{item[rows[0].key]}}
                   </span>
               </div>
             </th>
           </tr>
           <tbody class="ivu-table-tbody">
-          <tr v-for="item,index in rows" :key="item" class="ivu-table-row">
+          <tr v-for="row,index in rows.slice(1)" :key="item" class="ivu-table-row">
             <td>
               <div class="ivu-table-cell">
                     <span>
-                      {{item}}
+                      {{row.title}}
                     </span>
               </div>
             </td>
-            <td v-for="item in cols">
+            <td v-for="col in cols">
               <div class="ivu-table-cell">
                     <span>
-                      {{item}}
+                      {{col[row.key]}}
                     </span>
               </div>
             </td>
