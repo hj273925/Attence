@@ -1,7 +1,6 @@
 /**
  * Created by hj on 2018/3/30.
  */
-
 export default {
   name: 'ManageUser',
   data() {
@@ -9,12 +8,10 @@ export default {
       menu: [{
         title: '调研管理',
         subMenu: [
-          {name: '调研列表', path: 'SurveyList'},
-          {name: '调研信息', path: 'ResearchInformation'},
-          {name: '人员数据上传', path: 'DataUpload'},
-          {name: '样本筛选', path: 'SampleSelection'},
-          {name: '问卷发放', path: 'QuestionnaireDistribution'},
-          {name: '填写进度', path: 'FillProgress'}
+          {name: '总览', path: 'SurveyList'},
+          {name: '项目', path: 'ResearchInformation'},
+          {name: '公司', path: 'DataUpload'},
+          {name: '人员', path: 'SampleSelection'}
         ]
       }]
     }
