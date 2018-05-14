@@ -13,137 +13,38 @@ export default new Router({
     }, {
       path: '/console',
       name: 'Console',
-      redirect: '/console/survey-list',
+      redirect: '/console/overview',
       component: function (resolve) {
         require(['@/components/user/console-user/index.vue'], resolve)
       },
       children: [
         {
-          path: '/console/fill-progress',
-          name: 'FillProgress',
+          path: '/console/overview',
+          name: 'Overview',
           component: function (resolve) {
-            require(['@/components/console/fill-progress/index.vue'], resolve)
+            require(['@/components/console/overview/index.vue'], resolve)
           }
         }, {
-          path: '/console/data-upload',
-          name: 'DataUpload',
+          path: '/console/company',
+          name: 'Company',
           component: function (resolve) {
-            require(['@/components/console/data-upload/index.vue'], resolve)
+            require(['@/components/console/company/index.vue'], resolve)
           }
         }, {
-          path: '/console/questionnaire-distribution',
-          name: 'QuestionnaireDistribution',
+          path: '/console/project',
+          name: 'Project',
           component: function (resolve) {
-            require(['@/components/console/questionnaire-distribution/index.vue'], resolve)
+            require(['@/components/console/project/index.vue'], resolve)
           }
         }, {
-          path: '/console/research-information',
-          name: 'ResearchInformation',
+          path: '/console/staff',
+          name: 'Staff',
           component: function (resolve) {
-            require(['@/components/console/research-information/index.vue'], resolve)
-          }
-        }, {
-          path: '/console/sample-selection',
-          name: 'SampleSelection',
-          component: function (resolve) {
-            require(['@/components/console/sample-selection/index.vue'], resolve)
-          }
-        }, {
-          path: '/console/survey-list',
-          name: 'SurveyList',
-          component: function (resolve) {
-            require(['@/components/console/survey-list/index.vue'], resolve)
+            require(['@/components/console/staff/index.vue'], resolve)
           }
         }
       ]
-    }, {
-      path: '/manage',
-      name: 'Manage',
-      redirect: '/manage-organization',
-      component: function (resolve) {
-        require(['@/components/user/manage-user/index.vue'], resolve)
-      },
-      children: [
-        {
-          path: '/manage-organization',
-          name: 'Manage0rganization',
-          component: function (resolve) {
-            require(['@/components/basic-information/manage-organization/index.vue'], resolve)
-          }
-        }, {
-          path: '/manage-user',
-          name: 'ManageUser',
-          component: function (resolve) {
-            require(['@/components/basic-information/manage-user/index.vue'], resolve)
-          }
-        }, {
-          path: '/data-dictionary',
-          name: 'DataDictionary',
-          component: function (resolve) {
-            require(['@/components/basic-information/data-dictionary/index.vue'], resolve)
-          }
-        }, {
-          path: '/survey-management',
-          name: 'SurveyManagement',
-          component: function (resolve) {
-            require(['@/components/survey-management/research-management/index.vue'], resolve)
-          }
-        }, {
-          path: '/survey-intercalate',
-          name: 'SurveyIntercalate',
-          component: function (resolve) {
-            require(['@/components/survey-management/research-intercalate/index.vue'], resolve)
-          }
-        }, {
-          path: '/sample-composition',
-          name: 'SampleComposition',
-          component: function (resolve) {
-            require(['@/components/data-analysis/sample-composition/index.vue'], resolve)
-          }
-        }, {
-          path: '/satisfaction-comparison',
-          name: 'SatisfactionComparison',
-          component: function (resolve) {
-            require(['@/components/data-analysis/satisfaction-comparison/index.vue'], resolve)
-          }
-        }, {
-          path: '/satisfaction-distribution',
-          name: 'SatisfactionDistribution',
-          component: function (resolve) {
-            require(['@/components/data-analysis/satisfaction-distribution/index.vue'], resolve)
-          }
-        }, {
-          path: '/index-comparison',
-          name: 'IndexComparison',
-          component: function (resolve) {
-            require(['@/components/data-analysis/index-comparison/index.vue'], resolve)
-          }
-        }, {
-          path: '/index-distribution',
-          name: 'IndexDistribution',
-          component: function (resolve) {
-            require(['@/components/data-analysis/index-distribution/index.vue'], resolve)
-          }
-        }, {
-          path: '/problem-distribution',
-          name: 'ProblemDistribution',
-          component: function (resolve) {
-            require(['@/components/data-analysis/problem-distribution/index.vue'], resolve)
-          }
-        }, {
-          path: '/questionnaire-design',
-          name: 'QuestionnaireDesign',
-          component: function (resolve) {
-            require(['@/components/questionnaire-management/questionnaire-design/index.vue'], resolve)
-          }
-        }, {
-          path: '/manage-questionnaire',
-          name: 'ManageQuestionnaire',
-          component: function (resolve) {
-            require(['@/components/questionnaire-management/manage-questionnaire/index.vue'], resolve)
-          }
-        }
-      ]
-    }]
+     }
+    ]
 })
 

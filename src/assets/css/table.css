@@ -7,6 +7,9 @@ li{
 .table-container{
   margin-top: 20px;
 }
+.table-title{
+  font-size: 20px;
+}
 .table-toolbar{
   margin-bottom: 20px;
   height: 30px;

@@ -33,15 +33,6 @@ export default {
 .ivu-layout{
   height:100%;
 }
-.layout-logo{
-  float: left;
-  position: relative;
-  left: -25px;
-}
-.layout-logo span{
-  color: white;
-  font-size: 20px;
-}
 .layout-nav{
   width: 120px;
   margin: 0 auto;

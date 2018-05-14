@@ -2,20 +2,16 @@
   <div>
     <Menu mode="horizontal" theme="dark" active-name="1">
       <div class="layout-logo">
-        <span>SAIC SURVEY CONSOLE</span>
+        <span>区块链签到统计系统</span>
       </div>
-      <div class="layout-nav">
-        <MenuItem name="1">
-          <Dropdown trigger="click" @on-click="logout">
-            <a href="javascript:void(0)">
-              <Avatar icon="person" />
-              {{name}}
-            </a>
-            <DropdownMenu slot="list">
-              <DropdownItem>退出登录</DropdownItem>
-            </DropdownMenu>
-          </Dropdown>
-        </MenuItem>
+      <div>
+        <Dropdown trigger="click" @on-click="logout" class="pull-right">
+          <Avatar icon="person" style="background-color: #00a2ae" />
+          <span style="color: white">238432@qq.com</span>
+          <DropdownMenu slot="list">
+            <DropdownItem>退出登录</DropdownItem>
+          </DropdownMenu>
+        </Dropdown>
       </div>
     </Menu>
   </div>
@@ -45,5 +41,21 @@ export default {
 </script>
 
 <style>
-
+  .ivu-layout-header{
+    background-color: #2d8cf0;
+  }
+  .ivu-menu-dark{
+    background-color: #2d8cf0;
+  }
+  .layout-logo{
+    float: left;
+    position: relative;
+    left: -25px;
+    display: flex;
+    align-items: center;
+  }
+  .layout-logo span{
+    color: white;
+    font-size: 20px;
+  }
 </style>

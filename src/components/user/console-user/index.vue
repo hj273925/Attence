@@ -7,7 +7,7 @@
         </Header>
         <Layout>
           <Sider hide-trigger :style="{background: '#fff'}">
-            <Menu active-name="调研列表" theme="light" width="auto" :open-names="[0]">
+            <Menu active-name="总览" theme="light" width="auto" :open-names="[0]">
               <Submenu :name = 'index' v-for="(submenu,index) in menu" :key="index">
                 <template slot="title">
                   <Icon type="ios-navigate"></Icon>

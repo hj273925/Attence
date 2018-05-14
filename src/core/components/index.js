@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import { forEach } from 'lodash'
 
-import Stable from './table/index.vue'
 import Savater from './avater/index.vue'
+import Schart from './chart/index.vue'
 
 function $using(components) {
   const obj = {}
@@ -14,6 +14,6 @@ function $using(components) {
 }
 
 export default $using({
-  Stable,
-  Savater
+  Savater,
+  Schart
 })
